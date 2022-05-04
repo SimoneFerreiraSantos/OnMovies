@@ -1,0 +1,55 @@
+*
+{
+    font-size: 1.6rem;
+    font-family: 'Open Sans', sans-serif;
+}
+html{
+    --blue: #5879dc;
+    --white: #fafafa;
+    --orange: #e8673f;
+    --black: #19263b;
+    
+    font-size: 70%; /* = 10px */
+}
+
+body
+{
+    background-color: var(--black);
+}
+p, a, form
+{
+    color: var(--white);
+    text-decoration: none;
+}
+.titulo
+{
+    color: var(--orange);
+    font-size: 2.5rem;
+}
+h2, h3
+{
+    color: var(--blue);
+    font-size: 2rem;
+}
+
+button{
+    border-radius: .3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    text-decoration: none;
+
+    background: var(--blue);
+    color: var(--white);
+
+    transition: filter .2s;
+    cursor: pointer;
+
+    margin-top: .2%;
+}
+
+button:hover, .button:hover{
+    filter: brightness(1.2)
+}

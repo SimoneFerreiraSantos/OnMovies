@@ -53,3 +53,8 @@ button{
 button:hover, .button:hover{
     filter: brightness(1.2)
 }
+.slogan{
+    color: var(--orange);
+    font-size: 4.5rem;
+
+}

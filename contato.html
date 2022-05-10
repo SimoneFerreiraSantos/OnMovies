@@ -19,27 +19,27 @@
     </header>
     <section>
         <p>Você pode entrar em contato conosco através dos seguintes canais:</p>
-        <form>
+        <form id="formContato">
             <fieldset>
-                <legend>Fale conosco</legend>
+                <legend>Contato</legend>
                     <div>
                         <label>Nome: <br></label>
-                        <input name="nome-contato" type="text" maxlength="50" required>
+                        <input name="nomeContato" id="nomeContato" type="nomeContato" maxlength="50">
                     </div>
                     <div>
-                        <label>E-mail:<br> </label>
-                        <input name="email-contato" type="email" required>
+                        <label>E-mail:<br/> </label>
+                        <input name="emailContato" id="emailContato" type="email">
                     </div>
                     <div>
-                        <label>Assunto: <br></label>
-                        <input name="assunto">
+                        <label>Assunto: <br/></label>
+                        <input name="assunto" id="assunto">
                     </div>
                     <div>
-                        <label>Comentários: <br></label>
-                        <textarea name="comentario" cols="30" rows="10"></textarea>
+                        <label>Comentários: <br/></label>
+                        <textarea name="comentario" id="comentario" cols="40" rows="10"></textarea>
                     </div>
                     <div>
-                        <button>Confirmar</button>
+                        <button id="btContato" type="button">Enviar</button>
                     </div>
             </fieldset>
         </form>
@@ -49,4 +49,5 @@
         <p><b>&copy; 2022 - Todos os direitos reservados</b></p>
     </footer>
 </body>
+<script src="js/contato.js"></script>
 </html>

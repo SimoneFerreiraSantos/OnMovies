@@ -17,31 +17,30 @@
         <h1 class="titulo">Cadastro</h1> 
     </header>
     <section>
-        <form>
+        <form id="formCadastro" method="post" action="index.html">
             <fieldset>
                 <legend>Preencha seus dados</legend>
-                    <div>
                         <label>Nome: <br></label>
-                        <input name="nome-contato" type="text" maxlength="50" required>
+                        <input id="nome" name="nome-contato" type="text" maxlength="50">
                     </div>
                     <div>
-                        <label>E-mail:<br> </label>
-                        <input name="email-contato" type="email" required>
+                        <label>E-mail: <br></label>
+                        <input id="email" name="email-contato" type="email">
                     </div>
                     <div>
                         <label>Telefone: <br></label>
-                        <input name="telefone" type="number" required>
+                        <input id="telefone" name="telefone" type="number">
                     </div>
                     <div>
                         <label>Senha: <br></label>
-                        <input name="senha" type="password" required>
+                        <input id="senha"  name="senha" type="password">
                     </div>
                     <div>
                         <label>Confirmar Senha: <br></label>
-                        <input name="confirmar-senha" type="password" required>
+                        <input id="confirmarSenha" name="confirmar-senha" type="password">
                     </div>
                     <div>
-                        <button>Confirmar</button>
+                        <button id="btCadastro" type="button">Confirmar</button>
                     </div>
             </fieldset>
         </form>
@@ -50,5 +49,5 @@
         <p><b>&copy; 2022 - Todos os direitos reservados</b></p>
     </footer>
 </body>
-<script src="../js/controle.js"></script>
+<script src="js/cadastro.js"></script>
 </html>

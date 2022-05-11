@@ -20,16 +20,18 @@ p, a, form
 {
     color: var(--white);
     text-decoration: none;
+    font-size: 120%;
 }
 .titulo
 {
     color: var(--orange);
-    font-size: 2.5rem;
+    font-size: 3.5rem;
+    
 }
 h2, h3
 {
     color: var(--blue);
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 button{
@@ -52,4 +54,9 @@ button{
 
 button:hover, .button:hover{
     filter: brightness(1.2)
+}
+.slogan{
+    color: var(--orange);
+    font-size: 4.5rem;
+
 }

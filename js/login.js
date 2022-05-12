@@ -7,6 +7,6 @@ var formL=document.forms.formLogin
         alert("Preencha a senha!")
     }else{
         formL.submit()
-    
+        localStorage.emailUser=formL.emailContato.value
         }
 }

@@ -7,7 +7,9 @@ var videos=[
     ["Uma Noite no Museu 2","aventura.jpg","2009","Aventura","O guarda-noturno do Museu de História Natural Larry Daley é agora um empresário bem sucedido."],
     ["A Hora do Pesadelo","terror.jpg","1984","Terror","Um grupo de adolescentes tem pesadelos horríveis, em que são atacados por um homem deformado com garras de aço. Ele apenas aparece durante o sono e, para escapar, é preciso acordar."]
 ]
+
 var galeria=document.querySelector("#galeria")
+
 for(var i=0;i<videos.length;i++){
         var div=document.createElement('div')
         div.classList.add('col-sm-4')
@@ -19,11 +21,13 @@ for(var i=0;i<videos.length;i++){
         var ano='<p>' + videos[i][2] + '</p>'
         var categoria='<p>' + videos[i][3] + '</p>'
         var sinopse='<p>' + (videos[i][4]).substring(0,80) + '...</p>'
+        var imagem='<img src="imagens/' + videos[i][1]+ '" class="w-100"/>'
+        
         var descricao='<div class="col-sm-5 p-0">' + ano + categoria + sinopse + '</div>'
-    conteudo.innerHTML+='<h3 class="col-sm-12 mt-4 mb-5">' + videos[i][0] + '</h3>'
-    conteudo.innerHTML+=
-    '<div class="col-sm-7"><img src="imagens/' + videos[i][1]+'"class="w-100"/></div>'
+        var ancoraImg= '<a href="singleDeProduto.html">' + imagem + '</a>'
 
+    conteudo.innerHTML+='<h3 class="col-sm-12 mt-4 mb-5">' + videos[i][0] + '</h3>'
+    conteudo.innerHTML+='<div class="col-sm-7">' + ancoraImg + '</div>'
     conteudo.innerHTML+=descricao
 
         div.appendChild(conteudo)

@@ -2,7 +2,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/estilo.css" type="text/css">
+
     <title>Cadastro</title>
 </head>
 <body>
@@ -14,40 +16,41 @@
             <a href="login.html">Login</a>
         </nav>
         <hr>
-        <h1 class="titulo">Cadastro</h1> 
+        <h1 class="titulo text-center">Seja Bem Vindo(a) ao OnMovies</h1> 
     </header>
-    <section>
-        <form>
+    <section  class="container">
+        <form class="w-50 mx-auto p-3 mt-5 mb-5" style="border: 2px solid #e8673f; border-radius: 12px" id="formCadastro" method="post" action="index.html">
             <fieldset>
-                <legend>Preencha seus dados</legend>
-                    <div>
-                        <label>Nome: <br></label>
-                        <input name="nome-contato" type="text" maxlength="50" required>
+                <legend></legend>
+                    <div class="form-group">
+                        <label>Nome:</label>  <br>
+                        <input class="form-control" id="nome" name="nome-contato" type="text" maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail: </label> <br>
+                        <input class="form-control"id="email" name="email-contato" type="email">
+                    </div>
+                    <div class="form-group">
+                        <label>Telefone:</label>  <br>
+                        <input class="form-control" id="telefone" name="telefone" type="number">
+                    </div>
+                    <div class="form-group">
+                        <label>Senha:</label>  <br>
+                        <input class="form-control" id="senha"  name="senha" type="password">
+                    </div>
+                    <div class="form-group">
+                        <label>Confirmar Senha: </label> <br>
+                        <input class="form-control" id="confirmarSenha" name="confirmar-senha" type="password">
                     </div>
                     <div>
-                        <label>E-mail:<br> </label>
-                        <input name="email-contato" type="email" required>
-                    </div>
-                    <div>
-                        <label>Telefone: <br></label>
-                        <input name="telefone" type="number" required>
-                    </div>
-                    <div>
-                        <label>Senha: <br></label>
-                        <input name="senha" type="password" required>
-                    </div>
-                    <div>
-                        <label>Confirmar Senha: <br></label>
-                        <input name="confirmar-senha" type="password" required>
-                    </div>
-                    <div>
-                        <button>Confirmar</button>
+                        <button class="button" id="btCadastro" type="button">Confirmar</button>
                     </div>
             </fieldset>
         </form>
     </section>
-    <footer>
+    <footer class="bg-dark p-4 text-white text-center mt-4">
         <p><b>&copy; 2022 - Todos os direitos reservados</b></p>
     </footer>
 </body>
+<script src="js/cadastro.js"></script>
 </html>

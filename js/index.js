@@ -5,6 +5,10 @@ let entrar=document.querySelector('#entrar')
 let sair=document.querySelector('#sair')
 let cadastrar=document.querySelector('#cadastrar')
 
+let nome = localStorage.nomeCadastro
+let email = localStorage.emailCadastro
+let telefone = localStorage.telefoneCadastro
+
 function msgUser(){
     let nomeUser=user.substring(0,user.indexOf('@'))
     bemVindo.innerHTML='Olá ' + nomeUser 

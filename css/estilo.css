@@ -47,3 +47,6 @@ button:hover, .button:hover{
     color: var(--orange);
     font-size: 4.5rem;
 }
+.estilo1{
+    color: var(--white)
+}

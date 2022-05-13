@@ -19,5 +19,8 @@ document.querySelector("#btCadastro").onclick=function(){
     }else{
 
        formC.submit()
+       localStorage.nomeCadastro = formC.nome.value
+       localStorage.emailCadastro = formC.email.value
+       localStorage.telefoneCadastro = formC.telefone.value
     }  
 }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"  href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/estilo.css" type="text/css">
+    <link rel="icon" type="imagem/png" href="../imagens/logo.png" />
+    <title>Contato</title>
+</head>
+<body>
+    <div class="container mx-auto">
+        <header>
+            <div class="row mt-3">
+            <div class="col-sm-3">
+               <a href="../index.html"><img src="../imagens/logoOnMove.jpg" style="border-radius: 4px;" width="75%"></a>
+            </div>
+            <div class="col-sm-9 px-0 align-self-center">
+              <h1 class="titulo text-uppercase">Aperte o play e tenha o seu cinema em casa</h1>
+            </div>
+        </div>
+        <nav class="navbar mt-4 mb-3 justify-content-around" style="background-color: var(--orange);border-radius: 4px;">
+            <a class="navlink" href="produtos.html">PRODUTOS</a>
+            <a class="navlink" href="contato.html">CONTATO</a> 
+            <a class="navlink" href="promocoes.html">PROMOÇÕES</a>
+            <a class="navlink" href="login.html">LOGIN</a>
+        </nav>
+    </header>
+    <section>
+        <div class="text-center">
+            <img src="../imagens/contato.png" width="50"/>
+        <h2>Contato</h2>  
+       </div>
+        <form class="w-50 mx-auto p-3 mt-4 mb-2" id="formContato" style="border: 2px solid #e8673f;border-radius: 10px;">
+            <fieldset>
+                <legend>Fale conosco</legend>
+                    <div class="form-group">
+                        <label>Nome:<spam style="color:red ;">*</spam> <br></label>
+                        <input class="form-control" name="nomeContato" id="nomeContato" type="nomeContato" maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail:<spam style="color:red ;">*</spam><br/> </label>
+                        <input class="form-control" name="emailContato" id="emailContato" type="email">
+                    </div>
+                    <div class="form-group">
+                        <label>Assunto:<spam style="color:red ;">*</spam> <br/></label>
+                        <input class="form-control" name="assunto" id="assunto">
+                    </div>
+                    <div class="form-group">
+                        <label>Comentários:<spam style="color:red ;">*</spam> <br/></label>
+                        <textarea class="form-control" name="comentario" id="comentario" cols="40" rows="10"></textarea>
+                    </div>
+                    <div>
+                        <button class="button" id="btContato" type="button">Enviar</button>
+                    </div>
+            </fieldset>
+        </form>
+    </section>
+    <footer class="pt-2 text-white text-uppercase">
+        <p>&copy; 2022 - OnMovies, todos os direitos reservados</p>
+    </footer>
+    </div>
+</body>
+<script src="../js/contato.js"></script>
+</html>

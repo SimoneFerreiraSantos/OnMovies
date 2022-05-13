@@ -13,7 +13,7 @@ var galeria=document.querySelector("#galeria")
 for(var i=0;i<videos.length;i++){
         var div=document.createElement('div')
         div.classList.add('col-sm-4')
-        div.classList.add('mt-3')
+        div.classList.add('mt-1')
 
         var conteudo=document.createElement('div')
         conteudo.className='row'
@@ -21,12 +21,12 @@ for(var i=0;i<videos.length;i++){
         var ano='<p>' + videos[i][2] + '</p>'
         var categoria='<p>' + videos[i][3] + '</p>'
         var sinopse='<p>' + (videos[i][4]).substring(0,80) + '...</p>'
-        var imagem='<img src="imagens/' + videos[i][1]+ '" class="w-100"/>'
+        var imagem='<img src="../imagens/' + videos[i][1]+ '" class="img-thumbnail w-100"/>'
         
         var descricao='<div class="col-sm-5 p-0">' + ano + categoria + sinopse + '</div>'
         var ancoraImg= '<a href="singleDeProduto.html">' + imagem + '</a>'
 
-    conteudo.innerHTML+='<h3 class="col-sm-12 mt-4 mb-5">' + videos[i][0] + '</h3>'
+    conteudo.innerHTML+='<h3 class="col-sm-12 mt-4 mb-2">' + videos[i][0] + '</h3>'
     conteudo.innerHTML+='<div class="col-sm-7">' + ancoraImg + '</div>'
     conteudo.innerHTML+=descricao
 

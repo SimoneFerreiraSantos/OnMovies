@@ -3,35 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/estilo.css" type="text/css">
-    <title>Single de Produtos</title>
+    <link rel="stylesheet" href="../css/estilo.css" type="text/css">
+    <link rel="icon" type="imagem/png" href="../imagens/logo.png" />
+    <title>Produto</title>
 </head>
-<body class="container">
-    <header class="text-center"> 
-        <div class="row">
-            <div class="col-sm-2">
-                            <a href="index.html"><img src="imagens/logoOnMove.jpg" class="w-100" /></a>
+<body>
+    <div class="container mx-auto">
+        <header>
+            <div class="row mt-3">
+            <div class="col-sm-3">
+               <a href="../index.html"><img src="../imagens/logoOnMove.jpg" style="border-radius: 4px;" width="75%"></a>
             </div>
-            <div class="col-sm-9">
-                <h1 class="titulo">Conheça nossos filmes disponíveis</h1>
+            <div class="col-sm-9 px-0 align-self-center">
+              <h1 class="titulo text-uppercase">Aperte o play e tenha o seu cinema em casa</h1>
             </div>
         </div>
-        <nav>
-            <a href="contato.html">Contato</a>
-              <a href="cadastro.html">Cadastro</a>
-              <a href="login.html">Login</a>
-          </nav>
+        <nav class="navbar mt-4 mb-3 justify-content-around" style="background-color: var(--orange);border-radius: 4px;">
+            <a class="navlink" href="produtos.html">PRODUTOS</a>
+            <a class="navlink" href="contato.html">CONTATO</a> 
+            <a class="navlink" href="promocoes.html">PROMOÇÕES</a>
+        </nav>
     </header>
-        <hr>
         <section class="container">
         <div class="row col-sm-12"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam animi consectetur numquam aperiam repudiandae dolorum, eveniet dicta adipisci sint delectus eligendi dignissimos repellendus temporibus illum optio velit nostrum cumque rem atque quo suscipit similique ullam rerum! Quod ab dignissimos laboriosam, aperiam quibusdam totam adipisci, delectus reprehenderit eligendi labore fuga in.
         </p></div>
-        <div id="singleDeProduto" class="mt-5 mb-5">
+        <div id="singleDeProduto" class="mt-3 mb-3">
             <div class="col-sm-8">
-                <p class="titulo">Os mercenários</p>
+                <h2 class="titulo">Os mercenários</h2>
                 <div class="row">
                     <div class="col-sm-6">
-                        <img src="imagens/acao.jpg" class="w-100" />
+                        <img src="../imagens/acao.jpg" class="img-thumbnail w-100" />
                     </div>
                    <p class="col-sm-6">Os Mercenários é uma franquia americana de suspense de ação que abrange uma série de filmes, escrita por Sylvester Stallone e baseada em personagens criados por David Callaham e mídia adicional.</p>
                    </div>
@@ -41,20 +42,20 @@
     <section class="pt-5 ">
         <div class="row">
                 <div class="col-sm-4">
-                    <img src="imagens/animacao.jpg" class="w-50"/>
+                    <img src="../imagens/animacao.jpg" class="img-thumbnail"/>
                 </div>
                 <div class="col-sm-4 text-center">
-                    <img src="imagens/aventura.jpg" class="w-50"/>
+                    <img src="../imagens/aventura.jpg" class="img-thumbnail"/>
                 </div>
                 <div class="col-sm-4 text-right">
-                    <img src="imagens/comedia2.jpg" class="w-50"/>
+                    <img src="../imagens/comedia2.jpg" class="img-thumbnail"/>
                 </div>
             </div>
     </section>
 </header>
-    <hr>
-    <footer class="bg-dark p-4 text-white text-center mt-4">
-        <p>&copy;2022 - Todos os direitos reservados.</p>
+    <footer class="pt-2 text-white text-uppercase">
+        <p>&copy; 2022 - OnMovies, todos os direitos reservados</p>
     </footer>
+    </div>
 </body>
 </html>

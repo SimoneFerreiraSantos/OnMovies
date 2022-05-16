@@ -1,5 +1,5 @@
 
-let usuarios='{"nome":"Maria","idade": 60,"email":"maria@tecnologia.com","preferencia":"culinária","dataInicio":"11/05/22","tipoAssinante":"básico","valor":39.99}'
+let usuarios='{"nome":"Maria","idade": 60,"email":"maria@tecnologia.com","preferencia":"culinária","dataInicio":"11/05/22","tipoAssinante":"básico","valor":39.99,"telefone":"080000000"}'
 
 let usuariosJSON= JSON.parse(usuarios)
 
@@ -15,3 +15,7 @@ p.innerHTML+="Data Início: " + usuariosJSON.dataInicio + "<br/>"
 p.innerHTML+="Tipo Assinante: " + usuariosJSON.tipoAssinante + "<br/>"
 p.innerHTML+="Valor: R$ " + usuariosJSON.valor + "<br/>"
 
+
+localStorage.usuarioNome = usuariosJSON.nome
+localStorage.usuarioEmail = usuariosJSON.email
+localStorage.usuarioTel = usuariosJSON.telefone

@@ -25,53 +25,37 @@
             <a class="navlink" href="carrinho.html">CARRINHO</a>
         </nav>
         </header>
-        <section>
-        <div id="carrinhoProdutos">
-            <h2 class="mt-4 mb-4">Meu carrinho</h2>
-            
+        <section class="container">
+            <div id="carrinhoProdutos">
+                <h2 class="mt-4 mb-4">Meu carrinho</h2>
                 <div class="row estilo1 ">
                     <div class="col-sm-9">
-                    <div class="row ">
-                        <div class="col-sm-3 mt-4 mb-4">Produtos</div>
-                        <div class="col-sm-3  mt-4 mb-4">Qtd</div>
-                        <div class="col-sm-3  mt-4 mb-4">Preço</div></div>
-                        <div class="row ">
-                                <div class="col-sm-3 mt-4 mb-4"><img src="../imagens/acao.jpg" class="w-50"/></div>
-                                <div class="col-sm-3 ml-1 mt-4 mb-4">xx</div>
-                                <div class="col-sm-3 ml-1 mt-4 mb-4">xx</div>
-                            </div>
-                            <div class="row ">
-                                <div class="col-sm-3 mt-4 mb-4"><img src="../imagens/comedia.jpg" class="w-50"/></div>
-                                <div class="col-sm-3 ml-1 mt-4 mb-4">xx</div>
-                                <div class="col-sm-3 ml-1 mt-4 mb-4">xx</div>
-                            </div>
-                            <div class="row ">
-                                <div class="col-sm-3 mt-4 mb-4"><img src="../imagens/animacao.jpg" class="w-50"/></div>
-                                <div class="col-sm-3 ml-1 mt-4 mb-4">xx</div>
-                                <div class="col-sm-3 ml-1 mt-4 mb-4">xx</div>
-                            </div>
-            
-                    </div>
-                     <div class="col-sm-3 " >
-                    <div class="w-100  ml-5" style="border: 1px solid #e8673f; border-radius: 10px ;" >
-                        <div class="estilo1" >
-                            <div class="col-sm-12 mt-4">Resumo do Pedido</div>
-                            <div class="col-sm-12 mt-4">xxxxx Produtos</div>
-                            <div class="col-sm-12 mt-4">Total R$ xx</div>
-                            <div class="col-sm-12 mt-4">
-                                <button class="button" id="btContato" type="button">Continuar</button></div>
-                                <div class="col-sm-12 mt-4">Adicionar mais produtos</div>
-                            
+                        <div class="row border-bottom">
+                            <div class="col-sm-3 mt-4 mb-4">Produtos</div>
+                            <div class="col-sm-3  mt-4 mb-4">Qtd</div>
+                            <div class="col-sm-3  mt-4 mb-4">Preço</div>
                         </div>
-                        </div >
+                        <div id="tabela"></div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="col-sm-12 mt-4 ml-5">Resumo do Pedido</div>
+                        <div class="w-100  ml-5" style="border: 1px solid #e8673f; border-radius: 10px ;">
+                            <div class="estilo1">                                
+                                <div id="somaqtde" class="col-sm-12 mt-4"></div>
+                                <div id="total" class="col-sm-12 mt-4"></div>
+                                <div class="col-sm-12 mt-4">
+                                    <button class="button" id="btContato" type="button">Continuar</button>
+                                </div>
+                                <div class="col-sm-12 mt-4">Adicionar mais produtos</div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
                 </div>
-                        
-                </div>
-                </div>
-  
+            </div>
         </section>
         <section>
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col-sm-4">
                     <a href="singleDeProduto.html"><img src="../imagens/acao2.jpg" class="img-thumbnail"></a>
                 </div>
@@ -88,4 +72,5 @@
         </footer>
 </div>
 </body>
+<script src="../js/carrinho.js"></script>
 </html>

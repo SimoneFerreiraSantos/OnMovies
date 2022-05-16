@@ -12,6 +12,7 @@ body
 {
     background-color: var(--black);
     background-image: linear-gradient(to bottom right,#07216f, #f58139);
+    min-height: 100vh;
     font-size: 22px;
 }
 .container

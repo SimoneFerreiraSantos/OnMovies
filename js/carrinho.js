@@ -24,17 +24,16 @@ for (let i = 0; i < produtos.length; i++) {
     conteudo.className = 'row border-bottom'
     
     // cria as variáveis que recebem os valores do array e o html
-    let imagem = '<div class="col-sm-3 mt-4 mb-4">'+ '<img class="img-thumbnail" src="../imagens/' + produtos[i][1] + '" class="w-100"/>' +'</div>'
+    let imagem = '<div class="col-sm-3 mt-4 mb-4">'+ '<img src="../imagens/' + produtos[i][1] + '" class="img-thumbnail"/>' +'</div>'
     let qtde ='<div class="col-sm-3 ml-1 mt-4 mb-4">'+ produtos[i][2] + '</div>'
-    let preco = '<div class="col-sm-3 ml-1 mt-4 mb-4">' + produtos[i][3] +'</div>'   
+    let preco = '<div class="col-sm-3 ml-1 mt-4 mb-4">' + produtos[i][3].toFixed(2).replace(".",",") +'</div>'   
 
     //inseri os dados das variáveis na div criada
     conteudo.innerHTML += imagem
     conteudo.innerHTML += qtde
     conteudo.innerHTML += preco
-
-    //inseri todo conteudo da div dentro da div com id tabela (<div id="tabela"></div>)
-    tabela.appendChild(conteudo)    
+    //inseri todo conteudo da div dentro da div com id tabela (<div id="tabela"></div>) 
+    tabela.appendChild(conteudo)  
 
     //acumula os valores da quantidade na variável totalqtde
     totalqtde = produtos[i][2] + totalqtde
@@ -47,5 +46,5 @@ for (let i = 0; i < produtos.length; i++) {
     totalValor = produtos[i][3] + totalValor
  
     //inseri a soma dos valores na página html
-    total.innerHTML = 'Total R$' + totalValor
+    total.innerHTML = 'Total R$' + totalValor.toFixed(2).replace(".",",")
 }

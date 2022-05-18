@@ -4,7 +4,10 @@ let assinantes = [
     ["Jeckson", "Intermediário", 29.90],
     ["Luciana", "Premium", 49.90],
     ["Paula", "Premium", 49.90],
-    ["Simone", "Básico", 20.90]
+    ["Simone", "Básico", 20.90],
+    ["Luana", "Intermediário", 29.90],
+    ["Marco", "Premium", 49.90],
+    ["Gisele", "Básico", 20.90],
 ]
 
 let aluguel = [
@@ -31,16 +34,26 @@ let visaoFilmesAlugados = document.querySelector("#visaoFilmesAlugados")
 let visaoValorAlugados = document.querySelector("#visaoValorAlugados")
 let divMediaAlugados = document.querySelector("#divMediaAlugados")
 
+//quantidade de clientes do array
+let totalAssinantesQtde = assinantes.length
+
+  //quantidade de clientes do array
+let filmesAlugados = aluguel.length
+    
+
+let mediaAlugados = Math.round(filmesAlugados/totalAssinantesQtde)
+
+
+divMediaAlugados.innerHTML = "Média de filmes alugados: " + mediaAlugados
+
+
 for (let i = 0; i < assinantes.length; i++) {  
 
     //cria uma div
-    let conteudo = document.createElement('tr')
-
-    //quantidade de clientes do array
-    let totalAssinantes = 'Assinantes: ' + assinantes.length
+    let conteudo = document.createElement('tr')    
     
     //inseri o total de assinantes na página html
-    qtdeAssinantes.innerHTML = totalAssinantes
+    qtdeAssinantes.innerHTML = 'Assinantes: ' + totalAssinantesQtde
 
      //acumula os valores do preço na variável valorTotalAssinantes
      valorTotalAssinantes = assinantes[i][2] + valorTotalAssinantes
@@ -67,24 +80,15 @@ for (let i = 0; i < aluguel.length; i++) {
 
     //cria uma div
     let conteudo = document.createElement('tr')
-
-    //quantidade de clientes do array
-    let filmesAlugados = 'Filmes Alugados: ' + aluguel.length
-    
+  
     //inseri o total de assinantes na página html
-    visaoFilmesAlugados.innerHTML = filmesAlugados
+    visaoFilmesAlugados.innerHTML = "Filmes Alugados: " + filmesAlugados
 
     //acumula os valores do preço na variável valorTotalAssinantes
     valorTotalAluguel = aluguel[i][2] + valorTotalAluguel
  
      //inseri a soma dos valores na página html
      visaoValorAlugados.innerHTML = 'Total: R$ ' + valorTotalAluguel
-
-
-    let mediaAlugados = valorTotalAluguel/5
-
-    divMediaAlugados.innerHTML = "Média de filmes alugados: " + mediaAlugados
-
 
     // cria as variáveis que recebem os valores do array e o html
     let cliente = ' <td><a href="#">' + aluguel[i][0] + '</a></td>'

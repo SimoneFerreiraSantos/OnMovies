@@ -1,7 +1,7 @@
 //Array de produtos - 3 linhas e 4 colunas
 let produtos = [
-    ["Up,Altas Aventuras", "animacao.jpg", 1, 20.90],
-    ["De Repente 30", "romance.jpg", 2, 40.90],
+    ["Up,Altas Aventuras", "animacao.jpg", 0, 20.90],
+    ["De Repente 30", "romance.jpg", 0, 40.90],
     ["A Janela Secreta", "suspense.jpg", 3, 70.90]
 ]
 
@@ -29,10 +29,13 @@ for (let i = 0; i < produtos.length; i++) {
     let preco = '<div class="col-sm-3 ml-1 mt-4 mb-4">' + produtos[i][3].toFixed(2).replace(".",",") +'</div>'   
 
     //inseri os dados das variáveis na div criada
+    totalValor = produtos[i][2] * produtos[i][3] + totalValor
+
     conteudo.innerHTML += imagem
     conteudo.innerHTML += qtde
     conteudo.innerHTML += preco
-    //inseri todo conteudo da div dentro da div com id tabela (<div id="tabela"></div>) 
+    //inseri todo conteudo da div dentro da div com id tabela (<div id="tabela"></div>)
+ 
     tabela.appendChild(conteudo)  
 
     //acumula os valores da quantidade na variável totalqtde
@@ -43,8 +46,51 @@ for (let i = 0; i < produtos.length; i++) {
     somaqtde.innerHTML = totalqtde + ' produtos'
 
     //acumula os valores do preço na variável totalValor
-    totalValor = produtos[i][3] + totalValor
+    // totalValor = produtos[i][3] + totalValor
  
     //inseri a soma dos valores na página html
-    total.innerHTML = 'Total R$' + totalValor.toFixed(2).replace(".",",")
+    total.innerHTML = 'Total: R$' + totalValor.toFixed(2).replace(".",",")
+
+    aplicarDesconto(totalValor);
+}
+
+function aplicarDesconto(soma)
+{
+    let btAplicar = document.querySelector('#btAplicar').onclick = () => {
+    let codCupom = document.querySelector('#aplicarCupom').value;
+    let campoCupom = document.querySelector('#cupom');
+    let btApagar = document.querySelector('#apagarCupom');
+    let cupom = ["123", "456"];
+
+        if (!cupom.includes(codCupom))
+        {
+             alert ('Cupom inválido');
+        }
+        else if (campoCupom.style.display == '')
+        {
+            alert('Cupom já utilizado');
+        }else{
+            codCupom == cupom[0] ? cupom = 0.10 : cupom = 0.20;
+
+            let calculaPorcentagem = soma * cupom;
+            let somaComDesconto =  soma - calculaPorcentagem;
+            campoCupom.style.display = "";
+            btApagar.style.display = "";
+            campoCupom.innerHTML += calculaPorcentagem.toFixed(2).replace(".", ",");
+            total.innerHTML = '';
+            total.innerHTML = 'Total: R$' + somaComDesconto.toFixed(2).replace(".",",");
+        }
+        apagarCupom(btApagar, campoCupom);
+    }
+}
+
+function apagarCupom(btApagar, campoCupom)
+{
+    btApagar.onclick = () => 
+    {
+        campoCupom.innerHTML = "Desconto R$: ";
+        campoCupom.style.display = "none";
+        btApagar.style.display = "none";
+        total.innerHTML = 'Total: R$' + totalValor.toFixed(2).replace(".",",");
+    }
 }

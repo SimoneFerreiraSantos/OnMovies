@@ -58,26 +58,12 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Cliente</th>
-                                                            <th>Descriçao do serviço</th>
+                                                            <th>Descrição do serviço</th>
                                                             <th>Valor</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td><a href="#">Work 1</a></td>
-                                                            <td>Roque</td>
-                                                            <td>john@example.com</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a href="#">Work 2</a></td>
-                                                            <td>Moe</td>
-                                                            <td>mary@example.com</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a href="#">Work 3</a></td>
-                                                            <td>Dooley</td>
-                                                            <td>july@example.com</td>
-                                                        </tr>
+                                                    <tbody id="tabelaAssinantes">
+                                                       
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -88,26 +74,12 @@
                                                     <thead>
                                                         <tr>
                                                             <th>Cliente</th>
-                                                            <th>Descriçao do serviço</th>
+                                                            <th>Nome do filme</th>
                                                             <th>Valor</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td><a href="#">Work 1</a></td>
-                                                            <td>Doe</td>
-                                                            <td>john@example.com</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a href="#">Work 2</a></td>
-                                                            <td>Moe</td>
-                                                            <td>mary@example.com</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a href="#">Work 3</a></td>
-                                                            <td>Dooley</td>
-                                                            <td>july@example.com</td>
-                                                        </tr>
+                                                    <tbody id="tabelaAluguel">
+                                                      
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -126,15 +98,15 @@
                         <div class="w-100" style="border: 1px solid #e8673f; border-radius: 10px;">
                             <div class="estilo1">                                
                                 <div class="col-sm-12 mt-4">
-                                    <p id="assinantes">Assinantes: xxx</p>
-                                    <p id="valorAssinantes" >Total R$ xxx</p>
+                                    <p id="qtdeAssinantes"></p>
+                                    <p id="valorAssinantes" ></p>
                                     </div>
                                 <div class="col-sm-12 mt-4">
-                                    <p id="filmesAlugados">Filmes Alugados: xxx</p>
-                                    <p id="valorAlugados">Total R$ xxx</p>
+                                    <p id="visaoFilmesAlugados">Filmes Alugados: xxx</p>
+                                    <p id="visaoValorAlugados">Total R$ xxx</p>
                                 </div>
                                 <div class="col-sm-12 mt-4">
-                                    <p id="media">Média de filmes alugados: xxx</p>
+                                    <p id="divMediaAlugados"></p>
                                 </div>    
                             </div>
                         </div>        
@@ -161,4 +133,5 @@
         </footer>
 </div>
 </body>
+<script src="../js/dashboard.js"></script>
 </html>

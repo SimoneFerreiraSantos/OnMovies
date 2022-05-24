@@ -1,3 +1,29 @@
+let carrinho ={
+    produto: 'Os Caras Malvados', 
+    quantidade: 2,
+    preco: 19.99,
+    telas: 3,
+    excluirItem: function(el){
+        let confProduto= confirm("Deseja excluir o Produto?")
+        confProduto == true ? el.innerHTML=""  : null
+
+    },
+    esvaziarCarrinho: function(el){
+        let confCarrinho= confirm("Deseja esvaziar o carrinho?")
+        confCarrinho == true ? el.innerHTML="<p>O carrinho está vazio :(</p>"
+        : null
+
+
+    },
+    multiplicarTelas: function(){
+        let porcentagemTelas= produtos[0][3] *0.07
+        console.log(porcentagemTelas)
+        let totalTelas= this.telas * porcentagemTelas
+        console.log(totalTelas)
+
+    },
+
+}
 //Array de produtos - 3 linhas e 4 colunas
 let produtos = [
     ["Up,Altas Aventuras", "animacao.jpg", 0, 20.90],
@@ -22,11 +48,13 @@ for (let i = 0; i < produtos.length; i++) {
     let conteudo = document.createElement('div')
     //inseri uma classe row do bootstrap na div criada
     conteudo.className = 'row border-bottom'
-    
-    // cria as variáveis que recebem os valores do array e o html
+    conteudo.id="produto" + i
+        // cria as variáveis que recebem os valores do array e o html
     let imagem = '<div class="col-sm-3 mt-4 mb-4">'+ '<img src="../imagens/' + produtos[i][1] + '" class="img-thumbnail"/>' +'</div>'
-    let qtde ='<div class="col-sm-3 ml-1 mt-4 mb-4">'+ produtos[i][2] + '</div>'
-    let preco = '<div class="col-sm-3 ml-1 mt-4 mb-4">' + produtos[i][3].toFixed(2).replace(".",",") +'</div>'   
+    let qtde ='<div class="col-sm-2 mt-4 mb-4">'+ produtos[i][2] + '</div>'
+    let preco = '<div class="col-sm-2  mt-4 mb-4">' + produtos[i][3].toFixed(2).replace(".",",") +'</div>'   
+    let tela = '<div class="col-sm-2 mt-4 mb-4"> <input type="number" min="1" max="5" id="tela"></div>'   
+    let apagarItem = '<div class="col-sm-2 mt-4 mb-4"> <button class="button" id="btApagarItem"> remover</button></div>'   
 
     //inseri os dados das variáveis na div criada
     totalValor = produtos[i][2] * produtos[i][3] + totalValor
@@ -34,6 +62,8 @@ for (let i = 0; i < produtos.length; i++) {
     conteudo.innerHTML += imagem
     conteudo.innerHTML += qtde
     conteudo.innerHTML += preco
+    conteudo.innerHTML += tela
+    conteudo.innerHTML += apagarItem
     //inseri todo conteudo da div dentro da div com id tabela (<div id="tabela"></div>)
  
     tabela.appendChild(conteudo)  
@@ -53,6 +83,15 @@ for (let i = 0; i < produtos.length; i++) {
 
     aplicarDesconto(totalValor);
 }
+document.querySelector("#btApagarItem").onclick=function(){
+    carrinho.excluirItem(document.querySelector("#produto0"))
+}
+
+document.querySelector("#esvaziarCarrinho").onclick=function(){
+    carrinho.esvaziarCarrinho(document.querySelector("#tabela"))
+}
+
+carrinho.multiplicarTelas()
 
 function aplicarDesconto(soma)
 {

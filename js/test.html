@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Estrutura de Dados</h1>
+    <div>
+        <h2>Função recursiva</h2>
+        <div id="recursiva"></div>
+        <h2>Recursiva 2</h2>
+        <div id="lerArray"></div>
+        <h2>Filas</h2>
+        <p>Próximo da fila</p>
+        <p id="next"></p>
+        <p>Usuários atendidos</p>
+        <ul id="result"></ul>
+        <p>Usuários aguardando suporte</p>
+        <ul id="users"></ul>
+        <button id="btAtende">Atendimento concluído</button>
+        <button id="darBaixa">Dar baixa</button>
+    </div>
+</body>
+<script>
+  var recuperaChamadosArray = [];
+  listaResult = [];
+
+  
+  for(var i=0; i < localStorage.length; i++){
+      if(localStorage.key(i).includes('Chamado')){
+      let recuperaChamados = localStorage.key(i) + ',' + localStorage.getItem(localStorage.key(i));
+      recuperaChamadosArray.unshift(recuperaChamados.split(','));
+      }
+  }
+  console.log(recuperaChamadosArray);
+
+  function users() {
+    document.querySelector('#users').innerHTML = "";
+    for(var i =0; i <recuperaChamadosArray.length; i++)
+    {
+
+        document.querySelector('#users').innerHTML += "<li>" + recuperaChamadosArray[i][1] + "</li>"
+    }
+    recuperaChamadosArray.length > 0 ? document.querySelector('#next').innerHTML = recuperaChamadosArray[0][1]: null;
+}
+users();
+
+
+document.querySelector('#btAtende').onclick = () =>
+{ darBaixa() }
+    function darBaixa(){
+    if(recuperaChamadosArray.length > 0){
+    document.querySelector('#result').innerHTML = "";
+    listaResult.push(recuperaChamadosArray[0]);
+    for(var i =0; i <listaResult.length; i++)
+    {
+    document.querySelector('#result').innerHTML += "<li>" + listaResult[i][1] + "</li>"
+    localStorage.removeItem(recuperaChamadosArray[0][0]);
+    }
+    recuperaChamadosArray.shift();
+    users();
+    } else{
+        document.querySelector('#next').innerHTML = "<b>Todos os clientes foram atendidos</b>"
+        console.log(recuperaChamadosArray);
+    }
+}
+
+</script>
+</html>

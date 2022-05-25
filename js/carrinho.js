@@ -6,23 +6,33 @@ let carrinho ={
     excluirItem: function(el){
         let confProduto= confirm("Deseja excluir o Produto?")
         confProduto == true ? el.innerHTML=""  : null
+        somaqtde.innerHTML=totalqtde -1 + " produtos"
+        total.innerHTML="Total: R$ " + (totalValor - produtos[0][3]).toFixed(2).replace('.',',')
 
     },
     esvaziarCarrinho: function(el){
         let confCarrinho= confirm("Deseja esvaziar o carrinho?")
         confCarrinho == true ? el.innerHTML="<p>O carrinho está vazio :(</p>"
         : null
+        somaqtde.innerHTML=''
+        totalValor= 0
+        total.innerHTML="Total: R$" + totalValor
 
 
     },
     multiplicarTelas: function(){
-        let porcentagemTelas= produtos[0][3] *0.07
-        console.log(porcentagemTelas)
-        let totalTelas= this.telas * porcentagemTelas
-        console.log(totalTelas)
+ 
+        let input=document.querySelector("#tela").value
+        if(input > 1){
+        let porcentagemTelas= acumulaTelas *0.07
+        acumulaTelas += porcentagemTelas
+         console.log(acumulaTelas)
+         let totalTelas= input * acumulaTelas
+        console.log("totalTelas")
+        }
 
     },
-
+    
 }
 //Array de produtos - 3 linhas e 4 colunas
 let produtos = [
@@ -53,7 +63,7 @@ for (let i = 0; i < produtos.length; i++) {
     let imagem = '<div class="col-sm-3 mt-4 mb-4">'+ '<img src="../imagens/' + produtos[i][1] + '" class="img-thumbnail"/>' +'</div>'
     let qtde ='<div class="col-sm-2 mt-4 mb-4">'+ produtos[i][2] + '</div>'
     let preco = '<div class="col-sm-2  mt-4 mb-4">' + produtos[i][3].toFixed(2).replace(".",",") +'</div>'   
-    let tela = '<div class="col-sm-2 mt-4 mb-4"> <input type="number" min="1" max="5" id="tela"></div>'   
+    let tela = '<div class="col-sm-2 mt-4 mb-4"> <input onKeyPress="return false" type="number" min="1" max="5" id="tela"></div>'   
     let apagarItem = '<div class="col-sm-2 mt-4 mb-4"> <button class="button" id="btApagarItem"> remover</button></div>'   
 
     //inseri os dados das variáveis na div criada
@@ -90,8 +100,10 @@ document.querySelector("#btApagarItem").onclick=function(){
 document.querySelector("#esvaziarCarrinho").onclick=function(){
     carrinho.esvaziarCarrinho(document.querySelector("#tabela"))
 }
-
-carrinho.multiplicarTelas()
+let inputTela=document.querySelector("#tela")
+let acumulaTelas=produtos[0][3]
+inputTela.addEventListener('change',carrinho.multiplicarTelas)
+inputTela.addEventListener('keyup',carrinho.multiplicarTelas)
 
 function aplicarDesconto(soma)
 {

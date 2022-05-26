@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/estilo.css" type="text/css">
+    <link rel="icon" type="imagem/png" href="../../imagens/logo.png" />
+    <title>Relatório de Chamadas</title>
+</head>
+
+<body>
+    <div class="container mx-auto">
+        <header>
+            <div class="row mt-3">
+                <div class="col-sm-3">
+                    <a href="../index.html"><img src="../../imagens/logoOnMove.jpg" style="border-radius: 4px;"
+                            width="75%"></a>
+                </div>
+                <div class="col-sm-9 px-0 align-self-center">
+                    <h1 class="titulo text-uppercase">Aperte o play e tenha o seu cinema em casa</h1>
+                </div>
+            </div>
+            <nav class="navbar mt-4 mb-3 justify-content-around"
+                style="background-color: var(--orange);border-radius: 4px;">
+                <a class="navlink" href="cadastroProd.html">CADASTRO PRODUTOS</a>
+                <a class="navlink" href="cadastroAdm.html">CADASTRO ADMINISTRADOR</a> 
+                <a class="navlink" href="login.html">LOGIN</a>
+            </nav>
+        </header>
+        <section class="container mx-auto">
+            <div class="row justify-content-between">
+                <div id="carrinhoProdutos" class="col-sm-8" style="border: 2px solid #e8673f; border-radius: 10px ;">
+                    <div class="row">
+                        <h1 class="col-sm-12 text-center titulo mb-3">Relatório de Chamadas</h1>
+                    </div>
+                    <div class="row border-bottom mb-2">
+                        <p class="col-sm-3">Cliente</p>
+                        <p class="col-sm-3">Email</p>
+                        <p class="col-sm-3">Telefone</p>
+                        <p class="col-sm-3">Assunto</p>
+                    </div>
+                    <div id="clientesAtendidos"></div>
+                    <div class="row justify-content-center">
+                        <div class="col-sm-6">
+                        <p >Próximo cliente a ser atendido:</p>
+                        <p id="proximoCliente"></p>
+                    </div>
+                        <div class="col-sm-6 mt-2 text-right">
+                            <button class=" button" id="btConfirmar">Confirmar atendimento</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 pt-2" style="border: 2px solid #e8673f; border-radius: 10px ;">
+                    <p class="pt-3">Chamadas atendidas</p>
+                    <p id="totalAtendidos">Total:</p>
+                    <p>Chamadas pendentes</p>
+                    <p id="totalPendentes">Total:</p>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-sm-4">
+                    <a href="singleDeProduto.html"><img src="../../imagens/acao2.jpg" class="img-thumbnail"></a>
+                </div>
+                <div class="col-sm-4 text-center">
+                    <a href="singleDeProduto.html"><img src="../../imagens/comedia.jpg" class="img-thumbnail"></a>
+                </div>
+                <div class="col-sm-4 text-right">
+                    <a href="singleDeProduto.html"><img src="../../imagens/terror2.jpg" class="img-thumbnail"></a>
+                </div>
+            </div>
+        </section>
+        <footer class="pt-2 text-white text-uppercase">
+            <p>&copy; 2022 - OnMovies, todos os direitos reservados</p>
+        </footer>
+    </div>
+</body>
+<script src="../js/relatorio-chamadas.js"></script>
+
+</html>

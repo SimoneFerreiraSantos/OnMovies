@@ -1,42 +1,30 @@
 let carrinho ={
-    produto: 'Os Caras Malvados', 
-    quantidade: 2,
-    preco: 19.99,
-    telas: 3,
     excluirItem: function(el){
         let confProduto= confirm("Deseja excluir o Produto?")
-        confProduto == true ? el.innerHTML=""  : null
-        somaqtde.innerHTML=totalqtde -1 + " produtos"
-        total.innerHTML="Total: R$ " + (totalValor - produtos[0][3]).toFixed(2).replace('.',',')
+        confProduto == true ? el.remove()  : null
+        somaqtde.innerHTML =  totalqtde -1 + ' produtos'
+        total.innerHTML = 'Total: R$' + (totalValor - produtos[0][3]).toFixed(2).replace(".",",")
+        
 
     },
     esvaziarCarrinho: function(el){
         let confCarrinho= confirm("Deseja esvaziar o carrinho?")
         confCarrinho == true ? el.innerHTML="<p>O carrinho está vazio :(</p>"
         : null
-        somaqtde.innerHTML=''
-        totalValor= 0
-        total.innerHTML="Total: R$" + totalValor
-
-
+        somaqtde.remove();
+        totalValor = 0;
+        total.innerHTML = 'Total: R$' + totalValor;
     },
-    multiplicarTelas: function(){
- 
-        let input=document.querySelector("#tela").value
+    multiplicarTelas: function(input, produto){
         if(input > 1){
-        let porcentagemTelas= acumulaTelas *0.07
-        acumulaTelas += porcentagemTelas
-         console.log(acumulaTelas)
-         let totalTelas= input * acumulaTelas
-        console.log("totalTelas")
+            porcentagemTelas = (produto * 1.07) * Math.pow(1.07, input-2) 
+            console.log(porcentagemTelas)
         }
-
     },
-    
 }
 //Array de produtos - 3 linhas e 4 colunas
 let produtos = [
-    ["Up,Altas Aventuras", "animacao.jpg", 0, 20.90],
+    ["Up,Altas Aventuras", "animacao.jpg", 1, 20.90],
     ["De Repente 30", "romance.jpg", 0, 40.90],
     ["A Janela Secreta", "suspense.jpg", 3, 70.90]
 ]
@@ -62,13 +50,12 @@ for (let i = 0; i < produtos.length; i++) {
         // cria as variáveis que recebem os valores do array e o html
     let imagem = '<div class="col-sm-3 mt-4 mb-4">'+ '<img src="../imagens/' + produtos[i][1] + '" class="img-thumbnail"/>' +'</div>'
     let qtde ='<div class="col-sm-2 mt-4 mb-4">'+ produtos[i][2] + '</div>'
-    let preco = '<div class="col-sm-2  mt-4 mb-4">' + produtos[i][3].toFixed(2).replace(".",",") +'</div>'   
-    let tela = '<div class="col-sm-2 mt-4 mb-4"> <input onKeyPress="return false" type="number" min="1" max="5" id="tela"></div>'   
+    let preco = '<div class="col-sm-2  mt-4 mb-4 id="preco">' + produtos[i][3].toFixed(2).replace(".",",") +'</div>'   
+    let tela = '<div class="col-sm-2 mt-4 mb-4"> <input onKeyPress="return false" type="number" min="1" max="5" id="tela"></div>'  
     let apagarItem = '<div class="col-sm-2 mt-4 mb-4"> <button class="button" id="btApagarItem"> remover</button></div>'   
 
     //inseri os dados das variáveis na div criada
     totalValor = produtos[i][2] * produtos[i][3] + totalValor
-
     conteudo.innerHTML += imagem
     conteudo.innerHTML += qtde
     conteudo.innerHTML += preco
@@ -77,7 +64,6 @@ for (let i = 0; i < produtos.length; i++) {
     //inseri todo conteudo da div dentro da div com id tabela (<div id="tabela"></div>)
  
     tabela.appendChild(conteudo)  
-
     //acumula os valores da quantidade na variável totalqtde
     totalqtde = produtos[i][2] + totalqtde
     
@@ -93,6 +79,7 @@ for (let i = 0; i < produtos.length; i++) {
 
     aplicarDesconto(totalValor);
 }
+
 document.querySelector("#btApagarItem").onclick=function(){
     carrinho.excluirItem(document.querySelector("#produto0"))
 }
@@ -100,38 +87,69 @@ document.querySelector("#btApagarItem").onclick=function(){
 document.querySelector("#esvaziarCarrinho").onclick=function(){
     carrinho.esvaziarCarrinho(document.querySelector("#tabela"))
 }
+
 let inputTela=document.querySelector("#tela")
-let acumulaTelas=produtos[0][3]
-inputTela.addEventListener('change',carrinho.multiplicarTelas)
-inputTela.addEventListener('keyup',carrinho.multiplicarTelas)
+let porcentagemTelas = 0;
+inputTela.addEventListener('change', () => carrinho.multiplicarTelas(inputTela.value, produtos[0][3]))
+
 
 function aplicarDesconto(soma)
 {
-    let btAplicar = document.querySelector('#btAplicar').onclick = () => {
+    document.querySelector('#btAplicar').onclick = () => {
     let codCupom = document.querySelector('#aplicarCupom').value;
     let campoCupom = document.querySelector('#cupom');
     let btApagar = document.querySelector('#apagarCupom');
-    let cupom = ["123", "456"];
+    let validacao = false;
+    apagarCupom(btApagar, campoCupom);
+    let cupom = [{cod:'123', value: 0.10}, {cod:'456',value: 0.20}, {cod:'789',value: 0.20}];
 
-        if (!cupom.includes(codCupom))
-        {
-             alert ('Cupom inválido');
-        }
-        else if (campoCupom.style.display == '')
-        {
-            alert('Cupom já utilizado');
-        }else{
-            codCupom == cupom[0] ? cupom = 0.10 : cupom = 0.20;
+    switch (codCupom)
+    {
+        case cupom[0].cod: calculaDesconto(cupom[0].value);
+        break;
+        case cupom[1].cod:
+        case cupom[2].cod: calculaDesconto(cupom[1].value);
+        break;
+        default:
+            alert ("Cupom inválido")
+    }
+    // let cupom = [{cod:123, value: 0.10}, {cod:456,value: 0.20}, {cod:789,value: 0.20}];
 
-            let calculaPorcentagem = soma * cupom;
+    //     for (var index of cupom)
+    //     {
+    //         if(index.cod == codCupom && campoCupom.style.display == 'none'){
+    //             cupom = index.value;
+    //             validacao = true;
+    //         }
+    //     }
+    //     if(validacao == true){
+        function calculaDesconto(desconto){
+            if (campoCupom.style.display == '')
+            {
+                alert('Já existe um cupom no carrinho')
+            }
+            else if (totalValor == 0)
+            {
+                alert('O carrinho não possui produtos')
+            }
+            else{
+            let calculaPorcentagem = soma * desconto;
             let somaComDesconto =  soma - calculaPorcentagem;
             campoCupom.style.display = "";
             btApagar.style.display = "";
             campoCupom.innerHTML += calculaPorcentagem.toFixed(2).replace(".", ",");
             total.innerHTML = '';
             total.innerHTML = 'Total: R$' + somaComDesconto.toFixed(2).replace(".",",");
+            }
         }
-        apagarCupom(btApagar, campoCupom);
+    //     }
+    //     else if (campoCupom.style.display == '')
+    //     {
+    //         alert('Já existe um cupom no carrinho')
+    //     }
+    //     else{
+    //          alert('Cupom inválido')
+    //     }
     }
 }
 
@@ -144,4 +162,5 @@ function apagarCupom(btApagar, campoCupom)
         btApagar.style.display = "none";
         total.innerHTML = 'Total: R$' + totalValor.toFixed(2).replace(".",",");
     }
+
 }

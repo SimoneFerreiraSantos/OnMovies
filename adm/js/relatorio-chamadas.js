@@ -34,18 +34,19 @@ document.querySelector('#btConfirmar').onclick = () =>
 
         let totalAtendidos = document.querySelector('#totalAtendidos');
         let divRowClientesAtendidos = document.createElement('div')
-        divRowClientesAtendidos.className = 'row border-bottom mb-2'
+        divRowClientesAtendidos.className = 'row text-center'
 
         let nome = '<p class="col-sm-3">' +listaResult[i][1] +'</p>'
         let email = '<p class="col-sm-3">' +listaResult[i][2] +'</p>'
         let telefone = '<p class="col-sm-3">' +listaResult[i][3] +'</p>'
-        let assunto = '<p class="col-sm-3">' +listaResult[i][4].substring(0,10) + '...</p>'
+        let assunto = '<p class="col-sm-3">' +listaResult[i][4].substring(0,15) + '...</p>'
 
         divRowClientesAtendidos.innerHTML += nome;
         divRowClientesAtendidos.innerHTML += email;
         divRowClientesAtendidos.innerHTML += telefone;
         divRowClientesAtendidos.innerHTML += assunto;
         document.querySelector('#clientesAtendidos').appendChild(divRowClientesAtendidos); 
+        document.querySelector('#clientesAtendidos').innerHTML += '<hr style="background-color:#e8673f;">'
         totalAtendidos.innerHTML =  '<p id="totalAtendidos">Total: '+ (listaResult.length) +'</p>'
         localStorage.removeItem(recuperaChamadosArray[0][0]);
     }

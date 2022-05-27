@@ -34,8 +34,8 @@
         </header>
         <section class="container">
             <div id="carrinhoProdutos">
-                <h2 class="mt-4 mb-4">Relatório Comercial</h2>
-                <div class="row estilo1">
+                <h2 class="mt-4 mb-4 titulo">Relatório Comercial</h2>
+                <div class="row">
                     <div class="col-sm-9 p-0">
                         <!--Início da navegação com tabs-->
                         <section id="tabs" class="project-tab">
@@ -44,8 +44,8 @@
                                     <div class="col-md-12">
                                         <nav>
                                             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                                <a class="nav-item nav-link active" id="assinantes-tab" data-toggle="tab" href="#assinantes" role="tab" aria-controls="assinantes" aria-selected="true">Assinantes</a>
-                                                <a class="nav-item nav-link" id="aluguel-tab" data-toggle="tab" href="#aluguel" role="tab" aria-controls="aluguel" aria-selected="false">Aluguel</a>                                         
+                                                <a class="nav-item nav-link active" style="color: #f58139; font-size: 25px;" id="assinantes-tab" data-toggle="tab" href="#assinantes" role="tab" aria-controls="assinantes" aria-selected="true">Assinantes</a>
+                                                <a class="nav-item nav-link" style="color: #f58139; font-size: 25px;" id="aluguel-tab" data-toggle="tab" href="#aluguel" role="tab" aria-controls="aluguel" aria-selected="false">Aluguel</a>                                         
                                             </div>
                                         </nav>
                                         <!--Final navegação-->   
@@ -53,9 +53,9 @@
                                         <div class="tab-content" id="nav-tabContent">
                                             <!--Início assinantes-->
                                             <div class="tab-pane fade show active" id="assinantes" role="tabpanel" aria-labelledby="assinantes-tab">
-                                                <table class="table" cellspacing="0">
+                                                <table class="table " cellspacing="0">
                                                     <thead>
-                                                        <tr>
+                                                        <tr class="text-white">
                                                             <th>Cliente</th>
                                                             <th>Descrição do serviço</th>
                                                             <th>Valor</th>
@@ -69,9 +69,9 @@
                                             <!--Fim Assinantes-->
                                             <!--Início Aluguel-->
                                             <div class="tab-pane fade" id="aluguel" role="tabpanel" aria-labelledby="aluguel-tab">
-                                                <table class="table" cellspacing="0">
+                                                <table class="table" cellspacing="0" >
                                                     <thead>
-                                                        <tr>
+                                                        <tr class="text-white">
                                                             <th>Cliente</th>
                                                             <th>Nome do filme</th>
                                                             <th>Valor</th>
@@ -92,9 +92,9 @@
                         <!--Final da navegação com tabs-->                            
                     </div>
                     <!--Quadro de valores-->
-                    <div class="col-sm-3">
-                        <div class="col-sm-12 mt-4">Visão Macro</div>
-                        <div class="w-100" style="border: 1px solid #e8673f; border-radius: 10px;">
+                    <div class="col-sm-3 align-self-center">
+                        <div class="col-sm-12 mb-2" style="color: #f58139; font-size: 50px;">Visão Macro</div>
+                        <div class="w-100" style="border: 2px solid #e8673f; border-radius: 10px;">
                             <div class="estilo1">                                
                                 <div class="col-sm-12 mt-4">
                                     <p id="qtdeAssinantes"></p>

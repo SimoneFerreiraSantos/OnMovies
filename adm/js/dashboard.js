@@ -44,7 +44,7 @@ let filmesAlugados = aluguel.length
 let mediaAlugados = Math.round(filmesAlugados/totalAssinantesQtde)
 
 
-divMediaAlugados.innerHTML = "Média de filmes alugados: " + mediaAlugados
+divMediaAlugados.innerHTML = '<span style="color: #f58139; font-size: 25px;"> Média de filmes alugados: </span>' + mediaAlugados
 
 
 for (let i = 0; i < assinantes.length; i++) {  
@@ -53,19 +53,20 @@ for (let i = 0; i < assinantes.length; i++) {
     let conteudo = document.createElement('tr')    
     
     //inseri o total de assinantes na página html
-    qtdeAssinantes.innerHTML = 'Assinantes: ' + totalAssinantesQtde
+    qtdeAssinantes.innerHTML = '<span style="color: #f58139; font-size: 25px;"> Assinantes: </span> ' + totalAssinantesQtde 
 
      //acumula os valores do preço na variável valorTotalAssinantes
      valorTotalAssinantes = assinantes[i][2] + valorTotalAssinantes
  
      //inseri a soma dos valores na página html
-     valorAssinantes.innerHTML = 'Total: R$ ' + valorTotalAssinantes
+     valorAssinantes.innerHTML = 'Total: R$ ' + valorTotalAssinantes.toFixed(2).replace(".", ", ")
+     valorAssinantes.innerHTML += '<hr style="background-color:#e8673f;">'
 
 
     // cria as variáveis que recebem os valores do array e o html
-    let cliente = ' <td><a href="#">' + assinantes[i][0] + '</a></td>'
-    let assinatura ='<td>' + assinantes[i][1] + '</td>'
-    let valor = '<td>'+ assinantes[i][2] +'</td>'
+    let cliente = ' <td class="text-white"><a  style="color: #f58139;" href="#">' + assinantes[i][0] + '</a></td>'
+    let assinatura ='<td class="text-white">' + assinantes[i][1] + '</td>'
+    let valor = '<td class="text-white">'+ assinantes[i][2].toFixed(2).replace(".", ", ") +'</td>'
     //inseri os dados das variáveis na div criada
     conteudo.innerHTML += cliente
     conteudo.innerHTML += assinatura
@@ -82,18 +83,19 @@ for (let i = 0; i < aluguel.length; i++) {
     let conteudo = document.createElement('tr')
   
     //inseri o total de assinantes na página html
-    visaoFilmesAlugados.innerHTML = "Filmes Alugados: " + filmesAlugados
+    visaoFilmesAlugados.innerHTML = '<span style="color: #f58139; font-size: 25px;"> Filmes Alugados: </span>' + filmesAlugados
 
     //acumula os valores do preço na variável valorTotalAssinantes
     valorTotalAluguel = aluguel[i][2] + valorTotalAluguel
  
      //inseri a soma dos valores na página html
-     visaoValorAlugados.innerHTML = 'Total: R$ ' + valorTotalAluguel
+     visaoValorAlugados.innerHTML = 'Total: R$ ' + valorTotalAluguel.toFixed(2).replace(".", ", ")
+     visaoValorAlugados.innerHTML += '<hr style="background-color:#e8673f;">'
 
     // cria as variáveis que recebem os valores do array e o html
-    let cliente = ' <td><a href="#">' + aluguel[i][0] + '</a></td>'
-    let nomeFilme ='<td>' + aluguel[i][1] + '</td>'
-    let valorFilme = '<td>'+ aluguel[i][2] +'</td>'
+    let cliente = ' <td class="text-white"><a style="color: #f58139;" href="#">' + aluguel[i][0] + '</a></td>'
+    let nomeFilme ='<td class="text-white">' + aluguel[i][1] + '</td>'
+    let valorFilme = '<td class="text-white">'+ aluguel[i][2].toFixed(2).replace(".", ", ") +'</td>'
 
     //inseri os dados das variáveis da tr criada
     conteudo.innerHTML += cliente

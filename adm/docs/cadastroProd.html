@@ -10,40 +10,36 @@
 </head>
 <body>
     <div class="container mx-auto">
-        <header class="text-center">
-            <div class="row mt-3">
-            <div class="col-sm-3">
-               <a href="../index.html"><img src="../../imagens/logoOnMove.jpg" style="border-radius: 4px;" width="75%"></a>
-            </div>
-            <div class="col-sm-6 px-0 align-self-center">
-              <h1 class="titulo text-uppercase">Painel do Administrador</h1>
+        <header>
+            <div class="row mt-3 text-center">
+            <div class="col-sm-12 px-0 align-self-center">
+                <a href="../index.html"><img src="../../imagens/logoOnMove.jpg" style="border-radius: 4px;" width="18%"></a>
+              <h1 class="titulo text-uppercase mt-4">Cadastro de Filmes</h1>
             </div>
         </div>
-
+        
     </header>
-    <section  class="container mt-5">
-        <h2 class="text-center">Adicione um novo filme</h2>
-        <p class="text-center">Preencha os campos abaixo</p>
-        <form class="w-50 mx-auto p-3 mt-4 mb-5" style="border: 2px solid #e8673f; border-radius: 12px" id="formCadastro" method="get" action="index.html">
+    <section  class="container ">
+        <form class="w-50 mx-auto p-3 mt-4 mb-5" style="border: 2px solid #e8673f; border-radius: 12px" id="formCadastro" method="get" action="../index.html">
             <fieldset>
-                <legend></legend>
+                <legend>Preencha os campos abaixo</legend>
                     <div class="form-group">
                         <label>Título:<span style="color:red ;">*</span></label>
-                        <input class="form-control" name="nome-filme" type="text">
+                        <input class="form-control" name="nomeFilme" type="text" maxlength="70">
                     </div>
                     <div class="row">
                         <div class="form-group col-sm-3">
                             <label>Ano:<span style="color:red ;">*</span> </label> <br>
-                            <input class="form-control" name="ano-filme" maxlength="4">
+                            <input class="form-control" name="anoFilme" type="number" maxlength="4">
                         </div>
                         <div class="form-group col-sm-9">
                             <label>Categoria:<span style="color:red ;">*</span></label>  <br>
-                            <input class="form-control" name="categoria" type="text">
+                            <input class="form-control" name="categoria" type="text" maxlength="30">
                         </div>
                     </div>
                     <div class="form-group">
                         <label>Capa do filme:<span style="color:red ;">*</span></label>  <br>
-                        <input class="form-control" name="capa-filme">
+                        <input class="form-control" name="capaFilme">
                     </div>
                     <div class="form-group">
                         <label>Sinopse:<span style="color:red ;">*</span></label>  <br>
@@ -59,5 +55,5 @@
         <p>&copy; 2022 - OnMovies, todos os direitos reservados</p>
     </footer>
 </div>
+<script src="../js/cadastro-prod.js"></script>
 </body>
-</html>

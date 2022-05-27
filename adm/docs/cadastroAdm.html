@@ -10,23 +10,20 @@
 </head>
 <body>
     <div class="container mx-auto">
-        <header class="text-center">
-            <div class="row mt-3">
-            <div class="col-sm-3">
-               <a href="../index.html"><img src="../../imagens/logoOnMove.jpg" style="border-radius: 4px;" width="75%"></a>
-            </div>
-            <div class="col-sm-6 px-0 align-self-center">
-              <h1 class="titulo text-uppercase">Painel do Administrador</h1>
+        <header>
+            <div class="row mt-3 text-center">
+            <div class="col-sm-12 px-0 align-self-center">
+                <a href="../index.html"><img src="../../imagens/logoOnMove.jpg" style="border-radius: 4px;" width="18%"></a>
+              <h1 class="titulo text-uppercase mt-4">Cadastro Administrador</h1>
             </div>
         </div>
         
     </header>
     <section  class="container">
-        <h2 class="text-center">Cadastro novo administrador</h2>
         <p class="text-center"></p>
         <form class="w-50 mx-auto p-3 mt-4 mb-5" style="border: 2px solid #e8673f; border-radius: 12px" id="formCadastro" method="post" action="../index.html">
             <fieldset>
-                <legend>Preencha os dados</legend>
+                <legend>Preencha os dados de cadastro</legend>
                     <div class="form-group">
                         <label>Nome:<span style="color:red ;">*</span></label>
                         <input class="form-control" id="nome" name="nome-contato" type="text" maxlength="50">
@@ -43,6 +40,7 @@
                         <label>Confirmar Senha:<span style="color:red ;">*</span> </label> <br>
                         <input class="form-control" id="confirmarSenha" name="confirmar-senha" type="password" maxlength="8">
                     </div>
+                    <p>Escolha o tipo de administrador:<span style="color:red ;">*</p>
                     <Select class="mb-4" name="nivel">
                     <option value="1">Basic</option>
                     <option value="2">Master</option>                      
@@ -58,5 +56,5 @@
     </footer>
     </div>
 </body>
-
+<script src="../js/cadastro-adm.js"></script>
 </html>

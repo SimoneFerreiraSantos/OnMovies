@@ -31,30 +31,33 @@
         <section class="container mx-auto">
             <div class="row justify-content-between">
                 <div id="carrinhoProdutos" class="col-sm-8" style="border: 2px solid #e8673f; border-radius: 10px ;">
-                    <div class="row">
-                        <h1 class="col-sm-12 text-center titulo mb-3">Relatório de Chamadas</h1>
+                    <div class="row mt-2">
+                        <h1 class="col-sm-12 text-center titulo">Relatório de Chamadas</h1>
                     </div>
-                    <div class="row border-bottom mb-2">
+                    <div class="row text-center">
+
                         <p class="col-sm-3">Cliente</p>
                         <p class="col-sm-3">Email</p>
                         <p class="col-sm-3">Telefone</p>
                         <p class="col-sm-3">Assunto</p>
                     </div>
+                    <hr  style="background-color:#e8673f;">
                     <div id="clientesAtendidos"></div>
                     <div class="row justify-content-center">
                         <div class="col-sm-6">
                         <p >Próximo cliente a ser atendido:</p>
                         <p id="proximoCliente"></p>
                     </div>
-                        <div class="col-sm-6 mt-2 text-right">
+                        <div class="col-sm-6 mb-3 text-right">
                             <button class=" button" id="btConfirmar">Confirmar atendimento</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3 pt-2" style="border: 2px solid #e8673f; border-radius: 10px ;">
-                    <p class="pt-3">Chamadas atendidas</p>
+                    <p class="pt-3" style="color: #f58139; font-size: 25px;">Chamadas atendidas</p>
                     <p id="totalAtendidos">Total:</p>
-                    <p>Chamadas pendentes</p>
+                    <hr  style="background-color:#e8673f;">
+                    <p  style="color: #f58139; font-size: 25px;">Chamadas pendentes</p>
                     <p id="totalPendentes">Total:</p>
                 </div>
             </div>

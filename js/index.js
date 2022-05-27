@@ -24,3 +24,34 @@ sair.onclick=function(){
      location.href='index.html'
 }
 localStorage.emailUser ? msgUser() : resetUser()
+
+let srcImg = ""
+let nameImg = ""
+
+var getAllImages = document.getElementById('divImagens').getElementsByTagName('img'); 
+    for (var i = 0; i < getAllImages.length; i++) { (function(x) { 
+     getAllImages[x].addEventListener('click', function() { srcImg = this.getAttribute('src')
+     nameImg=this.getAttribute('name')
+     localStorage.setItem("titulo-" + nameImg,srcImg)
+        }) }(i)) 
+    }
+
+let recuperaFilmesArray = []
+for(let i=0; i<localStorage.length;i++){
+    if(localStorage.key(i).includes("titulo")){
+        let recuperaFilmes = localStorage.key(i) + "," + localStorage.getItem(localStorage.key(i)) 
+        recuperaFilmesArray.push(recuperaFilmes.split(','))
+    }
+}
+if (recuperaFilmesArray.length > 2 ){
+    let divRodape= document.querySelector('#rodapeImg')
+    console.log(divRodape.childNodes)
+    divRodape.innerHTML=""
+
+for(let y=0; y < 3 ;y++){
+    let divRodape= document.querySelector('#rodapeImg')
+    let img = '<div class="col-sm-4"><a href="singleDeProduto.html"><img src="' + recuperaFilmesArray[y][1] + '" class="img-thumbnail"></a></div>'
+    
+    divRodape.innerHTML+=img
+    }
+}

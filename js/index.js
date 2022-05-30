@@ -50,8 +50,15 @@ if (recuperaFilmesArray.length > 2 ){
 
 for(let y=0; y < 3 ;y++){
     let divRodape= document.querySelector('#rodapeImg')
-    let img = '<div class="col-sm-4"><a href="singleDeProduto.html"><img src="' + recuperaFilmesArray[y][1] + '" class="img-thumbnail"></a></div>'
+    let img = '<div class="col-sm-4"><a href="docs/singlePreferencia.html"><img src="' + recuperaFilmesArray[y][1] + '" class="img-thumbnail"></a></div>'
     
     divRodape.innerHTML+=img
     }
 }
+var srcImgUnica=""
+var getImages = document.getElementById('rodapeImg').getElementsByTagName('img'); 
+    for (var i = 0; i < getImages.length; i++) { (function(x) { 
+     getImages[x].addEventListener('click', function() { srcImgUnica = this.getAttribute('src')
+     localStorage.setItem("filme",srcImgUnica)
+        }) }(i)) 
+    }

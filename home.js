@@ -11,6 +11,7 @@ app.use('/js',express.static("js"))
 app.get("/",(req,res)=>{
     res.sendFile(`${__dirname}/index.html`)
 })
+
 app.get("/produtos",(req,res)=>{
     res.sendFile(`${__dirname}/docs/produtos.html`)
 })

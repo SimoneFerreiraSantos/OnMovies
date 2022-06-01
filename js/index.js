@@ -21,7 +21,7 @@ function resetUser(){
 }
 sair.onclick=function(){
      localStorage.removeItem('emailUser')
-     location.href='index.html'
+     location.href='/'
 }
 localStorage.emailUser ? msgUser() : resetUser()
 
@@ -43,15 +43,15 @@ for(let i=0; i<localStorage.length;i++){
         recuperaFilmesArray.push(recuperaFilmes.split(','))
     }
 }
-if (recuperaFilmesArray.length > 2 ){
+console.log(recuperaFilmesArray);
+if (recuperaFilmesArray.length > 3 ){
     let divRodape= document.querySelector('#rodapeImg')
-    console.log(divRodape.childNodes)
     divRodape.innerHTML=""
-
+    localStorage.removeItem(recuperaFilmesArray[0][0])
+    recuperaFilmesArray.pop()
 for(let y=0; y < 3 ;y++){
     let divRodape= document.querySelector('#rodapeImg')
     let img = '<div class="col-sm-4"><a href="docs/singlePreferencia.html"><img src="' + recuperaFilmesArray[y][1] + '" class="img-thumbnail"></a></div>'
-    
     divRodape.innerHTML+=img
     }
 }

@@ -51,7 +51,7 @@ if (recuperaFilmesArray.length > 3 ){
     recuperaFilmesArray.pop()
 for(let y=0; y < 3 ;y++){
     let divRodape= document.querySelector('#rodapeImg')
-    let img = '<div class="col-sm-4"><a href="docs/singlePreferencia.html"><img src="' + recuperaFilmesArray[y][1] + '" class="img-thumbnail"></a></div>'
+    let img = '<div class="col-sm-4"><a href="/singlePreferencia"><img src="' + recuperaFilmesArray[y][1] + '" class="img-thumbnail"></a></div>'
     divRodape.innerHTML+=img
     }
 }

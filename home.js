@@ -6,12 +6,14 @@ app.use(express.static('onmovies'))
 app.use('/imagens',express.static("imagens"))
 app.use('/css',express.static("css"))
 app.use('/js',express.static("js"))
-
+app.use('/adm',express.static("adm"))
 
 app.get("/",(req,res)=>{
     res.sendFile(`${__dirname}/index.html`)
 })
-
+app.post("/",(req,res)=>{
+    res.sendFile(`${__dirname}/index.html`)
+})
 app.get("/produtos",(req,res)=>{
     res.sendFile(`${__dirname}/docs/produtos.html`)
 })
@@ -40,6 +42,9 @@ app.get("/carrinho",(req,res)=>{
     res.sendFile(`${__dirname}/docs/carrinho.html`)
 })
 app.get("/adm",(req,res)=>{
+    res.sendFile(`${__dirname}/adm/index.html`)
+})
+app.post("/adm",(req,res)=>{
     res.sendFile(`${__dirname}/adm/index.html`)
 })
 app.get("/adm/relatorioChamadas",(req,res)=>{

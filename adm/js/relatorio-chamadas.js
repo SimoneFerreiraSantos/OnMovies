@@ -34,7 +34,6 @@ function users() {
 
     document.querySelector('#clientesAtendidos').appendChild(divRowClientesAtendidos);
     document.querySelector('#clientesAtendidos').innerHTML += '<hr style="background-color:#e8673f;">'
-    //localStorage.removeItem(recuperaChamadosArray[0][0]);
     document.querySelector('#proximoCliente').innerHTML += recuperaChamadosArray[i][1]
   }
   recuperaChamadosArray.length > 0 ? document.querySelector('#proximoCliente').innerHTML = recuperaChamadosArray[0][1] : null;
@@ -45,7 +44,9 @@ document.querySelector('#btConfirmar').onclick = () => { darBaixa() }
 function darBaixa() {
   if (recuperaChamadosArray.length > 0) {
     document.querySelector('#clientesAtendidos').innerHTML = "";
+    //localStorage.removeItem(recuperaChamadosArray[0][0]);
     listaResult.push(recuperaChamadosArray[0]);
+    totalAtendidos.innerHTML = '<p id="totalAtendidos">Total: ' + (listaResult.length) + '</p>'
     recuperaChamadosArray.shift();
     users();
   } else {

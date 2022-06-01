@@ -1,5 +1,5 @@
 
-let user=localStorage.emailUser
+let user=localStorage.emailAdm
 let bemVindo=document.querySelector("#bemVindo")
 let entrar=document.querySelector('#entrar')
 let sair=document.querySelector('#sair')
@@ -15,7 +15,7 @@ function resetUser(){
     sair.style.display="none"
 }
 sair.onclick=function(){
-     localStorage.removeItem('emailUser')
-     location.href='index.html'
+     localStorage.removeItem('emailAdm')
+     location.href='/adm/'
 }
-localStorage.emailUser ? msgUser() : resetUser()
+localStorage.emailAdm ? msgUser() : resetUser()

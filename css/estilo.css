@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Koulen&family=Oswald:wght@300;500;600;700&display=swap');
-*
-{
+
+* {
     --blue: #07216f;
     --white: #fafafa;
     --orange: #f58139;
@@ -8,72 +8,73 @@
     font-family: 'Oswald', sans-serif;
 }
 
-body
-{
+body {
     background-color: var(--black);
-    background-image: linear-gradient(to bottom right,#07216f, #f58139);
+    background-image: linear-gradient(to bottom right, #07216f, #f58139);
     min-height: 100vh;
     font-size: 22px;
 }
-.container
-{
+
+.container {
     width: 1440px;
     max-width: 100%;
 }
-p, form
-{
+
+p,
+form {
     color: var(--white);
     text-decoration: none;
 }
-a
-{
+
+a {
     color: var(--black);
 }
-a:hover
-{
+
+a:hover {
     text-decoration: none;
-    color: var(--white) ;
+    color: var(--white);
 }
-.img-thumbnail
-{
+
+.img-thumbnail {
     position: relative;
     width: 70%;
 }
 
-.img-thumbnail:hover{
-    top:-3px;
-    box-shadow:0 2px 10px var(--white);
+.img-thumbnail:hover {
+    top: -3px;
+    box-shadow: 0 2px 10px var(--white);
 }
 
-.button-cadastrar
-{
+.button-cadastrar {
     position: relative;
 }
 
-.button-cadastrar:hover{
-    top:-3px;
+.button-cadastrar:hover {
+    top: -3px;
 }
-.titulo
-{
+
+.titulo {
     color: var(--orange);
     font-weight: 900;
     font-size: 52px;
-    
+
 }
-h2, h3
-{
+
+h2,
+h3 {
     color: var(--orange);
 }
-.text-entrar
-{
+
+.text-entrar {
     color: var(--white);
 }
-.text-entrar:hover
-{
+
+.text-entrar:hover {
     color: var(--orange);
 }
-.button{
-    border:none;
+
+.button {
+    border: none;
     border-radius: 3px;
     background: var(--orange);
     color: var(--white);
@@ -84,6 +85,8 @@ h2, h3
 
     margin-top: .2%;
 }
-button:hover, .button:hover{
+
+button:hover,
+.button:hover {
     filter: brightness(1.2)
 }

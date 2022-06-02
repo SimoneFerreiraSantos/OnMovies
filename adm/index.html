@@ -1,52 +1,58 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/estilo.css"  type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/estilo.css" type="text/css">
     <link rel="icon" type="imagem/png" href="../imagens/logo.png" />
     <title>OnMovies</title>
 </head>
-<body>  
+
+<body>
     <div class="container mx-auto">
-      <header>
-        <div class="row mt-3">
-            <div class="col-sm-3">
-                <a href="/adm"><img src="../imagens/logoOnMove.jpg" style="border-radius: 4px;" width="75%"></a>
-            </div>
-            <div class="col-sm-7 px-0 text-center align-self-center">
-              <h1 class="titulo text-uppercase">Painel do Administrador</h1>
-              <div class="row">
-                <div class="col-sm-11 text-right ">
-                   <a id="cadastrar" href="/adm/cadastro"><img class="ml-4" width="12%"><img class="button-cadastrar" width="20%"></a>
+        <header>
+            <div class="row mt-3">
+                <div class="col-sm-3">
+                    <a href="/adm"><img src="../imagens/logoOnMove.jpg" style="border-radius: 4px;" width="75%"></a>
+                </div>
+                <div class="col-sm-7 px-0 text-center align-self-center">
+                    <h1 class="titulo text-uppercase">Painel do Administrador</h1>
+                    <div class="row">
+                        <div class="col-sm-11 text-right ">
+                            <a id="cadastrar" href="/adm/cadastro"><img class="ml-4" width="12%"><img
+                                    class="button-cadastrar" width="20%"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 text-right">
+                    <span class="text-white" id="bemVindo"></span>
+                    <a id="entrar" class="text-entrar" href="/adm/login">ENTRAR</a>
+                    <a class="ml-3" style="cursor:pointer;" id="sair"><img src="../imagens/logout.png" width="18%"></a>
                 </div>
             </div>
-            </div>
-            <div class="col-sm-2 text-right">
-                <span class="text-white" id="bemVindo"></span>
-                <a id="entrar" class="text-entrar" href="/adm/login">ENTRAR</a>
-                <a class="ml-3" style="cursor:pointer;" id="sair"><img src="../imagens/logout.png" width="18%"></a>
-            </div>
-        </div>
-        <nav class="navbar mt-4 mb-3 justify-content-around" style="background-color: var(--orange);border-radius: 4px;">
-            <a class="navlink" href="/adm/cadastroProdutos">CADASTRO PRODUTOS</a>
-            <a class="navlink" href="/adm/cadastro">CADASTRO ADMINISTRADOR</a> 
-            <a class="navlink" href="/adm/dashboard">RELATÓRIO</a> 
-            <a class="navlink" href="/adm/relatorioChamadas">RELATÓRIO CHAMADAS</a> 
-            <a class="navlink" href="/">USUÁRIO</a> 
-        </nav>
-     </header>
-         <section class="container">
-            <p>Controle seu Business por aqui! Veja relatórios, análises, permissões de usuários e cadastro de filmes.</p>
-          <div class="mt-4 mb-4">
-            <div class="row text-center">
-                
-    </section>
-    <footer class="pt-2 text-white text-uppercase">
-        <p>&copy; 2022 - OnMovies, todos os direitos reservados</p>
-    </footer>
-    </div>  
+            <nav class="navbar mt-4 mb-3 justify-content-around"
+                style="background-color: var(--orange);border-radius: 4px;">
+                <a class="navlink" href="/adm/cadastroProdutos">CADASTRO PRODUTOS</a>
+                <a class="navlink" href="/adm/cadastro">CADASTRO ADMINISTRADOR</a>
+                <a class="navlink" href="/adm/dashboard">RELATÓRIO</a>
+                <a class="navlink" href="/adm/relatorioChamadas">RELATÓRIO CHAMADAS</a>
+                <a class="navlink" href="/">USUÁRIO</a>
+            </nav>
+        </header>
+        <section class="container">
+            <p>Controle seu Business por aqui! Veja relatórios, análises, permissões de usuários e cadastro de filmes.
+            </p>
+            <div class="mt-4 mb-4">
+                <div class="row text-center">
+
+        </section>
+        <footer class="pt-2 text-white text-uppercase">
+            <p>&copy; 2022 - OnMovies, todos os direitos reservados</p>
+        </footer>
+    </div>
 </body>
 <script src="js/index-adm.js"></script>
-    </body>
+</body>
+
 </html>

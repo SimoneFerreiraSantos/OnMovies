@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/estilo.css"  type="text/css">
+    <link rel="icon" type="imagem/png" href="imagens/logo.png" />
+    <title>OnMovies - <%=teste%></title>
+</head>
+<body>  
+    <div class="container mx-auto">
+      <header>
+        <div class="row mt-3">
+            <div class="col-sm-3">
+                <a href="/"><img src="imagens/logoOnMove.jpg" style="border-radius: 4px;" width="75%"></a>
+            </div>
+            <div class="col-sm-7 px-0 text-center align-self-center">
+              <h1 class="titulo text-uppercase">Aperte o play e tenha o seu cinema em casa </h1>
+              <div class="row">
+                <div class="col-sm-11 text-right ">
+                   <a id="cadastrar" href="/cadastro "><img class="ml-4"src="imagens/arrow.png" width="12%"><img src="imagens/cadastre.png" class="button-cadastrar" width="20%"></a>
+                </div>
+            </div>
+            </div>
+            <div class="col-sm-2 text-right">
+                <span class="text-white" id="bemVindo"></span>
+                <a id="entrar" class="text-entrar" href="/login ">ENTRAR</a>
+                <a class="ml-3" style="cursor:pointer;" id="sair"><img src="imagens/logout.png" width="18%"></a>
+            </div>
+        </div>
+        <nav class="navbar mt-4 mb-3 justify-content-around" style="background-color: var(--orange);border-radius: 4px;">
+            <a class="navlink" href="/produtos ">PRODUTOS</a>
+            <a class="navlink" href="/contato ">CONTATO</a> 
+            <a class="navlink" href="/promocoes ">PROMOÇÕES</a>
+            <a class="navlink" href="/carrinho ">CARRINHO</a>
+            <a class="navlink" href="/cadastro ">CADASTRO</a>
+            <a class="navlink" href="/perfilUsuario ">PERFIL</a>
+            <a class="navlink" href="/adm">ADM</a>
+        </nav>
+     </header>
+         <section class="container">
+           
+            <div id="divImagens" class="mt-4 mb-4">
+                <div class="row text-center">
+                    <div class="col-sm-4">
+                        <a href="/singleDeProduto "><img name="doutorEstranho" src="imagens/acao.jpg" class="img-thumbnail"/></a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="/singleDeProduto "><img  name="carasMalvados" src="imagens/animacao.jpg" class="img-thumbnail"/></a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="/singleDeProduto "><img name="jumanji" src="imagens/aventura.jpg" class="img-thumbnail"/></a>
+                    </div>
+                    </div>
+                   <div class="row mt-5 text-center">
+                    <div class="col-sm-4">
+                        <a href="/singleDeProduto "><img name="desconhecido" src="imagens/suspense2.jpg" class="img-thumbnail"/></a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="/singleDeProduto "><img name="jogosVorazes" src="imagens/aventura2.jpg" class="img-thumbnail"/></a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="/singleDeProduto "><img name="toRyca" src="imagens/comedia3.jpg" class="img-thumbnail"/></a>
+                    </div>
+                    </div>
+                    <div class="row mt-5 text-center" >
+                    <div class="col-sm-4">
+                        <a href=" /singleDeProduto "><img name="eduMon" src="imagens/romance.jpg" class="img-thumbnail"/></a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href=" /singleDeProduto "><img name="capitaMarvel" src="imagens/acao2.jpg"  class="img-thumbnail"/></a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href=" /singleDeProduto "><img name="vozesEscuridao" src="imagens/terror.jpg" class="img-thumbnail"/></a>
+                    </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div id="rodapeImg" class="row text-center p-4" style="border: 1px solid #f58139; border-radius: 20px;">
+                </div>
+            </section>
+    <footer class="pt-2 text-white text-uppercase">
+        <p>&copy; 2022 - OnMovies, todos os direitos reservados</p>
+    </footer>
+    </div>  
+</body>
+<script src="js/index.js"></script>
+    </body>
+</html>

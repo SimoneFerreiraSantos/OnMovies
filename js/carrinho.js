@@ -19,16 +19,16 @@ let carrinho = {
         this.imprimeTotal(totalValor)
     },
     multiplicarTelas: function (input, produto) {
-            // Calcula os 7% em cima do valor do produto e faz a pontencia dos 7% de acordo com 
-            // o número de telas (input), o -2 é porque só 1 tela não altera o valor.
-            porcentagemTelas = (produto * 1.07) * Math.pow(1.07, input - 2)
-            // Atualiza o valor do produto, de acordo com os 7%
-            let divPrecoTelas = document.querySelector("#contaTelas").previousElementSibling
-            let paragrafoPrecoTelas = divPrecoTelas.firstChild
-            paragrafoPrecoTelas.innerHTML = porcentagemTelas.toFixed(2).replace(".", ",")
+        // Calcula os 7% em cima do valor do produto e faz a pontencia dos 7% de acordo com 
+        // o número de telas (input), o -2 é porque só 1 tela não altera o valor.
+        porcentagemTelas = (produto * 1.07) * Math.pow(1.07, input - 2)
+        // Atualiza o valor do produto, de acordo com os 7%
+        let divPrecoTelas = document.querySelector("#contaTelas").previousElementSibling
+        let paragrafoPrecoTelas = divPrecoTelas.firstChild
+        paragrafoPrecoTelas.innerHTML = porcentagemTelas.toFixed(2).replace(".", ",")
 
-            //Para atualizar o valor total, se o número de telas é maior que 1
-            if (input > 1){
+        //Para atualizar o valor total, se o número de telas é maior que 1
+        if (input > 1) {
             //O valor atualizado vai receber o valor total - o valor do produto
             // + o valor atualizado com os 7%
             let novoTotal = (totalValor - produto) + porcentagemTelas;
@@ -38,14 +38,13 @@ let carrinho = {
             //Remove do valor total, o valor do produto com a porcentagem porque se não
             //o valor total fica apenas somando
             novoTotal = totalValor - porcentagemTelas
-            }
-            else{
-                // se o input for 1 apenas volta o valor original do carrinho
-                this.imprimeTotal(totalValor)
-            }
-        },
-    imprimeTotal: function(valorFinal)
-    {
+        }
+        else {
+            // se o input for 1 apenas volta o valor original do carrinho
+            this.imprimeTotal(totalValor)
+        }
+    },
+    imprimeTotal: function (valorFinal) {
         total.innerHTML = 'Total: R$ ' + valorFinal.toFixed(2).replace(".", ",")
     }
 }
@@ -66,7 +65,7 @@ let cupom = {
             let campoCupom = document.querySelector('#cupom');
             let btApagar = document.querySelector('#apagarCupom');
 
-            this.apagarCupom(btApagar, campoCupom, soma) 
+            this.apagarCupom(btApagar, campoCupom, soma)
             // De acordo com o cód.cupom é inserido a porcentagem de 10% ou 20%
             switch (codCupom) {
                 case this.cupons[0].cod: calculaDesconto(this.cupons[0].value);
@@ -109,7 +108,7 @@ let cupom = {
         btApagar.onclick = () => {
             //Vai deixar o campo que aparece o cupom "invisível"
             campoCupom.innerHTML = "Desconto R$: ";
-            campoCupom.style.display = "none"; 
+            campoCupom.style.display = "none";
             btApagar.style.display = "none";
             //Chama o método para atualizar o valor total sem o desconto novamente
             carrinho.imprimeTotal(totalSemDesconto);

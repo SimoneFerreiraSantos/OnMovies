@@ -1,0 +1,30 @@
+{
+  "name": "onmovies",
+  "version": "1.0.0",
+  "description": "Projeto desenvolvido pela squad 5 do programa Impulso Tec Squad Five!!! Guerreiros da Tec",
+  "main": "home.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.16"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon home1.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jeckson99/OnMovies.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jeckson99/OnMovies/issues"
+  },
+  "homepage": "https://github.com/Jeckson99/OnMovies#readme"
+}

@@ -1,27 +1,26 @@
-console.log('Js Index!')
-let user=localStorage.emailUser
-let bemVindo=document.querySelector("#bemVindo")
-let entrar=document.querySelector('#entrar')
-let sair=document.querySelector('#sair')
-let cadastrar=document.querySelector('#cadastrar')
+let user = localStorage.emailUser
+let bemVindo = document.querySelector("#bemVindo")
+let entrar = document.querySelector('#entrar')
+let sair = document.querySelector('#sair')
+let cadastrar = document.querySelector('#cadastrar')
 
 let nome = localStorage.nomeCadastro
 let email = localStorage.emailCadastro
 let telefone = localStorage.telefoneCadastro
 
-function msgUser(){
-    let nomeUser=user.substring(0,user.indexOf('@'))
-    bemVindo.innerHTML='Olá ' + nomeUser 
-    entrar.style.display='none'
-    cadastrar.style.display='none'
+function msgUser() {
+    let nomeUser = user.substring(0, user.indexOf('@'))
+    bemVindo.innerHTML = 'Olá ' + nomeUser
+    entrar.style.display = 'none'
+    cadastrar.style.display = 'none'
 
 }
-function resetUser(){
-    sair.style.display="none"
+function resetUser() {
+    sair.style.display = "none"
 }
-sair.onclick=function(){
-     localStorage.removeItem('emailUser')
-     location.href='index.html'
+sair.onclick = function () {
+    localStorage.removeItem('emailUser')
+    location.href = '/'
 }
 localStorage.emailUser ? msgUser() : resetUser()
 

@@ -1,5 +1,7 @@
+(async ()=>{
 const express = require('express')
 const app = express()
+const db = require('./db.js')
 const port = 3000
 
 app.set("view engine","ejs")
@@ -10,6 +12,9 @@ app.use('/css', express.static("css"))
 app.use('/js', express.static("js"))
 app.use('/adm', express.static("adm"))
 
+const consulta = await db.selectFilmes()
+console.log(consulta[0])
+
 app.get("/", (req, res) => {
     res.render(`home`,{teste:"Funciona"})
 })
@@ -17,13 +22,18 @@ app.post("/", (req, res) => {
     res.render(`home`,{teste:"Funciona"})
 })
 app.get("/produtos", (req, res) => {
-    res.render(`produtos`)
+    res.render(`produtos`,{
+        filmes:consulta
+    })
 })
 app.get("/contato", (req, res) => {
     res.render(`contato`)
 })
 app.get("/promocoes", (req, res) => {
-    res.render(`promocoes`)
+    res.render(`promocoes`,{
+        filmes:consulta
+    })
+    
 })
 app.get("/singleDeProduto", (req, res) => {
     res.render(`singleDeProduto`)
@@ -67,3 +77,4 @@ app.get("/adm/login", (req, res) => {
 app.listen(port, () => {
     console.log("servidor rodando")
 })
+})()

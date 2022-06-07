@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div class="container mx-auto">
+    <div class="container mx-auto"> 
         <header>
             <div class="row mt-3">
                 <div class="col-sm-3">
@@ -31,13 +31,22 @@
         </header>
         <section class="container">
             <article>
-                <div id="galeria" class="row"></div>
+                <div id="galeria" class="row">
+                    <%filmes.forEach((item)=>{ %>
+                <div class="col-sm-4 mt-1 ">
+                    <h2><%=item.titulo%></h2>
+                    <p><%=item.Ano%></p>
+                    <p><%=item.categoria%></p>
+                    <p><%=item.sinopse.substring(0,80)%>...</p>
+                </div>
+                   <% }) %>
+                </div>
             </article>
             <footer class="pt-2 text-white text-uppercase">
                 <p>&copy; 2022 - OnMovies, todos os direitos reservados</p>
             </footer>
     </div>
 </body>
-<script src="../js/promocoes.js"></script>
+<!--<script src="../js/promocoes.js"></script> -->
 
 </html>

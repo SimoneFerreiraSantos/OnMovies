@@ -48,49 +48,14 @@
             </div>
             <div id="galeriaLivros" class="mt-5 mb-5 container">
                 <div class="row">
-                    <div class="col-sm-6">
-                        <h2>Capitã Marvel</h2>
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <a href="/singleDeProduto"><img src="../imagens/acao2.jpg"
-                                        class="w-100 img-thumbnail"></a>
-                            </div>
-                            <p class="col-sm-8 ">Capitã Marvel, parte do exército de elite dos Kree, uma raça
-                                alienígena, encontra-se no meio de uma batalha entre seu povo e os Skrulls. Ao tentar
-                                impedir uma invasão de larga escala na Terra, em 1995, ela tem memórias recorrentes de
-                                uma outra vida, como Carol Danvers, agente da Força Aérea norte-americana. Com a ajuda
-                                de Nick Fury, Capitã Marvel precisa descobrir os segredos de seu passado e pôr um fim ao
-                                conflito intergalático com os Skrulls.
-                            </p>
+                    <%filmes.forEach((item)=>{ %>
+                        <div class="col-sm-6 mt-1 ">
+                            <h2><%=item.titulo%></h2>
+                            <p><%=item.sinopse.substring(0,80)%>...</p>
                         </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <h2>A era do gelo</h2>
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <a href="/singleDeProduto"><img src="../imagens/animacao2.jpg"
-                                        class="w-100 img-thumbnail"></a>
-                            </div>
-
-                            <p class="col-sm-8 ">O infeliz Scrat que vivencia os altos e baixos da paternidade, como ele
-                                e o adorável e travesso Baby Scrat, alternadamente se unam e lutem pela posse da
-                                altamente preciosa Noz.</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 mt-4">
-                        <h2>Nas garras do terror</h2>
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <a href="/singleDeProduto"><img src="../imagens/terror2.jpg"
-                                        class="w-100 img-thumbnail"></a>
-                            </div>
-                            <p class="col-sm-8 ">Depois de estourar um pneu no meio do deserto, os melhores amigos Kyle
-                                e Julia são forçados a passar a noite em uma remota cidade fantasma. Enquanto os
-                                relutantes se acomodam à noite, nas montanhas não tão distantes, os problemas aparecem.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 mt-4">
+                           <% }) %>
+                    
+                    <!-- <div class="col-sm-6 mt-4">
                         <h2>Mulher Maravilha</h2>
                         <div class="row">
                             <div class="col-sm-4">
@@ -104,7 +69,7 @@
                                 que pode parar o conflito. Lutando para acabar com a guerra, Diana percebe o alcance de
                                 seus poderes e sua verdadeira missão na Terra.</p>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </section>
@@ -126,6 +91,6 @@
         </footer>
     </div>
 </body>
-<script src="../js/produtos.js"></script>
+<!--<script src="../js/produtos.js"></script>-->
 
 </html>

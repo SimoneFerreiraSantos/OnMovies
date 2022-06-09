@@ -51,7 +51,7 @@
                 <%filmes.forEach((item,n)=>{ %>
                     <%if(n < 9){%>
                                 <div class="col-sm-4 mb-4">
-                                <a href="/singleDeProduto"> <img class="img-thumbnail w-70"
+                                <a href="/singleDeProduto?id=<%=item.filmes_id%>"> <img class="img-thumbnail w-70"
                                         src="imagens/<%=item.imagem%>"></a>
 
 

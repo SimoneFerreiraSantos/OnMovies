@@ -14,6 +14,14 @@ let trailers = [
 
 //console.log(numeroAleatorio)
 for (let i = 0; i < trailers.length; i++) {
-     let numeroAleatorio = parseInt(Math.random() * 9)
-     iframe[i].src = trailers[numeroAleatorio]
+      
+     let numeroAleatorio = parseInt(Math.random() *9)
+      if(trailers.indexOf(numeroAleatorio)==-1){
+           trailers.push(numeroAleatorio)
+          iframe[i].src= trailers[numeroAleatorio]   
+         
+      }else{
+          i--
+      }
+     
 }

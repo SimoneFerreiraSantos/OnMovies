@@ -34,10 +34,14 @@
                 <div id="galeria" class="row">
                     <%filmes.forEach((item,n)=>{ %>
                         <%if(n < 6){%>
+                            <div class="col-sm-4">
+                                <div class="row">
                         <h2 class="col-sm-12 mt-4 mb-2"><%=item.titulo%></h2>
-                            <div class="col-sm-col-4">
+                            <div class="col-sm-7">
+                                
                              
-                            <a class="col-sm-7" href="/singleDeProduto"> <img class="img-thumbnail w-50"src="imagens/<%=item.imagem%>"></a>
+                            <a  href="/singleDeProduto">
+                                 <img class="img-thumbnail w-100"src="imagens/<%=item.imagem%>"></a>
                         </div>
                 
                    
@@ -46,9 +50,12 @@
                     <p><%=item.categoria%></p>
                     <p><%=item.sinopse.substring(0,80)%>...</p>
                 </div>
+            </div> 
+        </div>
                    <% } %>
                    <% }) %>
                 </div>
+           
 
             </article>
             <footer class="pt-2 text-white text-uppercase">

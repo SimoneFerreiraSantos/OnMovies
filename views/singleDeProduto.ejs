@@ -31,24 +31,14 @@
             </nav>
         </header>
         <section class="container">
-            <div class="row col-sm-12">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam animi consectetur numquam aperiam
-                    repudiandae dolorum, eveniet dicta adipisci sint delectus eligendi dignissimos repellendus
-                    temporibus illum optio velit nostrum cumque rem atque quo suscipit similique ullam rerum! Quod ab
-                    dignissimos laboriosam, aperiam quibusdam totam adipisci, delectus reprehenderit eligendi labore
-                    fuga in.
-                </p>
-            </div>
-            <div id="singleDeProduto" class="mt-3 mb-3">
+                <div id="singleDeProduto" class="mt-3 mb-3">
                 <div class="col-sm-8">
-                    <h2 class="titulo">Doutor Estranho</h2>
+                    <h2 class="titulo mb-5"><%=filmesSingle[0].titulo%></h2>
                     <div class="row">
                         <div class="col-sm-6">
-                            <img src="../imagens/acao.jpg" class="img-thumbnail w-100" />
+                            <img src="../imagens/<%=filmesSingle[0].imagem%>" class="img-thumbnail w-70" />
                         </div>
-                        <p class="col-sm-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates
-                            pariatur inventore sunt ducimus, soluta voluptatem ea corrupti veniam esse animi error nemo
-                            vero sed veritatis asperiores accusantium neque corporis</p>
+                        <p class="col-sm-6"><%=filmesSingle[0].sinopse%></p>
                     </div>
                 </div>
             </div>

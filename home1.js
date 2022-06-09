@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const db = require('./db.js')
 const port = 3000
+const url = require('url')
 
 app.set("view engine","ejs")
 
@@ -41,8 +42,12 @@ app.get("/promocoes", (req, res) => {
     })
     
 })
-app.get("/singleDeProduto", (req, res) => {
-    res.render(`singleDeProduto`)
+app.get("/singleDeProduto", async(req, res) => {
+    let q=url.parse(req.url,true).query
+    const consultaSingle = await db.selectSingle(q.id)
+    res.render(`singleDeProduto`,{
+        filmesSingle:consultaSingle
+    })
 })
 app.get("/singlePreferencia", (req, res) => {
     res.render(`singlePreferencia`)

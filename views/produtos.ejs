@@ -46,21 +46,32 @@
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen></iframe>
             </div>
-            <div id="galeriaLivros" class="mt-5 mb-5 container">
+            <div id="galeria" class="container mt-5 mb-5 ">
                 <div class="row">
-                    <%filmes.forEach((item)=>{ %>
-                        <div class="col-sm-6 mt-1 ">
-                            <h2><%=item.titulo%></h2>
-                           <div class="col-sm-col-4">
-                            <a href="/singleDeProduto"> <img class="img-thumbnail w-50"src="imagens/<%=item.imagem%>"></a>
-                        </div>
-                        <div class="col-sm-col-6">
-                            <p><%=item.sinopse.substring(0,80)%>...</p>
-                        </div>
-                    </div>
-                           <% }) %>
-                    
-                    <!-- <div class="col-sm-6 mt-4">
+
+                    <%filmes.forEach((item,n)=>{ %>
+                        <%if(n < 4){%>
+                            <div class="col-sm-6 mt-1 ">
+                                <h2 class="mt-4 mb-2">
+                                    <%=item.titulo%>
+                                </h2>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <a href="/singleDeProduto"> <img class="img-thumbnail w-100"
+                                                src="imagens/<%=item.imagem%>"></a>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <p>
+                                            <%=item.sinopse.substring(0,250)%>...
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                                <% } %>
+                                    <% }) %>
+                            </div>
+                            <!-- <div class="col-sm-6 mt-4">
                         <h2>Mulher Maravilha</h2>
                         <div class="row">
                             <div class="col-sm-4">
@@ -96,6 +107,6 @@
         </footer>
     </div>
 </body>
-<!--<script src="../js/produtos.js"></script>-->
+<script src="../js/produtos.js"></script>
 
 </html>

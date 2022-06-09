@@ -16,11 +16,17 @@ const consulta = await db.selectFilmes()
 console.log(consulta[0])
 
 app.get("/", (req, res) => {
-    res.render(`home`,{teste:"Funciona"})
+    res.render(`home`,{
+        filmes:consulta
+    })
 })
+
 app.post("/", (req, res) => {
-    res.render(`home`,{teste:"Funciona"})
+    res.render(`home`,{
+        filmes:consulta
+    })
 })
+
 app.get("/produtos", (req, res) => {
     res.render(`produtos`,{
         filmes:consulta

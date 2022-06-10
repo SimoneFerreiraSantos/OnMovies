@@ -80,19 +80,19 @@ app.post("/adm", (req, res) => {
     res.render(`index`)
 })
 app.get("/adm/relatorioChamadas", (req, res) => {
-    res.render(`relatorio-chamadas`)
+    res.render(`adm/relatorio-chamadas`)
 })
 app.get("/adm/dashboard", (req, res) => {
-    res.render(`dashboard`)
+    res.render(`adm/dashboard`)
 })
 app.get("/adm/cadastro", (req, res) => {
-    res.render(`cadastroAdm`)
+    res.render(`adm/cadastroAdm`)
 })
 app.get("/adm/cadastroProdutos", (req, res) => {
-    res.render(`cadastroProd`)
+    res.render(`adm/cadastroProd`)
 })
 app.get("/adm/login", (req, res) => {
-    res.render(`loginAdm`)
+    res.render(`adm/loginAdm`)
 })
 app.listen(port, () => {
     console.log("servidor rodando")

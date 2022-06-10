@@ -49,6 +49,11 @@ app.get("/singleDeProduto", async(req, res) => {
         filmesSingle:consultaSingle
     })
 })
+app.get("/gerenciaPromocoes", (req, res) => {
+        res.render(`adm/gerenciaPromocoes`,{
+        filmes:consulta
+    })
+})
 app.get("/singlePreferencia", (req, res) => {
     res.render(`singlePreferencia`)
 })

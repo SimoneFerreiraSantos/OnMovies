@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../css/estilo.css" type="text/css">
     <link rel="icon" type="imagem/png" href="imagens/logo.png" />
 
-    <title>Cadastrar Administrador</title>
+    <title>Gerenciar Promoções</title>
 </head>
 
 <body>
@@ -16,7 +16,7 @@
             <div class="row mt-3 text-center">
                 <div class="col-sm-12 px-0 align-self-center">
                     <a href="/adm"><img src="../../imagens/logoOnMove.jpg" style="border-radius: 4px;" width="18%"></a>
-                    <h1 class="titulo text-uppercase mt-4">Cadastro Administrador</h1>
+                    <h1 class="titulo text-uppercase mt-4">Gerenciar Promoções</h1>
                 </div>
             </div>
 
@@ -24,22 +24,24 @@
         <section class="container">
             <p class="text-center"></p>
             <form class="w-50 mx-auto p-3 mt-4 mb-5" style="border: 2px solid #e8673f; border-radius: 12px"
-                id="formCadastro" method="post" action="/adm">
+                id="formCadastro" method="get" action="">
                 <fieldset>
                     <legend>Selecione o filme</legend>
-                        <div class="form-group">
-                            <label for="promo">Adicionar a lista de promoções?</label>
-                            <input type="radio" class="col-lg-2" value="1" id="promo_sim" name="promo">
-                            <input type="radio" class="col-lg-2" value="0" id="promo_nao" name="promo">
-                          </div>
-              
-                          <div class="form-group">
+                    <div class="form-group">
+                        <label for="promo">Adicionar a lista de promoções?</label>
+                        </br><input type="radio" value="1" id="promo_sim" name="promo"> Sim
+                        </br><input type="radio" value="0" id="promo_nao" name="promo"> Não
+                    </div>
+
+                    <div class="form-group">
                         <label>Filme:<span style="color:red ;">*</span> </label> <br>
-                             <select name="id">
-                                 <%galeria.forEach((item)=>{%>
-                                  <option value="<%item.filmes_id>"><%=item.titulo%></option>
-                              <% }) %>
-                             </select>
+                        <select name="id">
+                            <%filmes.forEach((item)=>{%>
+                                <option value="<%=item.filmes_id%>">
+                                    <%=item.titulo%>
+                                </option>
+                                <% }) %>
+                        </select>
                     </div>
                     <div>
                         <button class="button" type="button">Confirmar</button>

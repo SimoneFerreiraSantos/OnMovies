@@ -36,12 +36,13 @@ app.get("/produtos", (req, res) => {
 app.get("/contato", (req, res) => {
     res.render(`contato`)
 })
-app.get("/promocoes", (req, res) => {
+app.get("/promocoes", async (req, res) => {
+    const consultaPromo = await db.selectPromocoes()
     res.render(`promocoes`,{
-        filmes:consulta
+        filmes:consultaPromo
     })
-    
 })
+
 app.get("/singleDeProduto", async(req, res) => {
     let q=url.parse(req.url,true).query
     const consultaSingle = await db.selectSingle(q.id)
@@ -49,11 +50,14 @@ app.get("/singleDeProduto", async(req, res) => {
         filmesSingle:consultaSingle
     })
 })
-app.get("/gerenciaPromocoes", (req, res) => {
+app.get("/gerenciaPromocoes", async(req, res) => {
         res.render(`adm/gerenciaPromocoes`,{
         filmes:consulta
     })
+    let qs=url.parse(req.url,true).query
+    await db.updatePromocoes(qs.promo,qs.id)
 })
+
 app.get("/singlePreferencia", (req, res) => {
     res.render(`singlePreferencia`)
 })

@@ -4,8 +4,12 @@ const app = express()
 const db = require('./db.js')
 const port = 3000
 const url = require('url')
+const bodyParser = require('body-parser')
 
 app.set("view engine","ejs")
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json())
+
 
 app.use(express.static('onmovies'))
 app.use('/imagens', express.static("imagens"))
@@ -91,6 +95,18 @@ app.get("/adm/cadastro", (req, res) => {
 app.get("/adm/cadastroProdutos", (req, res) => {
     res.render(`adm/cadastroProd`)
 })
+app.post("/adm/cadastroProdutos", async (req, res) => {
+    const info = req.body
+    await db.insertFilmes({
+        titulo:info.nomeFilme,
+        categoria:info.categoria,
+        ano:info.anoFilme,
+        sinopse:info.descricao,
+        imagem:info.capaFilme
+    })
+    res.redirect("/promocoes")
+})
+
 app.get("/adm/login", (req, res) => {
     res.render(`adm/loginAdm`)
 })

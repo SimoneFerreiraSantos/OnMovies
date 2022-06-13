@@ -74,6 +74,16 @@ app.get("/login", (req, res) => {
 app.get("/cadastro", (req, res) => {
     res.render(`cadastro`)
 })
+app.post("/cadastro", async(req, res) => {
+    const info=req.body
+    await db.insertUsuarios({
+    nome:info.nome, 
+    email:info.email,   
+    telefone:info.telefone,
+    senha:info.senha
+    })
+    res.redirect("/")
+})
 app.get("/carrinho", (req, res) => {
     res.render(`carrinho`)
 })

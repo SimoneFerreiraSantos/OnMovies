@@ -48,6 +48,7 @@
                                         <p>
                                             <%=item.sinopse.substring(0,250)%>...
                                         </p>
+                                        <button data-id="<%=item.filmes_id%>" data-filme="<%=item.imagem%>" data-valor="<%=item.valor%>" class="button bt-carrinho">Adicionar ao carrinho</button>
                                     </div>
                                 </div>
                             </div>
@@ -55,21 +56,6 @@
                                 <% } %>
                                     <% }) %>
                             </div>
-                            <!-- <div class="col-sm-6 mt-4">
-                        <h2>Mulher Maravilha</h2>
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <a href="/singleDeProduto"><img src="../imagens/acao3.jpg"
-                                        class="w-100 img-thumbnail"></a>
-                            </div>
-                            <p class="col-sm-8 ">Treinada desde cedo para ser uma guerreira imbatível, Diana Prince
-                                nunca saiu da paradisíaca ilha em que é reconhecida como princesa das Amazonas. Quando o
-                                piloto Steve Trevor sofre um acidente e cai em uma praia do local, ela descobre que uma
-                                guerra sem precedentes está se espalhando pelo mundo e decide deixar seu lar certa de
-                                que pode parar o conflito. Lutando para acabar com a guerra, Diana percebe o alcance de
-                                seus poderes e sua verdadeira missão na Terra.</p>
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </section>
@@ -87,4 +73,22 @@
             </div>
         </section>
 <script src="../js/produtos.js"></script>
+<script>
+    $().ready(function(){
+        $(".bt-carrinho").click(function(){
+            console.log("Testando")
+            let dataId=$(this).attr("data-id")
+            let dataFilme=$(this).attr("data-filme")
+            let dataValor=$(this).attr("data-valor")
+            $.post("/carrinho",{
+                filme: dataId,
+                valor: dataValor,
+                qtdTelas: 1,
+                imagem: dataFilme
+            }, function(data,status){
+                location.href="/carrinho"
+            },"json")
+        })
+    })
+</script>
 <%- include("footer.ejs")%>

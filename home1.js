@@ -96,8 +96,26 @@
         })
         res.redirect("/produtos")
     })
-    app.get("/carrinho", (req, res) => {
-        res.render(`carrinho`)
+    app.get("/carrinho", async (req, res) => {
+        const consultaCarrinho = await db.selectCarrinho()
+        res.render(`carrinho`,{
+        carrinho:consultaCarrinho
+        })
+    })
+    app.post("/carrinho", async (req, res) => {
+        const info = req.body
+        await db.insertCarrinho({
+            filme: info.filme,
+            valor: info.valor,
+            qtdTelas: info.qtdTelas,            
+            imagem: info.imagem     
+        })
+        res.send(info)
+    })
+    app.post("/delete-carrinho", async (req, res) => {
+        const info = req.body
+        await db.deleteCarrinho(info.id)
+        res.send(info)
     })
     app.get("/adm", (req, res) => {
         res.render(`index`)

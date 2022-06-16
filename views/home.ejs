@@ -30,8 +30,8 @@
                 <%filmes.forEach((item,n)=>{ %>
                     <%if(n < 9){%>
                                 <div class="col-sm-4 mb-4">
-                                <a href="/singleDeProduto?id=<%=item.filmes_id%>"> <img class="img-thumbnail w-70"
-                                        src="imagens/<%=item.imagem%>"></a>
+                                <a href="/singleDeProduto?id=<%=item.filmes_id%>"> <img class="img-thumbnail w-70 imagens"
+                                        src="imagens/<%=item.imagem%>" data-id="<%=item.filmes_id%>" data-img="<%=item.imagem%>"></a>
 
 
                             </div>
@@ -45,9 +45,9 @@
                     </div> -->
             </div>
         </section>
-        <section>
-            <div id="rodapeImg" class="row text-center p-4" style="border: 1px solid #f58139; border-radius: 20px;">
+        <section class="container">
+            <div id="rodapeImg" class="row text-center">
             </div>
         </section>
-        <script src="js/index.js"></script>
+        <script src="/js/index.js"></script>
         <%- include("footer.ejs")%>

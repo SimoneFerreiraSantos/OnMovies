@@ -26,13 +26,11 @@
             <form class="w-50 mx-auto p-3 mt-4 mb-5" style="border: 2px solid #e8673f; border-radius: 12px"
                 id="formPromo" method="get" action="">
                 <fieldset>
-                    <legend>Selecione o filme</legend>
                     <div class="form-group">
-                        <label for="promo">Adicionar a lista de promoções?</label>
+                        <label for="promo">Adicionar a lista de promoções?<span style="color:red ;">*</span></label>
                         </br><input type="radio" value="1" id="promo_sim" name="promo"> Sim
-                        </br><input type="radio" value="0" id="promo_nao" name="promo"> Não
+                        </br><input type="radio" value="0" id="promo_nao"  checked name="promo"> Não
                     </div>
-
                     <div class="form-group">
                         <label>Filme:<span style="color:red ;">*</span> </label> <br>
                         <select name="id">
@@ -44,7 +42,7 @@
                         </select>
                     </div>
                     <div>
-                        <button class="button" type="button">Confirmar</button>
+                        <button class="button" type="submit">Confirmar</button>
                     </div>
                 </fieldset>
             </form>
@@ -54,5 +52,5 @@
         </footer>
     </div>
 </body>
-<script src="../../adm/js/gerenciaPromocoes.js"></script>
+<!-- <script src="../../adm/js/gerenciaPromocoes.js"></script> -->
 </html>

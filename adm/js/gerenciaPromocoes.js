@@ -7,5 +7,4 @@ botaoConfirmar.onclick= ()=>{
     }else{
         alert("Selecione ao menos uma opção!")
     }
-
 }

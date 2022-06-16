@@ -8,6 +8,14 @@ let nome = localStorage.nomeCadastro
 let email = localStorage.emailCadastro
 let telefone = localStorage.telefoneCadastro
 
+let divRodape = document.querySelector('#rodapeImg')
+let recuperaFilmes = [{ id: '13', img: "animacao4.jpg" }, { id: '10', img: "romance3.jpg" }, { id: '3', img: "aventura2.jpg" }]
+
+if (localStorage.getItem("Preferencias") != null) {
+    recuperaFilmes = ((JSON.parse(localStorage.getItem("Preferencias"))))
+    recuperaFilmes.length > 2 ? recuperaFilmes.pop() : null
+}
+
 function msgUser() {
     let nomeUser = user.substring(0, user.indexOf('@'))
     bemVindo.innerHTML = 'Olá ' + nomeUser
@@ -24,52 +32,27 @@ sair.onclick = function () {
 }
 localStorage.emailUser ? msgUser() : resetUser()
 
-let srcImg = ""
-let nameImg = ""
-let itemsArray = []
-let outroArray = []
-let divRodape= document.querySelector('#rodapeImg')
-let novoArray = []
-let divCol = ''
-
-var getAllImages = document.getElementById('divImagens').getElementsByTagName('img'); 
-
 document.querySelectorAll('.img-thumbnail').forEach(item => {
     item.addEventListener('click', event => {
-        console.log("teste")
-        console.log(event.currentTarget.getAttribute('src'))
-        srcImg = item.getAttribute('src')
-        nameImg= item.getAttribute('name')
-        console.log(srcImg)
-        localStorage.setItem("titulo-" + nameImg,srcImg)
+        let filme = {
+            id: event.currentTarget.getAttribute('data-id'),
+            img: event.currentTarget.getAttribute('data-img')
+        }
+        
+        for(var index = 0; index < 4; index++){
+            if (recuperaFilmes[index].id == filme.id){
+               return
+            }else{
+                recuperaFilmes.unshift(filme)
+                localStorage.setItem("Preferencias", JSON.stringify(recuperaFilmes))
+                break;
+            }
+        }
     })
-  })
-    
-
-let recuperaFilmesArray = []
-for(let k=0; k<localStorage.length;k++){
-    if(localStorage.key(k).includes("titulo")){
-        let recuperaFilmes = localStorage.key(k) + "," + localStorage.getItem(localStorage.key(k)) 
-        recuperaFilmesArray.unshift(recuperaFilmes.split(','))        
-    }
-}
-
-console.log(recuperaFilmesArray)
-
-novoArray = recuperaFilmesArray.slice(-3)
-
-console.log(novoArray)
-
-for (let index = 0; index < novoArray.length; index++) {
-    divCol = document.createElement("div")
-    divCol.className = "col-sm-4"
-
-
-    let divImg = document.createElement("img")
-    divImg.className = "img-thumbnail w-50"
-    divImg.src = novoArray[index][1]
-
-    divCol.appendChild(divImg)
-
-    divRodape.children.length < 3 ? divRodape.append(divCol) :  divRodape.removeChild(divCol)
-}
+})
+recuperaFilmes.forEach((item) => {
+    let divCol = document.createElement('div')
+    divCol.className = 'col-sm-4 mb-4 image-fav'
+    divCol.innerHTML = `<a href="/singleDeProduto?id=${item.id}"> <img class="image w-70" src="imagens/${item.img}"></a>`
+    divRodape.append(divCol)
+})

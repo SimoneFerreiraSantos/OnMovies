@@ -2,8 +2,8 @@ async function conecta(){
     const mysql = require("mysql2/promise")
     const conn = await mysql.createConnection({
         host: "localhost",
-        user: "P42",
-        password: "P42a123$#@!",
+        user: "",
+        password: "",
         database:"projeto_video"
     })
     console.log("mySQL conectado!")
@@ -15,7 +15,7 @@ async function conecta(){
 
 async function selectFilmes(){
     const conectado = await conecta()
-    const [rows] = await conectado.query("SELECT * FROM projeto_video.filmes")
+    const [rows] = await conectado.query("SELECT * FROM projeto_video.filmes ORDER BY filmes_id DESC")
     return rows
 }
 
@@ -28,7 +28,14 @@ async function selectSingle(id){
 }
 async function selectPromocoes(){
     const conectado = await conecta()
-    const [rows] = await conectado.query("SELECT * FROM projeto_video.filmes WHERE promo=1")
+    const [rows] = await conectado.query("SELECT * FROM projeto_video.filmes WHERE promo=1 ORDER BY filmes_id DESC")
+    return rows
+}
+
+async function selectUsers(email,senha){
+    const conectado = await conecta()
+    const values = [email,senha]
+    const [rows] = await conectado.query("SELECT * FROM projeto_video.usuarios WHERE email=? AND senha=?", values)
     return rows
 }
 async function updatePromocoes(promo,id){
@@ -39,8 +46,8 @@ async function updatePromocoes(promo,id){
 }
 async function insertFilmes(filme){
     const conectado = await conecta()
-    const values = [filme.titulo, filme.categoria,filme.ano,filme.sinopse,filme.imagem]
-    return await conectado.query("INSERT INTO filmes (titulo,categoria,ano,sinopse,imagem) VALUES(?,?,?,?,?)", values)
+    const values = [filme.titulo, filme.categoria,filme.ano,filme.sinopse,filme.imagem, filme.promo, filme.trailer]
+    return await conectado.query("INSERT INTO filmes (titulo,categoria,ano,sinopse,imagem,promo,trailer) VALUES(?,?,?,?,?,?,?)", values)
    
 }
 async function insertUsuarios(usuario){
@@ -51,4 +58,4 @@ async function insertUsuarios(usuario){
 }
 //selectFilmes()
 
-module.exports = {selectFilmes,selectSingle,selectPromocoes,updatePromocoes,insertFilmes,insertUsuarios}
+module.exports = {selectFilmes,selectSingle,selectPromocoes,updatePromocoes,insertFilmes,insertUsuarios, selectUsers}

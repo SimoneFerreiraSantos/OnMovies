@@ -59,9 +59,9 @@ app.get("/adm/cadastro", (req, res) => {
 app.get("/adm/cadastroProdutos", (req, res) => {
     res.sendFile(`${__dirname}/adm/docs/cadastroProd.html`)
 })
-app.get("/adm/login", (req, res) => {
-    res.sendFile(`${__dirname}/adm/docs/login.html`)
-})
+//app.get("/adm/login", (req, res) => {
+//   res.sendFile(`${__dirname}/adm/docs/login.html`)
+// })
 app.listen(port, () => {
     console.log("servidor rodando")
 })

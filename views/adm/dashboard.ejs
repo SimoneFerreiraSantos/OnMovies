@@ -1,40 +1,5 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <!-- jQuery library -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-
-    <!-- Popper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../../css/estilo.css" type="text/css">
-    <link rel="icon" type="../../imagens/png" href="../../imagens/logo.png" />
-    <title>Relatório Comercial</title>
-</head>
-
-<body>
-    <div class="container mx-auto">
-        <header>
-            <div class="row mt-3">
-                <div class="col-sm-3">
-                    <a href="/adm"><img src="../../imagens/logoOnMove.jpg" style="border-radius: 4px;" width="75%"></a>
-                </div>
-                <div class="col-sm-7 px-0 align-self-center text-center">
-                    <h1 class="titulo text-uppercase">Painel do Administrador</h1>
-                </div>
-            </div>
-            <nav class="navbar mt-4 mb-3 justify-content-around"
-                style="background-color: var(--orange);border-radius: 4px;">
-                <a class="navlink" href="./cadastroProdutos">CADASTRO PRODUTOS</a>
-                <a class="navlink" href="./cadastro">CADASTRO ADMINISTRADOR</a>
-                <a class="navlink" href="./login">LOGIN</a>
-            </nav>
-        </header>
+<%- include("headerAdm.ejs")%>
+<%- include("navAdm.ejs")%>
         <section class="container">
             <div id="carrinhoProdutos">
                 <h2 class="mt-4 mb-4 titulo">Relatório Comercial</h2>
@@ -137,11 +102,5 @@
                 </div>
             </div>
         </section>
-        <footer class="pt-2 text-white text-uppercase">
-            <p>&copy; 2022 - OnMovies, todos os direitos reservados</p>
-        </footer>
-    </div>
-</body>
-<script src="../../adm/js/dashboard.js"></script>
-
-</html>
+<script src="../../administrador/js/dashboard.js"></script>
+<%- include("../footer.ejs")%>

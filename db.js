@@ -2,8 +2,8 @@ async function conecta(){
     const mysql = require("mysql2/promise")
     const conn = await mysql.createConnection({
         host: "localhost",
-        user: "",
-        password: "",
+        user: "tulinho",
+        password: "Cekisabe012?",
         database:"projeto_video"
     })
     console.log("mySQL conectado!")
@@ -56,6 +56,35 @@ async function insertUsuarios(usuario){
     return await conectado.query("INSERT INTO usuarios (nome,email,telefone,senha) VALUES(?,?,?,?)", values)
    
 }
+async function insertCarrinho(carrinho){
+    const conectado = await conecta()
+    const values = [carrinho.filme,carrinho.valor,carrinho.qtdTelas,carrinho.imagem]
+    const [rows]= await conectado.query("INSERT INTO carrinho (filme,valor,qtdTelas,imagem) VALUES(?,?,?,?)", values)
+    return rows
+}
+async function selectCarrinho(){
+    const conectado = await conecta()
+    const [rows]= await conectado.query("SELECT * FROM carrinho")
+    return rows
+   
+}
+async function deleteCarrinho(id){
+    const conectado = await conecta()
+    const values = [id]
+    const [rows]= await conectado.query("DELETE FROM carrinho WHERE carrinho_id=?", values)
+    return rows
+}
 //selectFilmes()
 
-module.exports = {selectFilmes,selectSingle,selectPromocoes,updatePromocoes,insertFilmes,insertUsuarios, selectUsers}
+module.exports = {
+    selectFilmes,
+    selectSingle,
+    selectPromocoes,
+    selectCarrinho,
+    selectUsers,
+    insertFilmes,
+    insertUsuarios,
+    insertCarrinho,
+    deleteCarrinho,
+    updatePromocoes,
+}

@@ -20,12 +20,38 @@
                     <div class="col-sm-9">
                         <div class="row text-white border-bottom">
                             <div class="col-sm-3  mt-4 mb-4">Produtos</div>
-                            <div class="col-sm-2  mt-4 mb-4">Qtd</div>
                             <div class="col-sm-2  mt-4 mb-4">Preço</div>
                             <div class="col-sm-2  mt-4 mb-4">Telas</div>
                         </div>
                         <!--Tabela Produtos-->
-                        <div id="tabela" class="text-white"></div>
+                        <div id="tabela" class="text-white">
+                            <%
+                            carrinho.forEach((item)=>{
+                                console.log(item)
+                                %>
+                                <div class="row border-bottom">
+                                    <div class="col-sm-3 mt-4 mb-4">
+                                            <img src="/imagens/<%=item.imagem%>" class="img-thumbnail"/>
+                                    </div>
+
+                                    <div class="col-sm-3 mt-4 mb-4">
+                                        <p>
+                                            <%=item.valor%>
+                                        </p>
+                                    </div>
+
+                                    <div class="col-sm-3 mt-4 mb-4">
+                                        <p>
+                                            <%=item.qtdTelas%>
+                                        </p>
+                                    </div>
+
+                                    <div class="col-sm-3 mt-4 mb-4">
+                                        <button class="button bt-excluir" data-id="<%=item.carrinho_id%>">Remover</button>
+                                    </div>
+                                </div>
+                                <% }) %>
+                        </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="col-sm-12 mt-4 mb-4 text-white">Resumo do Pedido</div>
@@ -66,5 +92,17 @@
                 </div>
             </div>
         </section>
-<script src="../js/carrinho.js"></script>
-<%- include("footer.ejs")%>
+        <!-- <script src="../js/carrinho.js"></script> -->
+        <script>
+            $().ready(function(){
+        $(".bt-excluir").click(function(){
+            let dataId=$(this).attr("data-id")            
+            $.post("/delete-carrinho",{
+                id:dataId
+            }, function(data,status){
+                location.href="/carrinho"
+            },"json")
+        })
+    })
+        </script>
+        <%- include("footer.ejs")%>

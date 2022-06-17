@@ -2,8 +2,8 @@ async function conecta(){
     const mysql = require("mysql2/promise")
     const conn = await mysql.createConnection({
         host: "localhost",
-        user: "tulinho",
-        password: "Cekisabe012?",
+        user: "l42",
+        password: "Usuario@1992",
         database:"projeto_video"
     })
     console.log("mySQL conectado!")
@@ -74,6 +74,12 @@ async function deleteCarrinho(id){
     const [rows]= await conectado.query("DELETE FROM carrinho WHERE carrinho_id=?", values)
     return rows
 }
+
+async function deleteAllCarrinho(){
+    const conectado = await conecta()
+    const [rows]= await conectado.query("DELETE FROM carrinho")
+    return rows
+}
 //selectFilmes()
 
 module.exports = {
@@ -86,5 +92,6 @@ module.exports = {
     insertUsuarios,
     insertCarrinho,
     deleteCarrinho,
+    deleteAllCarrinho,
     updatePromocoes,
 }

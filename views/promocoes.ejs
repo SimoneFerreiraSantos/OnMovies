@@ -1,6 +1,6 @@
 <%- include("header.ejs")%>
 
-    <div class="container mx-auto"> 
+    <div class="container mx-auto">
         <header>
             <div class="row mt-3">
                 <div class="col-sm-3">
@@ -20,26 +20,52 @@
                         <%if(n < 6){%>
                             <div class="col-sm-4">
                                 <div class="row">
-                        <h2 class="col-sm-12 mt-4 mb-2"><%=item.titulo%></h2>
-                            <div class="col-sm-7">
-                                
-                             
-                            <a  href="/singleDeProduto?id=<%=item.filmes_id%>">
-                                 <img class="img-thumbnail w-100"src="imagens/<%=item.imagem%>"></a>
-                        </div>
-                
-                   
-                    <div class="col-sm-5 mt-1 ">
-                    <p><%=item.ano%></p>
-                    <p><%=item.categoria%></p>
-                    <p><%=item.sinopse.substring(0,80)%>...</p>
-                </div>
-            </div> 
-        </div>
-                   <% } %>
-                   <% }) %>
-                </div>
-           
+                                    <h2 class="col-sm-12 mt-4 mb-2">
+                                        <%=item.titulo%>
+                                    </h2>
+                                    <div class="col-sm-7">
 
+
+                                        <a href="/singleDeProduto?id=<%=item.filmes_id%>">
+                                            <img class="img-thumbnail w-100" src="imagens/<%=item.imagem%>"></a>
+                                    </div>
+
+
+                                    <div class="col-sm-5 mt-1 ">
+                                        <p>
+                                            <%=item.ano%>
+                                        </p>
+                                        <p>
+                                            <%=item.categoria%>
+                                        </p>
+                                        <p>
+                                            <%=item.sinopse.substring(0,80)%>...
+                                        </p>
+                                        <button data-id="<%=item.filmes_id%>" data-filme="<%=item.imagem%>"
+                                            data-valor="<%=item.valor%>" class="button bt-carrinho">Adicionar ao
+                                            carrinho</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                                <% }) %>
+                </div>
             </article>
+            <script>
+                $().ready(function(){
+                    $(".bt-carrinho").click(function(){
+                        let dataId=$(this).attr("data-id")
+                        let dataFilme=$(this).attr("data-filme")
+                        let dataValor=$(this).attr("data-valor")
+                        $.post("/carrinho",{
+                            filme: dataId,
+                            valor: dataValor,
+                            qtdTelas: 1,
+                            imagem: dataFilme
+                        }, function(data,status){
+                            location.href="/carrinho"
+                        },"json")
+                    })
+                })
+            </script>
             <%- include("footer.ejs")%>

@@ -44,7 +44,6 @@ a:hover {
 .img-thumbnail:hover {
     top: -4px;
     box-shadow: 0 2px 10px var(--white);
-    transform: rotate(-3deg);
 }
 
 .button-cadastrar {
@@ -114,6 +113,6 @@ input[type="file"] {
     font-size: 4.2rem;
 }
 .image-fav:hover{
-    transform: rotate(-3deg);
+    top: -5px;
 }
 

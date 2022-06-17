@@ -117,6 +117,11 @@
         await db.deleteCarrinho(info.id)
         res.send(info)
     })
+    app.post("/delete-all-carrinho", async (req, res) => {
+        const info = req.body
+        await db.deleteAllCarrinho()
+        res.send(info)
+    })
     app.get("/adm", (req, res) => {
         res.render(`index`)
     })

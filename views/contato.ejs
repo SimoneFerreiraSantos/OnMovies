@@ -18,7 +18,7 @@
                 <h2>Contato</h2>
             </div>
             <form class="w-50 mx-auto p-3 mt-4 mb-2" id="formContato"
-                style="border: 2px solid #e8673f;border-radius: 10px;">
+                style="border: 2px solid #e8673f;border-radius: 10px;" action="" method="post">
                 <fieldset>
                     <legend>Fale conosco</legend>
                     <div class="form-group">
@@ -43,14 +43,18 @@
                         <textarea class="form-control" name="comentario" id="comentario" cols="40" rows="10"></textarea>
                     </div>
                     <div>
-                        <div>
-                            <input id="chamado" type="checkbox"> Quero abrir um chamado para este assunto
-                            <br />
+                        <div class="mb-3">
+                            <p> Quer abrir um chamado para este assunto?</p>
+                        <input type="radio" value="1"  name="chamado"> Sim
+                        </br><input type="radio" value="0"  checked name="chamado"> Não
+                        </br>
                         </div>
                         <button class="button" id="btContato" type="button">Enviar</button>
                     </div>
                 </fieldset>
             </form>
         </section>
+    
 <script src="../js/contato.js"></script>
+
 <%- include("footer.ejs")%>

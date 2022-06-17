@@ -40,6 +40,21 @@
     app.get("/contato", (req, res) => {
         res.render(`contato`)
     })
+
+    app.post("/contato",async (req, res) => {
+        const info=req.body
+        
+        await db.insertContato({
+            nome:info.nomeContato,
+            email:info.emailContato,
+            telefone:info.telefoneContato,
+            assunto:info.assunto,
+            comentario:info.comentario,
+            chamado:info.chamado
+        })
+        res.redirect(`/promocoes`)
+    })
+
     app.get("/promocoes", async (req, res) => {
         const consultaPromo = await db.selectPromocoes()
         res.render(`promocoes`, {

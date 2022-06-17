@@ -4,9 +4,9 @@ let entrar = document.querySelector('#entrar')
 let sair = document.querySelector('#sair')
 let cadastrar = document.querySelector('#cadastrar')
 
-let nome = localStorage.nomeCadastro
-let email = localStorage.emailCadastro
-let telefone = localStorage.telefoneCadastro
+//let nome = localStorage.nomeCadastro
+//let email = localStorage.emailCadastro
+//let telefone = localStorage.telefoneCadastro
 
 let divRodape = document.querySelector('#rodapeImg')
 let recuperaFilmes = [{ id: '13', img: "animacao4.jpg" }, { id: '10', img: "romance3.jpg" }, { id: '3', img: "aventura2.jpg" }]
@@ -16,21 +16,21 @@ if (localStorage.getItem("Preferencias") != null) {
     recuperaFilmes.length > 2 ? recuperaFilmes.pop() : null
 }
 
-function msgUser() {
-    let nomeUser = user.substring(0, user.indexOf('@'))
-    bemVindo.innerHTML = 'Olá ' + nomeUser
-    entrar.style.display = 'none'
-    cadastrar.style.display = 'none'
+//function msgUser() {
+//     let nomeUser = user.substring(0, user.indexOf('@'))
+//     bemVindo.innerHTML = 'Olá ' + nomeUser
+//     entrar.style.display = 'none'
+//     cadastrar.style.display = 'none'
 
-}
-function resetUser() {
-    sair.style.display = "none"
-}
-sair.onclick = function () {
-    localStorage.removeItem('emailUser')
-    location.href = '/'
-}
-localStorage.emailUser ? msgUser() : resetUser()
+// }
+// function resetUser() {
+//     sair.style.display = "none"
+// }
+// sair.onclick = function () {
+//     localStorage.removeItem('emailUser')
+//     location.href = '/'
+// }
+// localStorage.emailUser ? msgUser() : resetUser()
 
 document.querySelectorAll('.img-thumbnail').forEach(item => {
     item.addEventListener('click', event => {

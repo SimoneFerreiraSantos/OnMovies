@@ -17,7 +17,7 @@
     app.use('/imagens', express.static("imagens"))
     app.use('/css', express.static("css"))
     app.use('/js', express.static("js"))
-    app.use('/adm', express.static("adm"))
+    app.use('/administrador', express.static("administrador"))
 
     var userInfo=''
     app.locals.info = {
@@ -188,22 +188,34 @@
         res.send(info)
     })
     app.get("/adm", (req, res) => {
-        res.render(`index`)
+        res.render(`adm/index`,{
+            titulo: "Início"
+        })
     })
     app.post("/adm", (req, res) => {
-        res.render(`index`)
+        res.render(`adm/index`,{
+            titulo: "Início"
+        })
     })
     app.get("/adm/relatorioChamadas", (req, res) => {
-        res.render(`adm/relatorio-chamadas`)
+        res.render(`adm/relatorio-chamadas`,{
+            titulo: "Relatório de Chamadas"
+        })
     })
     app.get("/adm/dashboard", (req, res) => {
-        res.render(`adm/dashboard`)
+        res.render(`adm/dashboard`,{
+            titulo: "Dashboard"
+        })
     })
     app.get("/adm/cadastro", (req, res) => {
-        res.render(`adm/cadastroAdm`)
+        res.render(`adm/cadastroAdm`,{
+            titulo: "Cadastro Adm"
+        })
     })
     app.get("/adm/cadastroProdutos", (req, res) => {
-        res.render(`adm/cadastroProd`)
+        res.render(`adm/cadastroProd`,{
+            titulo: "Cadastro Produto"
+        })
     })
     app.post("/adm/cadastroProdutos", async (req, res) => {
         const info = req.body
@@ -220,10 +232,9 @@
             res.redirect('/produtos')
         } 
     })
-
-    app.get("/adm/login", (req, res) => {
-        res.render(`adm/loginAdm`)
-    })
+    // app.get("/adm/login", (req, res) => {
+    //     res.render(`adm/loginAdm`)
+    // })
     app.listen(port, () => {
         console.log("servidor rodando")
     })

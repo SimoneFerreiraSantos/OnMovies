@@ -5,8 +5,8 @@ async function conecta(){
     const mysql = require("mysql2/promise")
     const conn = await mysql.createConnection({
         host: "localhost",
-        user: "ln002",
-        password: "Lb21@$#!",
+        user: "l42",
+        password: "Usuario@1992",
         database:"projeto_video"
     })
     console.log("mySQL conectado!")

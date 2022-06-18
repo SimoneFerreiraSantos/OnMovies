@@ -1,30 +1,10 @@
-<div class="container mx-auto">
-    <header>
-        <div class="row mt-3">
-            <div class="col-sm-3">
-                <a href="/adm"><img src="../imagens/logoOnMove.jpg" style="border-radius: 4px;" width="75%"></a>
-            </div>
-            <div class="col-sm-6 px-0 text-center align-self-center">
-                <h1 class="titulo text-uppercase">Painel do Administrador</h1>
-            </div>
-            <div class="col-sm-3 text-right">
-                <span class="text-white" id="bemVindo">
-                    <%=info.user%>
-                </span>
-                <%if(!info.user){ %>
-                    <a id="entrar" class="text-entrar" href="/login">ENTRAR</a>
-                    <% } %>
-                        <%if(info.user){ %>
-                            <a class="ml-1" style="cursor:pointer;" id="sair" href="/logout"><img
-                                    src="../imagens/logout.png" width="10%"></a>
-                            <% } %>
-            </div>
-        </div>
+
         <nav class="navbar mt-4 mb-3 justify-content-around" style="background-color: var(--orange);border-radius: 4px;">
             <a class="navlink" href="/adm/cadastroProdutos">CADASTRO PRODUTOS</a>
             <a class="navlink" href="/adm/cadastro">CADASTRO ADMINISTRADOR</a>
-            <a class="navlink" href="/adm/dashboard">RELATÓRIO</a>
+            <a class="navlink" href="/adm/dashboard">RELATÓRIO COMERCIAL</a>
             <a class="navlink" href="/adm/relatorioChamadas">RELATÓRIO CHAMADAS</a>
+            <a class="navlink" href="/gerenciaPromocoes">GERENCIAR PRODUTOS</a>
             <a class="navlink" href="/">USUÁRIO</a>
         </nav>
     </header>

@@ -1,16 +1,5 @@
 <%- include("header.ejs")%>
-
-    <div class="container mx-auto">
-        <header>
-            <div class="row mt-3">
-                <div class="col-sm-3">
-                    <a href="/"><img src="../imagens/logoOnMove.jpg" style="border-radius: 4px;" width="75%"></a>
-                </div>
-                <div class="col-sm-9 px-0 align-self-center">
-                    <h1 class="titulo text-uppercase">Aperte o play e tenha o seu cinema em casa</h1>
-                </div>
-            </div>
-            <%- include("nav.ejs")%>
+<%- include("nav.ejs")%>
 
         </header>
         <section class="container">
@@ -31,19 +20,19 @@
                             carrinho.forEach((item)=>{
                                 total += parseFloat(item.valor)
                                 %>
-                                <div class="row border-bottom">
+                                <div class="row border-bottom produto" data-id="<%=item.carrinho_id%>">
                                     <div class="col-sm-3 mt-4 mb-4">
                                             <img src="/imagens/<%=item.imagem%>" class="img-thumbnail"/>
                                     </div>
 
                                     <div class="col-sm-2 mt-4 mb-4">
-                                        <p>
-                                            <%=item.valor%>
+                                        <p class="valorProduto" data-valor="<%=item.valor%>">
+                                            <%=item.valor.replace('.', ',')%>
                                         </p>
                                     </div>
 
                                     <div class="col-sm-2 mt-4 mb-4">
-                                        <input type="number" onkeypress="return false" min="1" max="5" value="1">
+                                        <input type="number" class="telas text-center" min="1" max="5" value="<%=item.qtdTelas%>">
                                     </div>
 
                                     <div class="col-sm-3 mt-4 mb-4">
@@ -122,6 +111,23 @@
             }
         }
         })
+        $('.telas').change(function(e){
+            let telas = $(e.target).val()
+            let idCarrinho = $(e.target).parent().parent().attr('data-id')
+            let valorProduto = $(e.target).parent().prev().children().attr('data-valor')
+            let porcentagem = 0
+            porcentagem = parseFloat(valorProduto) * Math.pow(.07, telas - 1)
+            console.log(porcentagem)
+  
+            //$(e.target).parent().prev().children().html(valorProduto)
+            
+            // $.post("/atualiza-carrinho", {
+            //     valor: valorProduto.toFixed(2),
+            //     qtdTelas: telas,
+            //     id: idCarrinho
+            // })
+        })
     })
+        
         </script>
         <%- include("footer.ejs")%>

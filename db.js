@@ -99,6 +99,13 @@ async function deleteCarrinho(id){
     return rows
 }
 
+async function updateCarrinho(valor,qtdTelas,id){
+    const conectado = await conecta()
+    const values = [valor,qtdTelas,id]
+    const [rows]= await conectado.query("UPDATE carrinho SET valor=?, qtdTelas=? WHERE carrinho_id=?", values)
+    return rows
+}
+
 async function deleteAllCarrinho(){
     const conectado = await conecta()
     const [rows]= await conectado.query("DELETE FROM carrinho")
@@ -118,6 +125,7 @@ module.exports = {
     deleteCarrinho,
     deleteAllCarrinho,
     updatePromocoes,
+    updateCarrinho,
     insertContato,
     makeSession
 }

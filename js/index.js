@@ -38,18 +38,15 @@ document.querySelectorAll('.img-thumbnail').forEach(item => {
             id: event.currentTarget.getAttribute('data-id'),
             img: event.currentTarget.getAttribute('data-img')
         }
-        
-        for(var index = 0; index < 4; index++){
-            if (recuperaFilmes[index].id == filme.id){
-               return
-            }else{
-                recuperaFilmes.unshift(filme)
-                localStorage.setItem("Preferencias", JSON.stringify(recuperaFilmes))
-                break;
+            const ids = recuperaFilmes.map(o => o.id)
+            if(!ids.includes(filme.id)){
+            recuperaFilmes.unshift(filme)
+            localStorage.setItem("Preferencias", JSON.stringify(recuperaFilmes))
             }
-        }
+       
     })
 })
+
 recuperaFilmes.forEach((item) => {
     let divCol = document.createElement('div')
     divCol.className = 'col-sm-4 mb-4 image-fav'

@@ -187,6 +187,13 @@
         await db.deleteAllCarrinho()
         res.send(info)
     })
+
+    app.post("/atualiza-carrinho", async (req, res) => {
+        let info = req.body
+        await db.updateCarrinho(info.valor, info.qtdTelas, info.id)
+        res.send(info)
+    })
+
     app.get("/adm", (req, res) => {
         res.render(`adm/index`,{
             titulo: "Início"

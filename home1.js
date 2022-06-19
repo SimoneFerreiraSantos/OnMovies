@@ -110,7 +110,7 @@
     app.get("/gerenciaPromocoes", async (req, res) => {
         const consulta = await db.selectFilmes()
         let qs = url.parse(req.url, true).query
-        await db.updatePromocoes(qs.promo, qs.id)
+        await db.updatePromocoes(qs.promo, qs.valor, qs.id)
         if (!qs.promo) {
             res.render(`adm/gerenciaPromocoes`, {
                 filmes: consulta
@@ -233,7 +233,8 @@
             sinopse: info.descricao,
             imagem: info.capaFilme,
             promo: info.promo,
-            trailer: info.trailer
+            trailer: info.trailer,
+            valor:info.preco
         })
         if(info) {
             res.redirect('/produtos')

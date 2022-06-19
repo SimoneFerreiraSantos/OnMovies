@@ -55,16 +55,16 @@ async function selectUsers(email,senha){
     const [rows] = await conectado.query("SELECT * FROM projeto_video.usuarios WHERE email=? AND senha=?", values)
     return rows
 }
-async function updatePromocoes(promo,id){
+async function updatePromocoes(promo,valor, id){
     const conectado = await conecta()
-    const values = [promo,id]
-    return await conectado.query("UPDATE filmes SET promo=? WHERE filmes_id=?", values)
+    const values = [promo,valor, id]
+    return await conectado.query("UPDATE filmes SET promo=?, valor=? WHERE filmes_id=?", values)
    
 }
 async function insertFilmes(filme){
     const conectado = await conecta()
-    const values = [filme.titulo, filme.categoria,filme.ano,filme.sinopse,filme.imagem, filme.promo, filme.trailer]
-    return await conectado.query("INSERT INTO filmes (titulo,categoria,ano,sinopse,imagem,promo,trailer) VALUES(?,?,?,?,?,?,?)", values)
+    const values = [filme.titulo, filme.categoria,filme.ano,filme.sinopse,filme.imagem, filme.promo, filme.trailer, filme.valor]
+    return await conectado.query("INSERT INTO filmes (titulo,categoria,ano,sinopse,imagem,promo,trailer,valor) VALUES(?,?,?,?,?,?,?,?)", values)
    
 }
 async function insertUsuarios(usuario){

@@ -79,7 +79,7 @@ h3 {
     border-radius: 3px;
     background: var(--orange);
     color: var(--white);
-    padding: 1%;
+    padding: 5px;
 
     transition: filter .2s;
     cursor: pointer;
@@ -114,5 +114,8 @@ input[type="file"] {
 }
 .image-fav:hover{
     top: -5px;
+}
+.slick-track{
+    width: 700px;
 }
 

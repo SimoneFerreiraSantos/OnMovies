@@ -4,11 +4,11 @@
         </header>
         <section class="container">
             <article>
-                <div id="galeria" class="row">
+                <div id="galeria" class="row mb-4">
                     <%filmes.forEach((item,n)=>{ %>
                         <%if(n < 6){%>
                             <div class="col-sm-4">
-                                <div class="row">
+                                <div class="row ">
                                     <h2 class="col-sm-12 mt-4 mb-2">
                                         <%=item.titulo%>
                                     </h2>
@@ -20,19 +20,17 @@
                                     </div>
 
 
-                                    <div class="col-sm-5 mt-1 ">
+                                    <div class="col-sm-5">
                                         <p>
-                                            <%=item.ano%>
+                                            <%=item.ano%><br>
+                                            <%=item.categoria%></p>
+                                            <p><%=item.sinopse.substring(0,70)%>...
                                         </p>
-                                        <p>
-                                            <%=item.categoria%>
-                                        </p>
-                                        <p>
-                                            <%=item.sinopse.substring(0,80)%>...
+                                        <p style="color: #f58139">
+                                            Preço: R$ <%=item.valor.replace(".",",")%>
                                         </p>
                                         <button data-id="<%=item.filmes_id%>" data-filme="<%=item.imagem%>"
-                                            data-valor="<%=item.valor%>" class="button bt-carrinho">Adicionar ao
-                                            carrinho</button>
+                                            data-valor="<%=item.valor%>" class="button bt-carrinho">Comprar</button>
                                     </div>
                                 </div>
                             </div>

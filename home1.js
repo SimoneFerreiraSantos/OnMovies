@@ -212,8 +212,10 @@
     })
     app.get("/adm/relatorioChamadas",checkAuth, async(req, res) => {
         const consulta = await db.selectFilmes()
+        const consultaChamados = await db.selectChamados()
         res.render(`adm/relatorio-chamadas`,{
-            filmes:consulta
+            filmes:consulta,
+            chamados:consultaChamados
         })
     })
     app.get("/adm/dashboard", checkAuth, async(req, res) => {

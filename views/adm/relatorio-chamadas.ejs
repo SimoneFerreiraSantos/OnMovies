@@ -16,7 +16,20 @@
                         <p class="col-sm-3">Assunto</p>
                     </div>
                     <hr style="background-color:#e8673f;">
-                    <div id="clientesAtendidos"></div>
+                    <div id="clientesAtendidos">
+                        <% chamados.forEach((item)=>{%>
+                            <div class="row text-center">
+                    
+                        <p class="col-sm-3"><%=item.nome%></p>
+                        <p class="col-sm-3"><%=item.email%></p>
+                        <p class="col-sm-3"><%=item.telefone%></p>
+                        <p class="col-sm-3"><%=item.assunto%></p>
+                    </div>
+                    <hr style="background-color:#e8673f;">
+                        <% }) %>
+                    </div>
+                    
+
                     <div class="row justify-content-center">
                         <div class="col-sm-6">
                             <p>Próximo cliente a ser atendido:</p>

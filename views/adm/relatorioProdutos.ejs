@@ -25,7 +25,10 @@
                 <p class="col-sm-2"><%=item.ano %></p>
                 <p class="col-sm-2"><%=item.sinopse.substring(0,50) %>...</p>
                 <p class="col-sm-2"><%=item.valor.replace(".",",") %></p>
-                    
+
+                <div class="col-sm-2">
+                    <button class="button bt-editar" data-id="<%=item.filmes_id%>">Editar</button>
+                </div>                    
 
                 </div>
                 <hr style="background-color:#e8673f;">

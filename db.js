@@ -5,8 +5,8 @@ async function conecta(){
     const mysql = require("mysql2/promise")
     const conn = await mysql.createConnection({
         host: "localhost",
-        user: "r14",
-        password: "Re14$$",
+        user: "P42",
+        password: "P42a123$#@!",
         database:"projeto_video"
     })
     console.log("mySQL conectado!")
@@ -67,6 +67,12 @@ async function updatePromocoes(promo,valor, id){
     const conectado = await conecta()
     const values = [promo,valor, id]
     return await conectado.query("UPDATE filmes SET promo=?, valor=? WHERE filmes_id=?", values)
+   
+}
+async function updateProduto(titulo, categoria, ano, sinopse,imagem, promo, trailer, valor){
+    const conectado = await conecta()
+    const values = [titulo, categoria, ano, sinopse,imagem, promo, trailer, valor]
+    return await conectado.query("UPDATE filmes SET titulo=?, categoria=?, ano=?, sinopse=?, imagem=?, promo=?, trailer=?, valor=? WHERE filmes_id=?", values)
    
 }
 async function insertFilmes(filme){
@@ -136,5 +142,6 @@ module.exports = {
     updatePromocoes,
     updateCarrinho,
     insertContato,
-    makeSession
+    makeSession,
+    updateProduto
 }

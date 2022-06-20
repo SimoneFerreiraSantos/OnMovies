@@ -244,6 +244,13 @@
             titulo: "Cadastro Produto"
         })
     })
+    app.get("/adm/relatorioProdutos", checkAuth, async (req, res) => {
+        const consulta = await db.selectFilmes()
+        res.render(`adm/relatorioProdutos`,{
+            titulo: "Relatorio Produto",
+            filmes: consulta
+        })
+    })
     app.post("/adm/cadastroProdutos",checkAuth, async (req, res) => {
         const info = req.body
         await db.insertFilmes({

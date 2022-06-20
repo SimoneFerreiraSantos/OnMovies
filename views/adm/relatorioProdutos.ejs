@@ -1,0 +1,38 @@
+<%- include("headerAdm.ejs")%>
+            
+<%- include("navAdm.ejs")%>
+<section class="container">
+    <div class="row mt-2 mb-3">
+        <h1 class="col-sm-12 titulo">Relatório de Produtos</h1>
+    </div>
+    <div class="row justify-content-between">
+        <div id="carrinhoProdutos" class="col-sm-12" style="border: 2px solid #e8673f; border-radius: 10px ;">
+            <div class="row mt-4">
+
+                <p class="col-sm-2">Título</p>
+                <p class="col-sm-2">Categoria</p>
+                <p class="col-sm-2">Ano</p>
+                <p class="col-sm-2">Sinopse</p>
+                <p class="col-sm-2">Valor</p>
+            </div>
+            <hr style="background-color:#e8673f;">
+            <div>
+                <% filmes.forEach((item)=>{%>
+                <div class="row">
+                
+                <p class="col-sm-2"><%=item.titulo %></p>
+                <p class="col-sm-2"><%=item.categoria %></p>
+                <p class="col-sm-2"><%=item.ano %></p>
+                <p class="col-sm-2"><%=item.sinopse.substring(0,50) %>...</p>
+                <p class="col-sm-2"><%=item.valor.replace(".",",") %></p>
+                    
+
+                </div>
+                <hr style="background-color:#e8673f;">
+                <%}) %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include("../footer.ejs")%>

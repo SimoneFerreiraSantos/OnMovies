@@ -51,18 +51,7 @@
                 </div>
             </div>
         </section>
-        <section>
-            <div class="text-center row container">
-                <%filmes.forEach((item,n)=>{ %>
-                    <% if(n < 4){%>
-                    <div class="col-sm-3">
-                    <a href="/singleDeProduto?id=<%=item.filmes_id%>"> <img class="img-thumbnail w-70"
-                        src="imagens/<%=item.imagem%>"></a>
-                    </div>
-                    <%}%>
-                    <% }) %>
-                </div>
-        </section>
+        <%- include("imagensRodape.ejs")%>
 <script src="../js/produtos.js"></script>
 <script  type="text/javascript">
     $().ready(function(){
@@ -79,14 +68,14 @@
                 location.href="/carrinho"
             },"json")
         })
-//         $('.center').slick({
-//             slidesToShow: 5,
-//             slidesToScroll: 1,
-//             arrows: true,
-//             centerMode: true,
-//             variableWidth: true,
-//             infinite: true,
-// });
+        $('.center').slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            arrows: true,
+            centerMode: true,
+            variableWidth: true,
+            infinite: true,
+});
         
 
     })

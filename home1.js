@@ -103,7 +103,9 @@
     app.get("/singleDeProduto", async (req, res) => {
         let q = url.parse(req.url, true).query
         const consultaSingle = await db.selectSingle(q.id)
+        const consulta = await db.selectFilmes()
         res.render(`singleDeProduto`, {
+            filmes: consulta,
             filmesSingle: consultaSingle
         })
     })
@@ -164,9 +166,11 @@
         res.redirect("/produtos")
     })
     app.get("/carrinho", async (req, res) => {
+        const consulta = await db.selectFilmes()
         const consultaCarrinho = await db.selectCarrinho()
         res.render(`carrinho`,{
-        carrinho:consultaCarrinho
+        carrinho:consultaCarrinho,
+        filmes:consulta
         })
     })
     app.post("/carrinho", async (req, res) => {
@@ -206,14 +210,16 @@
             titulo: "Início"
         })
     })
-    app.get("/adm/relatorioChamadas",checkAuth,(req, res) => {
+    app.get("/adm/relatorioChamadas",checkAuth, async(req, res) => {
+        const consulta = await db.selectFilmes()
         res.render(`adm/relatorio-chamadas`,{
-            titulo: "Relatório de Chamadas"
+            filmes:consulta
         })
     })
-    app.get("/adm/dashboard", checkAuth, (req, res) => {
+    app.get("/adm/dashboard", checkAuth, async(req, res) => {
+        const consulta = await db.selectFilmes()
         res.render(`adm/dashboard`,{
-            titulo: "Dashboard"
+            filmes:consulta
         })
     })
     app.get("/adm/cadastro", checkAuth,(req, res) => {

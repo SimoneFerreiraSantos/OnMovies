@@ -1,0 +1,15 @@
+ <section class="container text-center">
+            <div class="row mt-5">
+                <%filmes.forEach((item,n)=>{
+                    array=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+                    nrandom=parseInt(Math.random() * array.length)
+                    %>
+                    <% if(n < 4){%>
+                        <div class="col-sm-3">
+                    <a href="/singleDeProduto?id=<%=filmes[nrandom].filmes_id%>"> <img class="img-thumbnail w-100"
+                        src="../imagens/<%=filmes[nrandom].imagem%>"></a>
+                    </div>
+                    <%}%>
+                    <% }) %>
+                </div>
+</section>

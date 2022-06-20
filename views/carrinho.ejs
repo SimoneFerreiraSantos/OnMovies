@@ -74,19 +74,8 @@
                 </div>
             </div>
         </section>
-        <section>
-            <div class="row mt-4">
-                <div class="col-sm-4">
-                    <a href="/singleDeProduto"><img src="../imagens/acao2.jpg" class="img-thumbnail"></a>
-                </div>
-                <div class="col-sm-4 text-center">
-                    <a href="/singleDeProduto"><img src="../imagens/comedia.jpg" class="img-thumbnail"></a>
-                </div>
-                <div class="col-sm-4 text-right">
-                    <a href="/singleDeProduto"><img src="../imagens/terror2.jpg" class="img-thumbnail"></a>
-                </div>
-            </div>
-        </section>
+        
+        <%- include("imagensRodape.ejs")%>
         <!-- <script src="../js/carrinho.js"></script> -->
         <script>
             $().ready(function(){
@@ -124,7 +113,7 @@
             let porcentagem = 0
             porcentagem = parseFloat(valorProduto * Math.pow(1.07, telas - 1))
             $(e.target).parent().next().children().html(porcentagem.toFixed(2).replace('.',','))
-            
+
             // $.post("/atualiza-carrinho", {
             //     valor: valorProduto.toFixed(2),
             //     qtdTelas: telas,

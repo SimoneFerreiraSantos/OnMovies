@@ -38,6 +38,7 @@
     }
 
     await db.makeSession(app,options,session)
+
     function checkFirst(req, res, next) {
         if (!req.session.userInfo) {
           res.redirect('/promocoes');
@@ -46,22 +47,22 @@
         }
       }
     
-    function checkAuth(req, res, next) {
-        if (!req.session.userInfo) {
+     function checkAuth(req, res, next) {
+        if (!req.session.userInfo || req.session.userInfo[1] == 0) {
           res.send('Você não está autorizado para acessar esta página');
         } else {
           next();
         }
       }
 
-    app.get("/", async (req, res) => {
+    app.get("/", checkFirst, async (req, res) => {
         const consulta = await db.selectFilmes()
         res.render(`home`, {
             filmes: consulta
         })
     })
 
-    app.post("/", async (req, res) => {
+    app.post("/", checkFirst, async (req, res) => {
         const consulta = await db.selectFilmes()
         res.render(`home`, {
             filmes: consulta
@@ -107,13 +108,13 @@
         })
     })
 
-    app.get("/gerenciaPromocoes", async (req, res) => {
+    app.get("/gerenciaPromocoes", checkAuth, async (req, res) => {
         const consulta = await db.selectFilmes()
         let qs = url.parse(req.url, true).query
         await db.updatePromocoes(qs.promo, qs.valor, qs.id)
         if (!qs.promo) {
             res.render(`adm/gerenciaPromocoes`, {
-                filmes: consulta
+                filmes: consulta,
             })
         } else {
             res.redirect('/promocoes')
@@ -123,7 +124,7 @@
     app.get("/singlePreferencia", (req, res) => {
         res.render(`singlePreferencia`)
     })
-    app.get("/perfilUsuario", (req, res) => {
+    app.get("/perfilUsuario",checkFirst, (req, res) => {
         res.render(`perfil-usuario`)
     })
     app.get("/login", (req, res) => {
@@ -141,10 +142,10 @@
         const {email,senha} = req.body
         const logado = await db.selectUsers(email,senha)
         if(logado != ""){
-        req.session.userInfo = email
+        req.session.userInfo = [email, logado[0].adm]
         userInfo = req.session.userInfo
         req.app.locals.info.user= userInfo
-        res.redirect('/')
+        userInfo[1] == 0 ? res.redirect('/') : res.redirect('/adm')
         } else {res.send("<h2>Login ou senha não conferem</h2>")}
     })
 
@@ -157,7 +158,8 @@
             nome: info.nome,
             email: info.email,
             telefone: info.telefone,
-            senha: info.senha
+            senha: info.senha,
+            adm: 0
         })
         res.redirect("/produtos")
     })
@@ -194,37 +196,49 @@
         res.send(info)
     })
 
-    app.get("/adm", (req, res) => {
+    app.get("/adm", checkAuth, (req, res) => {
         res.render(`adm/index`,{
             titulo: "Início"
         })
     })
-    app.post("/adm", (req, res) => {
+    app.post("/adm", checkAuth, (req, res) => {
         res.render(`adm/index`,{
             titulo: "Início"
         })
     })
-    app.get("/adm/relatorioChamadas", (req, res) => {
+    app.get("/adm/relatorioChamadas",checkAuth,(req, res) => {
         res.render(`adm/relatorio-chamadas`,{
             titulo: "Relatório de Chamadas"
         })
     })
-    app.get("/adm/dashboard", (req, res) => {
+    app.get("/adm/dashboard", checkAuth, (req, res) => {
         res.render(`adm/dashboard`,{
             titulo: "Dashboard"
         })
     })
-    app.get("/adm/cadastro", (req, res) => {
+    app.get("/adm/cadastro", checkAuth,(req, res) => {
         res.render(`adm/cadastroAdm`,{
             titulo: "Cadastro Adm"
         })
     })
-    app.get("/adm/cadastroProdutos", (req, res) => {
+
+    app.post("/adm/cadastro", checkAuth, async(req, res) => {
+        const info = req.body
+        await db.insertUsuarios({
+            nome: info.nome,
+            email: info.email,
+            senha: info.senha,
+            tipo: info.nivel,
+            adm: 1
+        })
+        res.redirect("/produtos")
+    })
+    app.get("/adm/cadastroProdutos", checkAuth, (req, res) => {
         res.render(`adm/cadastroProd`,{
             titulo: "Cadastro Produto"
         })
     })
-    app.post("/adm/cadastroProdutos", async (req, res) => {
+    app.post("/adm/cadastroProdutos",checkAuth, async (req, res) => {
         const info = req.body
         await db.insertFilmes({
             titulo: info.nomeFilme,

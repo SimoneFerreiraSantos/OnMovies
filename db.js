@@ -69,8 +69,8 @@ async function insertFilmes(filme){
 }
 async function insertUsuarios(usuario){
     const conectado = await conecta()
-    const values = [usuario.nome,usuario.email,usuario.telefone,usuario.senha]
-    return await conectado.query("INSERT INTO usuarios (nome,email,telefone,senha) VALUES(?,?,?,?)", values)
+    const values = [usuario.nome,usuario.email,usuario.telefone,usuario.senha,usuario.tipo, usuario.adm]
+    return await conectado.query("INSERT INTO usuarios (nome,email,telefone,senha,tipo,adm) VALUES(?,?,?,?,?,?)", values)
    
 }
 async function insertContato(contato){

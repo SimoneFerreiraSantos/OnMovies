@@ -116,7 +116,7 @@
             let idCarrinho = $(e.target).parent().parent().attr('data-id')
             let valorProduto = $(e.target).parent().prev().children().attr('data-valor')
             let porcentagem = 0
-            porcentagem = parseFloat(valorProduto) * Math.pow(.07, telas - 1)
+            porcentagem = parseFloat(valorProduto * (0.7)/100)
             console.log(porcentagem)
   
             //$(e.target).parent().prev().children().html(valorProduto)

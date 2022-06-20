@@ -12,6 +12,8 @@ document.querySelector("#btCadastro").onclick = function () {
         alert("Preencha a sinopse!");
     } else if (formC.trailer.value == "") {
         alert("Preencha o trailer!");
+    }else if (formC.preco.value == "") {
+        alert("Preencha o preço!");
     }else {
         formC.submit()
     }

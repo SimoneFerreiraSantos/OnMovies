@@ -3,16 +3,16 @@
         <section class="container">
             <h2 class="text-center">Cadastro de Administrador</h2>
             <form class="w-50 mx-auto p-3 mt-4 mb-5" style="border: 2px solid #e8673f; border-radius: 12px"
-                id="formCadastro" method="post" action="/adm">
+                id="formCadastro" method="post" action="">
                 <fieldset>
                     <legend>Preencha os dados de cadastro</legend>
                     <div class="form-group">
                         <label>Nome:<span style="color:red ;">*</span></label>
-                        <input class="form-control" id="nome" name="nome-contato" type="text" maxlength="50">
+                        <input class="form-control" id="nome" name="nome" type="text" maxlength="50">
                     </div>
                     <div class="form-group">
                         <label>E-mail:<span style="color:red ;">*</span> </label> <br>
-                        <input class="form-control" id="email" name="email-contato" type="email">
+                        <input class="form-control" id="email" name="email" type="email">
                     </div>
                     <div class="form-group">
                         <label>Senha:<span style="color:red ;">*</span></label> <br>
@@ -25,8 +25,8 @@
                     </div>
                     <p>Escolha o tipo de administrador:<span style="color:red ;">*</p>
                     <Select class="mb-4" name="nivel">
-                        <option value="1">Basic</option>
-                        <option value="2">Master</option>
+                        <option value="Basic">Basic</option>
+                        <option value="Master">Master</option>
                     </Select>
                     <div>
                         <button class="button" id="btCadastro" type="button">Salvar</button>

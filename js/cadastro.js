@@ -8,10 +8,10 @@ document.querySelector("#btCadastro").onclick = function () {
         alert("Preencha um e-mail válido");
     } else if (formC.telefone.value == "") {
         alert("Preencha o telefone!")
-    } else if (formC.senha.value == "") {
-        alert("Preencha a Senha!")
-    } else if (formC.confirmarSenha.value == "") {
-        alert("Preencha a confirmação de Senha!")
+    } else if (formC.senha.value != 8) {
+        alert("Preencha a senha com 8  dígitos!")
+    } else if (formC.confirmarSenha.value != 8) {
+        alert("Preencha a confirmação de senha com 8  dígitos!")
     } else if (formC.confirmarSenha.value != formC.senha.value) {
         alert("As senhas devem ser iguais");
     } else {

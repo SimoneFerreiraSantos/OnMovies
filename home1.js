@@ -49,7 +49,7 @@
     
      function checkAuth(req, res, next) {
         if (!req.session.userInfo || req.session.userInfo[1] == 0) {
-          res.send('Você não está autorizado para acessar esta página');
+          res.render('usuarioNaoAutorizado');
         } else {
           next();
         }
@@ -146,7 +146,7 @@
         userInfo = req.session.userInfo
         req.app.locals.info.user= userInfo
         userInfo[1] == 0 ? res.redirect('/') : res.redirect('/adm')
-        } else {res.send("<h2>Login ou senha não conferem</h2>")}
+        } else {res.render("loginNaoConfere")}
     })
 
     app.get("/cadastro", (req, res) => {

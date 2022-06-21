@@ -161,6 +161,7 @@
             email: info.email,
             telefone: info.telefone,
             senha: info.senha,
+            tipo: info.tipo,
             adm: 0
         })
         res.redirect("/produtos")

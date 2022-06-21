@@ -168,9 +168,11 @@
     app.get("/carrinho", async (req, res) => {
         const consulta = await db.selectFilmes()
         const consultaCarrinho = await db.selectCarrinho()
+        const consultaCupom = await db.selectCupons()
         res.render(`carrinho`,{
         carrinho:consultaCarrinho,
-        filmes:consulta
+        filmes:consulta,
+        cupons:consultaCupom
         })
     })
     app.post("/carrinho", async (req, res) => {
@@ -196,7 +198,7 @@
 
     app.post("/atualiza-carrinho", async (req, res) => {
         let info = req.body
-        await db.updateCarrinho(info.valor, info.qtdTelas, info.id)
+        await db.updateCarrinho(info.qtdTelas, info.subtotal, info.total, info.id)
         res.send(info)
     })
 

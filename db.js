@@ -5,8 +5,8 @@ async function conecta(){
     const mysql = require("mysql2/promise")
     const conn = await mysql.createConnection({
         host: "localhost",
-        user: "P42",
-        password: "P42a123$#@!",
+        user: "l42",
+        password: "Usuario@1992",
         database:"projeto_video"
     })
     console.log("mySQL conectado!")
@@ -62,6 +62,12 @@ async function selectChamados(){
     return rows
 }
 
+async function selectCupons(){
+    const conectado = await conecta()
+    const [rows] = await conectado.query("SELECT * FROM projeto_video.cupom")
+    return rows
+}
+
 
 async function updatePromocoes(promo,valor, id){
     const conectado = await conecta()
@@ -96,8 +102,8 @@ async function insertContato(contato){
 
 async function insertCarrinho(carrinho){
     const conectado = await conecta()
-    const values = [carrinho.filme,carrinho.valor,carrinho.qtdTelas,carrinho.imagem]
-    const [rows]= await conectado.query("INSERT INTO carrinho (filme,valor,qtdTelas,imagem) VALUES(?,?,?,?)", values)
+    const values = [carrinho.filme,carrinho.valor,carrinho.qtdTelas,carrinho.imagem,carrinho.valor]
+    const [rows]= await conectado.query("INSERT INTO carrinho (filme,valor,qtdTelas,imagem,subtotal) VALUES(?,?,?,?,?)", values)
     return rows
 }
 async function selectCarrinho(){
@@ -113,11 +119,13 @@ async function deleteCarrinho(id){
     return rows
 }
 
-async function updateCarrinho(valor,qtdTelas,id){
+async function updateCarrinho(qtdTelas,subtotal, total, id){
     const conectado = await conecta()
-    const values = [valor,qtdTelas,id]
-    const [rows]= await conectado.query("UPDATE carrinho SET valor=?, qtdTelas=? WHERE carrinho_id=?", values)
-    return rows
+    const values = [qtdTelas,subtotal,id]
+    const totalCarrinho = [total]
+    const [rows]= await conectado.query("UPDATE carrinho SET qtdTelas=?, subtotal=? WHERE carrinho_id=?", values)
+    const [rowTotal]= await conectado.query("UPDATE carrinho SET total=?", totalCarrinho)
+    return rows, rowTotal
 }
 
 async function deleteAllCarrinho(){
@@ -134,6 +142,7 @@ module.exports = {
     selectPromocoes,
     selectCarrinho,
     selectUsers,
+    selectCupons,
     insertFilmes,
     insertUsuarios,
     insertCarrinho,

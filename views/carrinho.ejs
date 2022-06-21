@@ -19,25 +19,25 @@
                         <div id="tabela" class="text-white">
                             <% total = 0
                             carrinho.forEach((item)=>{
-                                total += parseFloat(item.valor)
+                                total += parseFloat(item.subtotal)
                                 %>
                                 <div class="row border-bottom produto" data-id="<%=item.carrinho_id%>">
                                     <div class="col-sm-3 mt-4 mb-4">
                                             <img src="/imagens/<%=item.imagem%>" class="img-thumbnail"/>
                                     </div>
 
-                                    <div class="col-sm-2 mt-4 mb-4">
-                                        <p data-valor="<%=item.valor%>">
+                                    <div class="col-sm-2 mt-4 mb-4 preco">
+                                        <p data-valor="<%=item.valor%>" >
                                             <%=item.valor.replace('.', ',')%>
                                         </p>
                                     </div>
 
                                     <div class="col-sm-2 mt-4 mb-4">
-                                        <input type="number" class="telas text-center" min="1" max="5" value="<%=item.qtdTelas%>">
+                                        <input type="number" class="telas text-center" min="1" max="5" onKeyPress="return false" value="<%=item.qtdTelas%>">
                                     </div>
                                     <div class="col-sm-2 mt-4 mb-4">
-                                        <p class="valorProduto" data-subvalor="<%=item.valor%>">
-                                            <%=item.valor.replace('.', ',')%>
+                                        <p class="valorProduto" name="subvalor" data-subvalor="<%=item.subtotal%>">
+                                            <%=item.subtotal.replace('.', ',')%>
                                         </p>
                                     </div>
                                     <div class="col-sm-3 mt-4 mb-4">
@@ -78,7 +78,8 @@
         <%- include("imagensRodape.ejs")%>
         <!-- <script src="../js/carrinho.js"></script> -->
         <script>
-            $().ready(function(){
+        $().ready(function(){
+            
         $(".bt-excluir").click(function(){ 
             let confirmItem = confirm("Deseja excluir o filme do carrinho?")
             if (confirmItem) {
@@ -111,16 +112,23 @@
             let valorProduto = $(e.target).parent().prev().children().attr('data-valor')
             let subValor = $(e.target).parent().next().children().attr('data-subvalor')
             let porcentagem = 0
+            let acumulaTotal = 0
             porcentagem = parseFloat(valorProduto * Math.pow(1.07, telas - 1))
             $(e.target).parent().next().children().html(porcentagem.toFixed(2).replace('.',','))
+            $(e.target).parent().next().children().attr('data-subvalor', porcentagem)
 
-            // $.post("/atualiza-carrinho", {
-            //     valor: valorProduto.toFixed(2),
-            //     qtdTelas: telas,
-            //     id: idCarrinho
-            // })
+            $(".valorProduto").each(function() { 
+                acumulaTotal += parseFloat($(this).attr('data-subvalor'))
+                $('.total').attr("data-valor", acumulaTotal)
+                $('.total').html("Total: R$" + acumulaTotal.toFixed(2).replace('.',','))
+            })
+            $.post("/atualiza-carrinho", {
+                qtdTelas: telas,
+                subtotal: porcentagem.toFixed(2),
+                total: acumulaTotal.toFixed(2),
+                id: idCarrinho
+            })
         })
     })
-        
         </script>
         <%- include("footer.ejs")%>

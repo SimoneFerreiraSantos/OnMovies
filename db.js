@@ -75,9 +75,9 @@ async function updatePromocoes(promo,valor, id){
     return await conectado.query("UPDATE filmes SET promo=?, valor=? WHERE filmes_id=?", values)
    
 }
-async function updateProduto(titulo, categoria, ano, sinopse,imagem, promo, trailer, valor){
+async function updateProduto(titulo, categoria, ano, sinopse,imagem, promo, trailer, valor, id){
     const conectado = await conecta()
-    const values = [titulo, categoria, ano, sinopse,imagem, promo, trailer, valor]
+    const values = [titulo, categoria, ano, sinopse,imagem, promo, trailer, valor, id]
     return await conectado.query("UPDATE filmes SET titulo=?, categoria=?, ano=?, sinopse=?, imagem=?, promo=?, trailer=?, valor=? WHERE filmes_id=?", values)
    
 }

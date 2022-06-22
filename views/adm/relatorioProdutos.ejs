@@ -42,11 +42,11 @@
 
         $('.bt-editar').click(function(){
             let dataId=$(this).attr('data-id')
-            $.post('/atualizaProduto', {
+            $.post('/atualizaFormProduto', {
                 id:dataId
             },
             function(data,status){
-                location.href='/atualizaProduto'
+                location.href='/atualizaFormProduto'
             })
          
         })

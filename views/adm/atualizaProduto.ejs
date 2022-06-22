@@ -1,0 +1,96 @@
+<%- include("headerAdm.ejs")%>
+<%- include("navAdm.ejs")%>
+<!-- =============== Conteúdo ================== -->
+<div class="container mt-5 pt-5">
+    <header>
+        <h1>Atualizar Produtos</h1>
+            </header>
+           <!-- =============== ATUALIZA PRODUTO ================== -->
+    <div class="row">
+        <div class="col-md-8 col-sm-8 col-lg-8">
+            <div class="card">
+                 <div class="card-body">
+                    <h4 class="card-title">Editar Produto - <%=id%></h4>
+                    <form id="form-produto" class="form">
+                        <fieldset>
+                            <legend></legend>
+                        <ul class="list-unstyled">
+                            <li>
+                                <label>Título:</label>
+                                <input class="form-control" name="titulo" id="" value="<%=produtoDaVez[0].titulo%>" >
+                            </li>
+                            <li>
+                                <label>Categoria:</label>
+                                <input class="form-control" name="categoria" id="" value="<%=produtoDaVez[0].categoria%>" >
+                            </li>
+                            <li>
+                                <label>Ano:</label>
+                                <input type="number" class="form-control" name="ano" id="" value="<%=produtoDaVez[0].ano%>" >
+                            </li>
+                            <li>
+                                <label>Sinopse:</label>
+                                <textarea class="form-control" name="sinopse" id=""><%=produtoDaVez[0].sinopse%></textarea>
+                            </li>
+                            <li>
+                                <label>Imagem:</label>
+                                <input class="form-control" name="imagem" id="" value="<%=produtoDaVez[0].imagem%>" >
+                                <img src="/imagens/<%=produtoDaVez[0].imagem%>" />
+                            </li>
+                            <li>
+                                <label>Promo:</label>
+                                <input type="radio" class="form-control" name="promo" id="" value="0" >Não
+                                <input type="radio" class="form-control" name="promo" id="" value="1" >Sim
+                            </li>
+                            <li>
+                                <label>Trailer:</label>
+                                <input class="form-control" name="trailer" id="" value="<%=produtoDaVez[0].trailer%>" >
+                            </li>
+                            <li>
+                                <label>Valor:</label>
+                                <input type="number" class="form-control" name="valor" id="" value="<%=produtoDaVez[0].valor%>">
+                            </li>
+                            
+                            <li>
+                                <button class="btn btn-info mt-5">Confirmar</button>
+                                <button type="button" class="btn btn-primary mt-5 bt-voltar">Voltar</button>
+                            </li>
+                        </ul>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <img src="<%=produtoDaVez[0].imagem%>" class="w-50" />
+        </div>
+
+    <!-- =============== Fim do Atualiza Produto ================== -->
+</div>           
+<!-- =============== Fim do Conteúdo ================== -->
+<script>
+    $().ready(function(){
+               
+    $('.bt-prod').click(function(){
+      $.post('/atualizaSingle',
+        {
+        id:'<%=idProd%>',
+        titulo:$('#form-produto input[name=titulo]').val(),
+        categoria:$('#form-produto input[name=categoria]').val(),
+        ano:$('#form-produto input[name=ano]').val(),
+        sinopse:$('#form-produto input[name=sinopse]').val(),
+        imagem:$('#form-produto input[name=imagem]').val(),
+        promo:$('#form-produto input[name=promo]').val(),
+        trailer:$('#form-produto input[name=trailer]').val(),
+        valor:$('#form-produto input[name=valor]').val()
+    }, function(data,status) {
+        
+    },'json')
+})
+
+    $('.bt-voltar').click(function(){
+      location.href='/adm'
+        })
+    })
+        </script>
+        <%- include("../footer.ejs")%>

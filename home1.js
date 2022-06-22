@@ -24,6 +24,8 @@
     user:userInfo
     }
 
+    app.locals.idProd= 5
+
     const options ={
         expiration: 10800000,
         createDatabaseTable: true,
@@ -201,6 +203,25 @@
         let info = req.body
         await db.updateCarrinho(info.qtdTelas, info.subtotal, info.total, info.id)
         res.send(info)
+    })
+
+    app.post("/atualizaProduto", checkAuth, (req, res) => {
+        req.app.locals.idProd= req.body.id
+        res.send('Produto atualizado com sucesso')
+    })
+
+    app.get("/atualizaProduto", checkAuth, async (req, res) => {
+        const consultaSingle = await db.selectSingle(req.app.locals.idProd)
+        res.render(`/adm/atualizaProduto`, {
+            produtoDaVez: produto,
+            filmes: consulta,
+            filmesSingle: consultaSingle
+        })
+    })
+
+    app.post("/atualizaSingle", checkAuth, async (req, res) => {
+        let info= req.body
+        await db.updateProduto(info.titulo, info.categoria, info.ano, info.sinopse, info.imagem, info.promo, info.trailer, info.valor)
     })
 
     app.get("/adm", checkAuth, (req, res) => {

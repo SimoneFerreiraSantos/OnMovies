@@ -37,5 +37,20 @@
         </div>
     </div>
 </section>
+<script>
+     $().ready(function(){
+
+        $('.bt-editar').click(function(){
+            let dataId=$(this).attr('data-id')
+            $.post('/atualizaProduto', {
+                id:dataId
+            },
+            function(data,status){
+                location.href='/atualizaProduto'
+            })
+         
+        })
+     })
+</script>
 
 <%- include("../footer.ejs")%>

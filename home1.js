@@ -205,23 +205,22 @@
         res.send(info)
     })
 
-    app.post("/atualizaProduto", checkAuth, (req, res) => {
+    app.post("/atualizaFormProduto", checkAuth, (req, res) => {
         req.app.locals.idProd= req.body.id
         res.send('Produto atualizado com sucesso')
     })
 
-    app.get("/atualizaProduto", checkAuth, async (req, res) => {
+    app.get("/atualizaFormProduto", checkAuth, async (req, res) => {
         const consultaSingle = await db.selectSingle(req.app.locals.idProd)
-        res.render(`/adm/atualizaProduto`, {
-            produtoDaVez: produto,
-            filmes: consulta,
-            filmesSingle: consultaSingle
+        res.render(`adm/atualizaProduto`, {
+            id:req.app.locals.idProd,
+            produtoDaVez: consultaSingle
         })
     })
 
     app.post("/atualizaSingle", checkAuth, async (req, res) => {
         let info= req.body
-        await db.updateProduto(info.titulo, info.categoria, info.ano, info.sinopse, info.imagem, info.promo, info.trailer, info.valor)
+        await db.updateProduto(info.titulo, info.categoria, info.ano, info.sinopse, info.imagem, info.promo, info.trailer, info.valor, info.id)
     })
 
     app.get("/adm", checkAuth, (req, res) => {

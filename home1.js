@@ -205,7 +205,7 @@
 
     app.post("/atualizaFormProduto", checkAuth, (req, res) => {
         req.app.locals.idProd= req.body.id
-        res.send('Produto atualizado com sucesso')
+        res.redirect('/adm/relatorioProdutos')
     })
 
     app.get("/atualizaFormProduto", checkAuth, async (req, res) => {

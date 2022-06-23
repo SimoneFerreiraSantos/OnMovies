@@ -5,7 +5,7 @@ document.querySelector("#btContato").onclick = function () {
         alert("Preencha o e-mail!")
     } else if (!formL.emailContato.value.includes('.', '@')) {
         alert("Preencha um e-mail válido");
-    } else if (formL.senhaContato.value.length < 8) {
+    } else if (formL.senhaContato.value.length != 8) {
         alert("Preencha a senha com 8 dígitos!")
     } else {
         formL.submit()

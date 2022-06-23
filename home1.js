@@ -24,11 +24,13 @@
     user:userInfo
     }
 
-    app.locals.idProd= 5
+    app.locals.idProd= ""
+    app.locals.cuponsArray = await db.selectCupons()
 
     const options ={
         expiration: 10800000,
         createDatabaseTable: true,
+
         schema: {
             tableName: 'session_tbl',
             columnNames: {
@@ -43,7 +45,7 @@
 
     function checkFirst(req, res, next) {
         if (!req.session.userInfo) {
-          res.redirect('/promocoes');
+            res.redirect('/promocoes');
         } else {
           next();
         }
@@ -135,13 +137,6 @@
         res.render(`login`)
     })
     
-    app.use('/logout', function (req, res) {
-        req.app.locals.info = {}
-        req.session.destroy()
-        res.clearCookie('connect.sid', { path: '/' });
-        res.redirect("/login") 
-     
-    })
     app.post("/login", async (req,res)=>{
         const {email,senha} = req.body
         const logado = await db.selectUsers(email,senha)
@@ -152,7 +147,12 @@
         userInfo[1] == 0 ? res.redirect('/') : res.redirect('/adm')
         } else {res.render("loginNaoConfere")}
     })
-
+    app.use('/logout', function (req, res) {
+        req.app.locals.info = {}
+        req.session.destroy()
+        res.clearCookie('connect.sid', { path: '/'});
+        res.redirect("/login")
+    })
     app.get("/cadastro", (req, res) => {
         res.render(`cadastro`)
     })
@@ -171,11 +171,9 @@
     app.get("/carrinho", async (req, res) => {
         const consulta = await db.selectFilmes()
         const consultaCarrinho = await db.selectCarrinho()
-        const consultaCupom = await db.selectCupons()
         res.render(`carrinho`,{
         carrinho:consultaCarrinho,
         filmes:consulta,
-        cupons:consultaCupom
         })
     })
     app.post("/carrinho", async (req, res) => {
@@ -218,7 +216,7 @@
         })
     })
 
-    app.post("/atualizaSingle", checkAuth, async (req, res) => {
+    app.post("/atualizaSingle", async (req, res) => {
         let info= req.body
         await db.updateProduto(info.titulo, info.categoria, info.ano, info.sinopse, info.imagem, info.promo, info.trailer, info.valor, info.id)
     })
@@ -240,6 +238,12 @@
             filmes:consulta,
             chamados:consultaChamados
         })
+    })
+
+    app.post("/adm/relatorioChamadas",checkAuth, async(req, res) => {
+        let info = req.body
+        await db.updateChamados(info.id)
+        res.send(info)
     })
     app.get("/adm/dashboard", checkAuth, async(req, res) => {
         const consulta = await db.selectFilmes()

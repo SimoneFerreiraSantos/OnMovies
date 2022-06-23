@@ -9,6 +9,6 @@ document.querySelector("#btContato").onclick = function () {
         alert("Preencha a senha com 8 dígitos!")
     } else {
         formL.submit()
-       // localStorage.emailUser = formL.emailContato.value
+        localStorage.emailUser = formL.emailContato.value
     }
 }

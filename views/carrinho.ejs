@@ -52,10 +52,10 @@
                         <div class="col-sm-12 mt-4 mb-4 text-white">Resumo do Pedido</div>
                         <div class="w-100" style="border: 1px solid #f58139;; border-radius: 10px;">
                             <div class="text-white">
-                                <div id="somaqtde" class="col-sm-12 mt-4"></div>
-                                <div id="total" data-total="<%=total%>" class="col-sm-12 mt-4 total">Total: R$<%=total.toFixed(2).replace('.', ',')%></div>
-                                <div class="col-sm-12">
-                                    <span id="cupom" style="display: none; color:#f58139;">Desconto: R$</span><button
+                                
+                                <div id="total" data-total="<%=total%>" name="total" class="col-sm-12 mt-4 total">Total: R$<%=total.toFixed(2).replace('.', ',')%></div>
+                                <div class="col-sm-12 resumo">
+                                    <span id="cupom" style="display: none; color:#f58139;"></span><button
                                         class="button ml-2 mb-3 pt-0 pb-0" id="apagarCupom"
                                         style="display: none; width: 30px;">-</button>
                                     <input type="text" name="cupom" id="aplicarCupom"
@@ -87,7 +87,7 @@
             $.post("/delete-carrinho",{
                 id:dataId
             }, function(data,status){
-                location.href="/carrinho"
+                // location.href="/carrinho"
             },"json") 
         }
         })
@@ -116,7 +116,7 @@
             porcentagem = parseFloat(valorProduto * Math.pow(1.07, telas - 1))
             $(e.target).parent().next().children().html(porcentagem.toFixed(2).replace('.',','))
             $(e.target).parent().next().children().attr('data-subvalor', porcentagem)
-
+            
             $(".valorProduto").each(function() { 
                 acumulaTotal += parseFloat($(this).attr('data-subvalor'))
                 $('.total').attr("data-valor", acumulaTotal)
@@ -128,7 +128,57 @@
                 total: acumulaTotal.toFixed(2),
                 id: idCarrinho
             })
+            $('#cupom').attr("style", "display: none; color:#f58139")
+            $('#apagarCupom').hide()
         })
+        $('#btAplicar').click(function insereCupom(){
+            let campoCupom = parseInt($('.resumo input[name=cupom]').val())
+            let totalAtual =  $('.total').attr("data-valor")
+            let totalInicial =  $('.total').attr("data-total")
+            let desconto = 0
+            let totalComDesconto = 0
+
+            switch (campoCupom){
+                case parseInt('<%=cuponsArray[0].codigo%>'):
+                calcularDesconto(parseFloat('<%=cuponsArray[0].desconto%>'))
+                break
+                case parseInt('<%=cuponsArray[1].codigo%>'):
+                calcularDesconto(parseFloat('<%=cuponsArray[1].desconto%>'))
+                break
+                default:
+                    alert('Cupom inválido')
+            }
+            function calcularDesconto(valorCupom){
+                if(totalAtual){
+                    desconto = totalAtual * valorCupom 
+                    totalComDesconto = totalAtual - desconto
+                } 
+                else {
+                    desconto = totalInicial * valorCupom
+                    totalComDesconto = totalInicial - desconto
+                }
+                if($('#cupom').attr("style") != 'color: rgb(245, 129, 57);'){
+                    $('#cupom').html('Desconto: R$'+ desconto.toFixed(2).replace('.',','))
+                    $('#cupom').show()
+                    $('#apagarCupom').show()
+                    $('.total').html("Total: R$" + totalComDesconto.toFixed(2).replace('.',','))
+                }else {
+                    alert("Já existe um cupom no carrinho")
+                }
+                
+            }
+            
+            $('#apagarCupom').click(function (){
+            $('#cupom').attr("style", "display: none; color:#f58139")
+            $('#apagarCupom').hide()
+            let totalAtual =  parseFloat($('.total').attr("data-valor"))
+            let totalInicial = parseFloat( $('.total').attr("data-total"))
+            totalAtual ? $('.total').html("Total: R$" + totalAtual.toFixed(2).replace('.',',')) :
+            $('.total').html("Total: R$" + totalInicial.toFixed(2).replace('.',','))
+            })
+            
+        })
+        
     })
-        </script>
-        <%- include("footer.ejs")%>
+</script>
+<%- include("footer.ejs")%>

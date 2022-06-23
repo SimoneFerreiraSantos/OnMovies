@@ -37,8 +37,8 @@ a:hover {
 
 .img-thumbnail {
     position: relative;
-    width: 70%;
-
+    max-height: 470px;
+    border: solid 1px;
 }
 
 .img-thumbnail:hover {

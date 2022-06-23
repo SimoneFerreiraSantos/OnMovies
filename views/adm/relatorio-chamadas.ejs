@@ -17,7 +17,11 @@
                     </div>
                     <hr style="background-color:#e8673f;">
                     <div id="clientesAtendidos">
-                        <% chamados.forEach((item)=>{%>
+                        <% cont = 0
+                        contAtendidos = 0
+                        chamados.forEach((item)=>{
+                            cont += 1
+                            %>
                             <div class="row text-center">
                     
                         <p class="col-sm-3"><%=item.nome%></p>
@@ -33,23 +37,47 @@
                     <div class="row justify-content-center">
                         <div class="col-sm-6">
                             <p>Próximo cliente a ser atendido:</p>
+                            <% if(chamados[0]){%>
+                            <p id="proximoCliente"><%=chamados[0].nome%></p>
+                            <%}else{%>
                             <p id="proximoCliente"></p>
+                            <%}%>
                         </div>
                         <div class="col-sm-6 mb-3 text-right">
-                            <button class=" button" id="btConfirmar">Confirmar atendimento</button>
+                            <%if(chamados[0]){%>
+                            <button class=" button" id="btConfirmar" data-id="<%=chamados[0].contato_id%>">Confirmar atendimento</button>
+                            <%}else{%>
+                                <button class=" button" id="btConfirmar">Confirmar atendimento</button>
+                            <%}%>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3 pt-2" style="border: 2px solid #e8673f; border-radius: 10px ;">
                     <p class="pt-3" style="color: #f58139; font-size: 25px;">Chamadas atendidas</p>
-                    <p id="totalAtendidos">Total:</p>
+                    <p id="totalAtendidos">Total:<%=contAtendidos%></p>
                     <hr style="background-color:#e8673f;">
                     <p style="color: #f58139; font-size: 25px;">Chamadas pendentes</p>
-                    <p id="totalPendentes">Total:</p>
+                    <%if(cont != 0){%>
+                    <p id="totalPendentes">Total: <%=cont%></p>
+                    <%} else{%>
+                    <p id="totalPendentes">Total: Todos os clientes foram atendidos</p>
+                    <%}%>
                 </div>
             </div>
 
         </section>
+        <script>
+            $().ready(function(){
+                $("#btConfirmar").click(function(){ 
+                    let dataId = $(this).attr('data-id')
+                    $.post("/adm/relatorioChamadas",{
+                    id:dataId
+                }, function(data,status){
+                    location.href="/adm/relatorioChamadas"
+                },"json") 
+                })   
+            })
+        </script>
         <%- include("../imagensRodape.ejs")%>
-<script src="../../administrador/js/relatorio-chamadas.js"></script>
+<!-- <script src="../../administrador/js/relatorio-chamadas.js"></script> -->
 <%- include("../footer.ejs")%>

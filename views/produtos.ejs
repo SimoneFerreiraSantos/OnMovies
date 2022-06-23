@@ -4,22 +4,23 @@
         </header>
         <!--Setor de conteúdo-->
         <section class="row container mt-5 mb-5">
-            <div class="col-sm-4 mt-3">
-                <iframe class="w-100" width="560" height="315" src="" title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-            <div class="col-sm-4 mt-3">
-                <iframe class="w-100" width="560" height="315" src="" title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-            <div class="col-sm-4 mt-3">
-                <iframe class="w-100" width="560" height="315" src="" title="YouTube video player" frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-            <div id="galeria" class="container mt-5 ">
+        <% n = 0
+                while(n < 3){
+                    array=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+                    nrandom=parseInt(Math.random() * array.length)
+                    %>
+                    <% if(filmes.indexOf(nrandom)==-1){ 
+                        filmes.push(nrandom)
+                        n++%>
+                        <div class="col-sm-4 mt-3">
+                            <iframe class="w-100" width="560" height="315" src="<%=filmes[nrandom].trailer%>" title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                   
+                    <%}%>
+                    <%}%>
+        </section>
                 <div class="row">
 
                     <%filmes.forEach((item,n)=>{ %>
@@ -52,7 +53,7 @@
             </div>
         </section>
         <%- include("imagensRodape.ejs")%>
-<script src="../js/produtos.js"></script>
+<!-- <script src="../js/produtos.js"></script> -->
 <script  type="text/javascript">
     $().ready(function(){
         $(".bt-carrinho").click(function(){

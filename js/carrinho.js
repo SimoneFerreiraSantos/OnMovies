@@ -38,6 +38,8 @@ let carrinho = {
             this.calculaTotal(novoValorProduto)
             //Remove o produto do carrinho
             totalqtde == 0 ? tabela.innerHTML = "<p>O carrinho está vazio :(</p>" : el.parentNode.parentNode.remove(el.parentNode.id)
+            document.querySelector("#cupom").style.display = 'none'
+            document.querySelector("#apagarCupom").style.display = 'none'
         }
     },
     esvaziarCarrinho: function (el) {
@@ -52,7 +54,10 @@ let carrinho = {
             this.filmes = ""
             this.novoValorProduto = ""
             //Zera o valor do carrinho
+          
             this.calculaTotal(this.novoValorProduto)
+            document.querySelector("#cupom").style.display = 'none'
+            document.querySelector("#apagarCupom").style.display = 'none'
         }
     },
     multiplicarTelas: function (inputTelas, produtoAtual, indexObjeto) {
@@ -65,6 +70,8 @@ let carrinho = {
         //Atualiza o campo "Preço" do produto no html
         let divPrecoProduto = document.querySelectorAll('.preco')
         divPrecoProduto[indexObjeto].innerHTML = porcentagemTelas.toFixed(2).replace(".", ",")
+        document.querySelector("#cupom").style.display = 'none'
+        document.querySelector("#apagarCupom").style.display = 'none'
     },
     calculaTotal: function (objetoFilmes) {
         //Zera o valor total atual do carrinho

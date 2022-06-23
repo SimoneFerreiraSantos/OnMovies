@@ -76,14 +76,14 @@
                     $.post('/atualizaSingle',
                         {
                             id: '<%=id%>',
-                            titulo: $('#form-produto input[name=titulo]').val(),
-                            categoria: $('#form-produto input[name=categoria]').val(),
-                            ano: $('#form-produto input[name=ano]').val(),
-                            sinopse: $('#form-produto textarea[name=sinopse]').val(),
-                            imagem: $('#form-produto input[name=imagem]').val(),
-                            promo: $('#form-produto input[name=promo]').val(),
-                            trailer: $('#form-produto input[name=trailer]').val(),
-                            valor: $('#form-produto input[name=valor]').val()
+                            titulo: $('#formAtualizaProduto input[name=titulo]').val(),
+                            categoria: $('#formAtualizaProduto input[name=categoria]').val(),
+                            ano: $('#formAtualizaProduto input[name=ano]').val(),
+                            sinopse: $('#formAtualizaProduto textarea[name=sinopse]').val(),
+                            imagem: $('#formAtualizaProduto input[name=imagem]').val(),
+                            promo: $('#formAtualizaProduto input[name=promo]').val(),
+                            trailer: $('#formAtualizaProduto input[name=trailer]').val(),
+                            valor: $('#formAtualizaProduto input[name=valor]').val()
                         }, function (data, status) {
 
                         }, 'json')

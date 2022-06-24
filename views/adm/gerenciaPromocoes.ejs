@@ -25,10 +25,11 @@
                         </select>
                     </div>
                     <div>
-                        <button class="button" type="submit">Confirmar</button>
+                        <button class="button" id="confirmar" type="button" data-toggle="modal" data-target="#modal-mensagem">Confirmar</button>
                     </div>
                 </fieldset>
             </form>
+            <%- include("../modal.ejs")%>
         </section>
-<!-- <script src="../../adm/js/gerenciaPromocoes.js"></script> -->
+<script src="../../administrador/js/gerenciaPromocoes.js"></script>
 <%- include("../footer.ejs")%>

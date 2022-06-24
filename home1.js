@@ -24,7 +24,7 @@
     user:userInfo
     }
 
-    app.locals.idProd= ""
+    app.locals.idProd= 5
     app.locals.cuponsArray = await db.selectCupons()
 
     const options ={

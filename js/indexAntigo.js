@@ -46,7 +46,7 @@ document.querySelectorAll('.img-thumbnail').forEach(item => {
 recuperaFilmes.forEach((item) => {
     let divCol = document.createElement('div')
     divCol.className = 'col-sm-4 mb-4'
-    divCol.innerHTML = `<a href="/singlePreferencia"> <img class="img-thumbnail w-70 preferencias" src="${item.img}"></a>`
+    divCol.innerHTML = `<a href="./singlePreferencia.html"> <img class="img-thumbnail w-70 preferencias" src="${item.img}"></a>`
     divRodape.append(divCol)
 })
 

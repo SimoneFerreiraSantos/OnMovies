@@ -1,31 +1,38 @@
 var formC = document.forms.formContato
-//Verifica se o localStorage tem a key "Chamados" e adiciona no array
-let chamadosTotais = []
-if (localStorage.getItem("Chamados") != null) {
-    chamadosTotais = ((JSON.parse(localStorage.getItem("Chamados"))))
+
+const tel = formC.telefoneContato
+tel.addEventListener('keypress', (e) => mascaraTelefone(e.target.value)) // Dispara quando digitado no campo
+tel.addEventListener('change', (e) => mascaraTelefone(e.target.value)) // Dispara quando autocompletado o campo
+
+const mascaraTelefone = (valor) => {
+    valor = valor.replace(/\D/g, "")
+    valor = valor.replace(/^(\d{2})(\d)/g, "($1) $2")
+    valor = valor.replace(/(\d)(\d{4})$/, "$1-$2")
+    tel.value = valor // Insere o(s) valor(es) no campo
 }
 document.querySelector("#btContato").onclick = function () {
     if (formC.nomeContato.value == "") {
-        alert("Preencher o nome!")
+        $(".mensagem").text('Preencha o nome!');
+        $("#modal-mensagem").show();
     } else if (formC.emailContato.value == "") {
-        alert("Preencha o e-mail!")
+        $(".mensagem").text('Preencha o e-mail!');
+        $("#modal-mensagem").show();
     } else if (!formC.emailContato.value.includes('.', '@')) {
-        alert("Preencha um e-mail válido");
+        $(".mensagem").text('Preencha um e-mail válido!');
+        $("#modal-mensagem").show();
     } else if (formC.telefoneContato.value == "") {
-        alert("Preencha o telefone!");
+        $(".mensagem").text('Preencha o telefone!');
+        $("#modal-mensagem").show();
     } else if (formC.assunto.value == "") {
-        alert("Preencha o assunto!")
+        $(".mensagem").text('Preencha o assunto!');
+        $("#modal-mensagem").show();
     } else if (formC.comentario.value == "") {
-        alert("Preencha o comentário!")
+        $(".mensagem").text('Preencha o comentário!');
+        $("#modal-mensagem").show();
     } else if (formC.chamado.checked == true) {
         formC.submit()
-        //Cria uma id para cada chamado, envia as informações para o localStorage
-        let chamados = []
-        let idChamado = parseInt(Math.random() * 90000) + 10000
-        chamados.push(idChamado, formC.nomeContato.value, formC.emailContato.value, formC.telefoneContato.value, formC.assunto.value)
-        chamadosTotais.push(chamados)
-        localStorage.setItem('Chamados', JSON.stringify(chamadosTotais))
-        alert("Seu chamado foi aberto e em breve entraremos em contato")
+        $(".mensagem").text('Seu chamado foi aberto e em breve entraremos em contato!');
+        $("#modal-mensagem").show();
     } else {
         formC.submit()
     }

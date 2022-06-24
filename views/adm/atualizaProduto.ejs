@@ -3,7 +3,7 @@
         <!-- =============== Conteúdo ================== -->
 
         <section class="container ">
-            <h2 class="text-center">Editar Produto - <%=id%>
+            <h2 class="text-center">Editar Produto - <%=produtoDaVez[0].titulo%>
             </h2>
             <form class="w-50 mx-auto p-3 mt-4 mb-5" style="border: 2px solid #e8673f; border-radius: 12px"
                 id="formAtualizaProduto" method="post" action="">
@@ -61,11 +61,12 @@
                         <input type="number" class="form-control col-sm-2" name="valor" id=""
                             value="<%=produtoDaVez[0].valor%>">
                     </div>
-                    <button class="button mt-5 bt-prod" type="button">Confirmar</button>
+                    <button class="button mt-5 bt-prod" type="button" data-toggle="modal" data-target="#modal-mensagem">Confirmar</button>
                     <button type="button" class="button mt-5 bt-voltar">Voltar</button>
 
                 </fieldset>
             </form>
+            <%- include("../modal.ejs")%>
         </section>
            
         <!-- =============== Fim do Conteúdo ================== -->
@@ -94,5 +95,5 @@
                 })
             })
         </script>
-        <script src="../../administrador/js/cadastroProduto.js"></script>
+        <script src="../../administrador/js/editarProduto.js"></script>
         <%- include("../footer.ejs")%>

@@ -2,13 +2,17 @@
 var formL = document.forms.formLogin
 document.querySelector("#btContato").onclick = function () {
     if (formL.email.value == "") {
-        alert("Preencha o e-mail!")
+        $(".mensagem").text('Preencha o e-mail!');
+        $("#modal-mensagem").show();
     } else if (!formL.email.value.includes('.', '@')) {
-        alert("Preencha um e-mail válido");
-    } else if (formL.senha.value == "") {
-        alert("Preencha a senha com 8 dígitos!")
+        $(".mensagem").text('Preencha um e-mail válido!');
+        $("#modal-mensagem").show();
+    } else if (formL.senha.value.length != 8) {
+        $(".mensagem").text('Preencha a senha com 8 dígitos!');
+        $("#modal-mensagem").show();
     } else {
+        $(".mensagem").text('');
+        $("#modal-mensagem").hide();
         formL.submit()
-        localStorage.emailUser = formL.emailContato.value
     }
 }

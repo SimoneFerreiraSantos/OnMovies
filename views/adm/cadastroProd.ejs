@@ -47,9 +47,10 @@
                         <label class="col-sm-2">Preço:<span style="color:red ;">*</span></label>
                         <input class="form-control col-sm-2" name="preco" type="number"value="10.00">
                     </div>
-                    <button class="button" id="btCadastro" type="button">Salvar</button>
+                    <button class="button" id="btCadastro" type="button" data-toggle="modal" data-target="#modal-mensagem">Salvar</button>
     </fieldset>
     </form>
+    <%- include("../modal.ejs")%>
     </section>
     <script src="../../administrador/js/cadastro-prod.js"></script>
  <%- include("../footer.ejs")%>

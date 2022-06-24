@@ -1,18 +1,26 @@
 var formC = document.forms.formCadastro
 document.querySelector("#btCadastro").onclick = function () {
     if (formC.nome.value == "") {
-        alert("Preenchar o nome!")
+        $(".mensagem").text('Preencha o nome!');
+        $("#modal-mensagem").show();
     } else if (formC.email.value == "") {
-        alert("Preencha o email!")
+        $(".mensagem").text('Preencha o e-mail!');
+        $("#modal-mensagem").show();
     } else if (!formC.email.value.includes('.', '@')) {
-        alert("Preencha um e-mail válido");
+        $(".mensagem").text('Preencha um e-mail válido');
+        $("#modal-mensagem").show();
     } else if (formC.senha.value.length != 8) {
-        alert("Preencha a senha de 8 dígitos!")
+        $(".mensagem").text('Preencha a senha com 8 dígitos!');
+        $("#modal-mensagem").show();
     } else if (formC.confirmarSenha.value.length != 8) {
-        alert("Preencha a confirmação de senha com 8  dígitos!")
+        $(".mensagem").text('Preencha a confirmação de senha com 8 dígitos!');
+        $("#modal-mensagem").show();
     } else if (formC.confirmarSenha.value != formC.senha.value) {
-        alert("As senhas devem ser iguais");
+        $(".mensagem").text('As senhas devem ser iguais');
+        $("#modal-mensagem").show();
     } else {
+        $(".mensagem").text('');
+        $("#modal-mensagem").hide();
         formC.submit()
     }
 }

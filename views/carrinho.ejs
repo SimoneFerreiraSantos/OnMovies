@@ -41,7 +41,7 @@
                                         </p>
                                     </div>
                                     <div class="col-sm-3 mt-4 mb-4">
-                                        <button class="button bt-excluir" data-id="<%=item.carrinho_id%>">Remover</button>
+                                        <button class="button bt-excluir" data-id="<%=item.carrinho_id%> " data-toggle="modal" data-target="#modal-confirm">Remover</button>
                                     </div>
                                 </div>
                                 <% }) %>
@@ -55,18 +55,19 @@
                                 
                                 <div id="total" data-total="<%=total%>" name="total" class="col-sm-12 mt-4 total">Total: R$<%=total.toFixed(2).replace('.', ',')%></div>
                                 <div class="col-sm-12 resumo">
-                                    <span id="cupom" style="display: none; color:#f58139;"></span><button
+                                    <span id="cupom" style="display: none; color:#f58139;" ></span><button
                                         class="button ml-2 mb-3 pt-0 pb-0" id="apagarCupom"
-                                        style="display: none; width: 30px;">-</button>
+                                        style="display: none; width: 30px;" >-</button>
                                     <input type="text" name="cupom" id="aplicarCupom"
                                         style="border: 1px solid #f58139; border-radius: 3px; width:150px; height: 45px;">
-                                    <button class="button pt-2" id="btAplicar">Aplicar</button>
+                                    <button class="button pt-2" id="btAplicar" data-toggle="modal" data-target="#modal-mensagem">Aplicar</button>
                                 </div>
                                 <div class="col-sm-12 mt-4">
                                     <button class="button" id="btContato" type="button">Continuar</button>
                                 </div>
                                 <div class="col-sm-12 mt-4 mb-2"><a href="/produtos">Adicionar mais produtos</a></div>
-                                <div id="esvaziarCarrinho" data-total="<%=total%>" class="col-sm-12 mb-4"><a href="#">Esvaziar carrinho</a>
+                                 <div id="esvaziarCarrinho" data-total="<%=total%>" class="col-sm-12 mb-4" data-toggle="modal" data-target=""><a href="#">Esvaziar carrinho</a>
+                            
                                 </div>
                             </div>
                         </div>
@@ -74,38 +75,45 @@
                 </div>
             </div>
         </section>
-        
+        <%- include("modal.ejs")%>
+        <%- include("modalConfirm.ejs")%>
+        <%- include("modalConfirmAll.ejs")%>
         <%- include("imagensRodape.ejs")%>
         <!-- <script src="../js/carrinho.js"></script> -->
         <script>
         $().ready(function(){
             
         $(".bt-excluir").click(function(){ 
-            let confirmItem = confirm("Deseja excluir o filme do carrinho?")
-            if (confirmItem) {
-            let dataId=$(this).attr("data-id")  
+            $(".mensagem").text('Deseja excluir o produto?');
+            $("#modal-confirm").show();
+            let dataId=$(this).attr("data-id")
+            $('.confirmarBotao').click(function(){
             $.post("/delete-carrinho",{
                 id:dataId
             }, function(data,status){
                 location.href="/carrinho"
             },"json") 
-        }
         })
+    })
+        
         $("#esvaziarCarrinho").click(function(){
             let total = $(this).attr("data-total")
             if (total == 0 ){
-                alert ('O carrinho já está vazio')
+                $("#esvaziarCarrinho").attr('data-target',"#modal-mensagem")
+                $(".mensagem").text('O carrinho já está vazio!');
+                $("#modal-mensagem").show();
             }
             else {
-            let confirmAll = confirm("Deseja esvaziar o carrinho?")
-            if(confirmAll){
+            $("#esvaziarCarrinho").attr('data-target',"#modal-confirmAll")
+            $(".mensagem").text('Deseja excluir todos os produtos?');
+            $('.confirmarBotaoAll').click(function(){
             $.post("/delete-all-carrinho",
                 function (data,status){
                     location.href="/carrinho"
                 })
-            }
+            })
         }
-        })
+    })
         $('.telas').change(function(e){
             let telas = $(e.target).val()
             let idCarrinho = $(e.target).parent().parent().attr('data-id')
@@ -146,14 +154,19 @@
                 calcularDesconto(parseFloat('<%=cuponsArray[1].desconto%>'))
                 break
                 default:
-                    alert('Cupom inválido')
+                $(".mensagem").text('Cupom inválido!');
+                $("#modal-mensagem").show();
             }
             function calcularDesconto(valorCupom){
                 if(totalAtual){
+                    $(".mensagem").text('Cupom adicionado com sucesso!');
+                    $("#modal-mensagem").show();
                     desconto = totalAtual * valorCupom 
                     totalComDesconto = totalAtual - desconto
                 } 
                 else {
+                    $(".mensagem").text('Cupom adicionado com sucesso!');
+                    $("#modal-mensagem").show();
                     desconto = totalInicial * valorCupom
                     totalComDesconto = totalInicial - desconto
                 }
@@ -163,7 +176,8 @@
                     $('#apagarCupom').show()
                     $('.total').html("Total: R$" + totalComDesconto.toFixed(2).replace('.',','))
                 }else {
-                    alert("Já existe um cupom no carrinho")
+                    $(".mensagem").text('Já existe um cupom no carrinho!');
+                    $("#modal-mensagem").show();
                 }
                 
             }
@@ -176,9 +190,7 @@
             totalAtual ? $('.total').html("Total: R$" + totalAtual.toFixed(2).replace('.',',')) :
             $('.total').html("Total: R$" + totalInicial.toFixed(2).replace('.',','))
             })
-            
         })
-        
     })
 </script>
 <%- include("footer.ejs")%>

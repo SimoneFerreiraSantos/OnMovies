@@ -1,11 +1,25 @@
-
-        <nav class="navbar mt-4 mb-3 justify-content-around" style="background-color: var(--orange);border-radius: 4px;">
-            <a class="navlink" href="/adm/cadastroProdutos">CADASTRO PRODUTOS</a>
-            <a class="navlink" href="/adm/cadastro">CADASTRO ADMINISTRADOR</a>
-            <a class="navlink" href="/adm/dashboard">RELATÓRIO COMERCIAL</a>
-            <a class="navlink" href="/adm/relatorioChamadas">RELATÓRIO CHAMADAS</a>
-            <a class="navlink" href="/gerenciaPromocoes">GERENCIAR PRODUTOS</a>
-            <a class="navlink" href="/adm/relatorioProdutos">RELATÓRIO PRODUTOS</a>
-            <a class="navlink" href="/">USUÁRIO</a>
-        </nav>
-    </header>
+<nav class="navbar mt-4 mb-3 justify-content-around" style="background-color: var(--orange);border-radius: 4px;">
+  <div class="dropdown">
+    <a class="dropdown-toggle" href="#" role="button" id="link" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+      CADASTROS
+    </a>
+    <div class="dropdown-menu" aria-labelledby="link">
+      <a class="dropdown-item" href="/adm/cadastro">ADMINISTRADOR</a>
+      <a class="dropdown-item" href="/adm/cadastroProdutos">PRODUTOS</a>
+    </div>
+  </div>
+  <a class="navlink" href="/gerenciaPromocoes">GERENCIAR PROMOÇÕES</a>
+  <div class="dropdown">
+    <a class="dropdown-toggle" href="#" role="button" id="menuLink" data-toggle="dropdown" aria-haspopup="true"
+      aria-expanded="false">
+      RELATÓRIOS
+    </a>
+    <div class="dropdown-menu" aria-labelledby="menuLink">
+      <a class="dropdown-item" href="/adm/relatorioChamadas">CHAMADAS</a>
+      <a class="dropdown-item" href="/adm/relatorioProdutos">PRODUTOS</a>
+    </div>
+  </div>
+  <a class="navlink" href="/">USUÁRIO</a>
+</nav>
+</header>

@@ -24,7 +24,7 @@ for (var i = 0; i < videos.length; i++) {
     var imagem = '<img src="../imagens/' + videos[i][1] + '" class="img-thumbnail w-100"/>'
 
     var descricao = '<div class="col-sm-5 p-0">' + ano + categoria + sinopse + '</div>'
-    var ancoraImg = '<a href="/singleDeProduto">' + imagem + '</a>'
+    var ancoraImg = '<a href="./singleDeProduto.html">' + imagem + '</a>'
 
     conteudo.innerHTML += '<h3 class="col-sm-12 mt-4 mb-2">' + videos[i][0] + '</h3>'
     conteudo.innerHTML += '<div class="col-sm-7">' + ancoraImg + '</div>'

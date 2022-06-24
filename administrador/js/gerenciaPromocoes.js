@@ -1,10 +1,12 @@
-let botaoConfirmar = document.querySelector(".button")
-let form= document.forms.formPromo
+let botaoConfirmar = document.querySelector("#confirmar")
+let form = document.forms.formPromo
 botaoConfirmar.onclick= ()=>{
-    if(form.promo_sim.checked == true || form.promo_nao.checked == true){
-        alert("Filme atualizado com sucesso!")
-        form.submit()
+    if(form.valor.value == ""){
+        $(".mensagem").text('Preencha o preço!');
+        $("#modal-mensagem").show();
     }else{
-        alert("Selecione ao menos uma opção!")
+        $(".mensagem").text('');
+        $("#modal-mensagem").hide();
+        form.submit()
     }
 }

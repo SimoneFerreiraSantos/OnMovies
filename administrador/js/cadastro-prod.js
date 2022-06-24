@@ -1,20 +1,29 @@
 var formC = document.forms.formCadastro
 document.querySelector("#btCadastro").onclick = function () {
     if (formC.nomeFilme.value == "") {
-        alert("Preenchar o nome do filme!")
+        $(".mensagem").text('Preencha o nome do filme!');
+        $("#modal-mensagem").show();
     } else if (formC.anoFilme.value == "") {
-        alert("Preencha o ano do filme!")
+        $(".mensagem").text('Preencha o ano!');
+        $("#modal-mensagem").show();
     } else if (formC.categoria.value == "") {
-        alert("Preencha a categoria do filme!")
+        $(".mensagem").text('Preencha a categoria do filme!');
+        $("#modal-mensagem").show();
     } else if (formC.capaFilme.value == "") {
-        alert("Preencha a capa do filme!")
+        $(".mensagem").text('Preencha a imagem da capa do filme');
+        $("#modal-mensagem").show();
     } else if (formC.descricao.value == "") {
-        alert("Preencha a sinopse!");
+        $(".mensagem").text('Preencha a sinopse');
+        $("#modal-mensagem").show();
     } else if (formC.trailer.value == "") {
-        alert("Preencha o trailer!");
+        $(".mensagem").text('Preencha o trailer!');
+        $("#modal-mensagem").show();
     }else if (formC.preco.value == "") {
-        alert("Preencha o preço!");
+        $(".mensagem").text('Preencha o preço!');
+        $("#modal-mensagem").show();
     }else {
+        $(".mensagem").text('');
+        $("#modal-mensagem").hide();
         formC.submit()
     }
 }

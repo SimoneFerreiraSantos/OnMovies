@@ -29,10 +29,11 @@
                         <option value="Master">Master</option>
                     </Select>
                     <div>
-                        <button class="button" id="btCadastro" type="button">Salvar</button>
+                        <button class="button" id="btCadastro" type="button" data-toggle="modal" data-target="#modal-mensagem">Salvar</button>
                     </div>
                 </fieldset>
             </form>
+            <%- include("../modal.ejs")%>
         </section>
        
 <script src="../../administrador/js/cadastro-adm.js"></script>

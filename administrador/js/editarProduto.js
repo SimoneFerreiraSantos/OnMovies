@@ -1,18 +1,26 @@
 var formC = document.forms.formAtualizaProduto
 document.querySelector(".bt-prod").onclick = function () {
     if (formC.titulo.value == "") {
-        alert("Preenchar o nome do filme!")
+        $(".mensagem").text('Preencha o nome do filme!');
+        $("#modal-mensagem").show();
     } else if (formC.ano.value == "") {
-        alert("Preencha o ano do filme!")
+        $(".mensagem").text('Preencha o nome do ano!');
+        $("#modal-mensagem").show();
     } else if (formC.categoria.value == "") {
-        alert("Preencha a categoria do filme!")
+        $(".mensagem").text('Preencha a categoria!');
+        $("#modal-mensagem").show();
     } else if (formC.sinopse.value == "") {
-        alert("Preencha a sinopse!");
+        $(".mensagem").text('Preencha a sinopse!');
+        $("#modal-mensagem").show();
     } else if (formC.trailer.value == "") {
-        alert("Preencha o trailer!");
+        $(".mensagem").text('Preencha o trailer!');
+        $("#modal-mensagem").show();
     }else if (formC.valor.value == "") {
-        alert("Preencha o preço!");
+        $(".mensagem").text('Preencha o preço!');
+        $("#modal-mensagem").show();
     }else {
+        $(".mensagem").text('');
+        $("#modal-mensagem").hide();
         formC.submit()
     }
 }

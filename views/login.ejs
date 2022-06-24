@@ -15,13 +15,14 @@
                         <input class="form-control" name="senha" id="senhaContato" type="password" maxlength="8">
                     </div>
                     <div class="form-group">
-                        <button class="button" id="btContato" type="button">Confirmar</button>
+                        <button class="button" id="btContato" type="button" data-toggle="modal" data-target="#modal-mensagem">Confirmar</button>
                     </div>
                 </fieldset>
             </form>
             <div class="text-center mt-4 text-uppercase">
                 <a href="/cadastro">Cadastre-se agora</a>
             </div>
+            <%- include("modal.ejs")%>
         </section>
 <script src="../js/login.js"></script>
 <%- include("footer.ejs")%>

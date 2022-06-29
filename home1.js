@@ -44,7 +44,7 @@
     await db.makeSession(app,options,session)
 
     function checkFirst(req, res, next) {
-        if (!req.session.userInfo) {
+        if (!req.session.userInfo || userInfo == '') {
             res.redirect('/promocoes');
         } else {
           next();
@@ -52,7 +52,7 @@
       }
     
      function checkAuth(req, res, next) {
-        if (!req.session.userInfo || req.session.userInfo[1] == 0) {
+        if (!req.session.userInfo || req.session.userInfo[1] == 0 || userInfo == '') {
           res.render('usuarioNaoAutorizado');
         } else {
           next();
@@ -60,14 +60,14 @@
       }
 
     app.get("/", checkFirst, async (req, res) => {
-        const consulta = await db.selectFilmes()
+        const consulta = await db.selectFilmesASC()
         res.render(`home`, {
             filmes: consulta
         })
     })
 
     app.post("/", checkFirst, async (req, res) => {
-        const consulta = await db.selectFilmes()
+        const consulta = await db.selectFilmesASC()
         res.render(`home`, {
             filmes: consulta
         })
@@ -79,6 +79,7 @@
             filmes: consulta
         })
     })
+
     app.get("/contato", (req, res) => {
         res.render(`contato`)
     })
@@ -92,7 +93,8 @@
             telefone:info.telefoneContato,
             assunto:info.assunto,
             comentario:info.comentario,
-            chamado:info.chamado
+            chamado:info.chamado,
+            atendido: 0
         })
         res.redirect(`/promocoes`)
     })
@@ -114,25 +116,14 @@
         })
     })
 
-    app.get("/gerenciaPromocoes", checkAuth, async (req, res) => {
-        const consulta = await db.selectFilmes()
-        let qs = url.parse(req.url, true).query
-        await db.updatePromocoes(qs.promo, qs.valor, qs.id)
-        if (!qs.promo) {
-            res.render(`adm/gerenciaPromocoes`, {
-                filmes: consulta,
-            })
-        } else {
-            res.redirect('/promocoes')
-        }
-    })
-
     app.get("/singlePreferencia", (req, res) => {
         res.render(`singlePreferencia`)
     })
+
     app.get("/perfilUsuario",checkFirst, (req, res) => {
-        res.render(`perfil-usuario`)
+        res.render(`perfilUsuario`)
     })
+
     app.get("/login", (req, res) => {
         res.render(`login`)
     })
@@ -141,7 +132,7 @@
         const {email,senha} = req.body
         const logado = await db.selectUsers(email,senha)
         if(logado != ""){
-        req.session.userInfo = [email, logado[0].adm]
+        req.session.userInfo = [email, logado[0].adm, logado[0].usuario_id]
         userInfo = req.session.userInfo
         req.app.locals.info.user= userInfo
         userInfo[1] == 0 ? res.redirect('/') : res.redirect('/adm')
@@ -168,17 +159,20 @@
         })
         res.redirect("/produtos")
     })
-    app.get("/carrinho", async (req, res) => {
+
+    app.get("/carrinho", checkFirst, async (req, res) => {
         const consulta = await db.selectFilmes()
-        const consultaCarrinho = await db.selectCarrinho()
+        const consultaCarrinho = await db.selectCarrinho(req.session.userInfo[2])
         res.render(`carrinho`,{
         carrinho:consultaCarrinho,
         filmes:consulta,
         })
     })
-    app.post("/carrinho", async (req, res) => {
+
+    app.post("/carrinho", checkFirst, async (req, res) => {
         const info = req.body
         await db.insertCarrinho({
+            usuario:req.session.userInfo[2],
             filme: info.filme,
             valor: info.valor,
             qtdTelas: info.qtdTelas,            
@@ -186,23 +180,60 @@
         })
         res.send(info)
     })
-    app.post("/delete-carrinho", async (req, res) => {
+
+    app.post("/deleteCarrinho", async (req, res) => {
         const info = req.body
         await db.deleteCarrinho(info.id)
         res.send(info)
     })
-    app.post("/delete-all-carrinho", async (req, res) => {
+
+    app.post("/deleteAllCarrinho", async (req, res) => {
         const info = req.body
         await db.deleteAllCarrinho()
         res.send(info)
     })
 
-    app.post("/atualiza-carrinho", async (req, res) => {
+    app.post("/atualizaCarrinho", async (req, res) => {
         let info = req.body
         await db.updateCarrinho(info.qtdTelas, info.subtotal, info.total, info.id)
         res.send(info)
     })
 
+    app.get("/cupons", checkFirst, async (req, res) => {
+        const consulta = await db.selectCupons()
+        res.render(`cupons`, {
+            cupons: consulta
+        })
+    })
+
+    app.get("/adm", checkAuth, (req, res) => {
+        res.render(`adm/index`,{
+            titulo: "Início"
+        })
+    })
+
+    app.post("/adm", checkAuth, (req, res) => {
+        res.render(`adm/index`,{
+            titulo: "Início"
+        })
+    })
+
+    app.get("/adm/relatorioChamadas",checkAuth, async(req, res) => {
+        const consulta = await db.selectFilmes()
+        const consultaChamados = await db.selectChamados()
+        const consultaChamadosAtendidos = await db.selectChamadosAtendidos()
+        res.render(`adm/relatorio-chamadas`,{
+            filmes:consulta,
+            chamados:consultaChamados,
+            chamadosAtendidos:consultaChamadosAtendidos
+        })
+    })
+
+    app.post("/atualizaSingle", async (req, res) => {
+        let info= req.body
+        await db.updateProduto(info.titulo, info.categoria, info.ano, info.sinopse, info.imagem, info.promo, info.trailer, info.valor, info.id)
+    })
+    
     app.post("/atualizaFormProduto", checkAuth, (req, res) => {
         req.app.locals.idProd= req.body.id
         res.redirect('/adm/relatorioProdutos')
@@ -216,41 +247,32 @@
         })
     })
 
-    app.post("/atualizaSingle", async (req, res) => {
-        let info= req.body
-        await db.updateProduto(info.titulo, info.categoria, info.ano, info.sinopse, info.imagem, info.promo, info.trailer, info.valor, info.id)
-    })
-
-    app.get("/adm", checkAuth, (req, res) => {
-        res.render(`adm/index`,{
-            titulo: "Início"
-        })
-    })
-    app.post("/adm", checkAuth, (req, res) => {
-        res.render(`adm/index`,{
-            titulo: "Início"
-        })
-    })
-    app.get("/adm/relatorioChamadas",checkAuth, async(req, res) => {
-        const consulta = await db.selectFilmes()
-        const consultaChamados = await db.selectChamados()
-        res.render(`adm/relatorio-chamadas`,{
-            filmes:consulta,
-            chamados:consultaChamados
-        })
-    })
-
     app.post("/adm/relatorioChamadas",checkAuth, async(req, res) => {
         let info = req.body
         await db.updateChamados(info.id)
         res.send(info)
     })
+
     app.get("/adm/dashboard", checkAuth, async(req, res) => {
         const consulta = await db.selectFilmes()
         res.render(`adm/dashboard`,{
             filmes:consulta
         })
     })
+
+    app.get("/adm/gerenciaPromocoes", checkAuth, async (req, res) => {
+        const consulta = await db.selectFilmes()
+        let qs = url.parse(req.url, true).query
+        await db.updatePromocoes(qs.promo, qs.valor, qs.id)
+        if (!qs.promo) {
+            res.render(`adm/gerenciaPromocoes`, {
+                filmes: consulta,
+            })
+        } else {
+            res.redirect('/promocoes')
+        }
+    })
+
     app.get("/adm/cadastro", checkAuth,(req, res) => {
         res.render(`adm/cadastroAdm`,{
             titulo: "Cadastro Adm"
@@ -273,6 +295,7 @@
             titulo: "Cadastro Produto"
         })
     })
+
     app.get("/adm/relatorioProdutos", checkAuth, async (req, res) => {
         const consulta = await db.selectFilmes()
         res.render(`adm/relatorioProdutos`,{
@@ -280,6 +303,7 @@
             filmes: consulta
         })
     })
+
     app.post("/adm/cadastroProdutos",checkAuth, async (req, res) => {
         const info = req.body
         await db.insertFilmes({
@@ -296,9 +320,7 @@
             res.redirect('/produtos')
         } 
     })
-    // app.get("/adm/login", (req, res) => {
-    //     res.render(`adm/loginAdm`)
-    // })
+    
     app.listen(port, () => {
         console.log("servidor rodando")
     })

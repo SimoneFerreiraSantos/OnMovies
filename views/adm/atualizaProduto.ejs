@@ -1,7 +1,5 @@
 <%- include("headerAdm.ejs")%>
-    <%- include("navAdm.ejs")%>
-        <!-- =============== Conteúdo ================== -->
-
+<%- include("navAdm.ejs")%>
         <section class="container ">
             <h2 class="text-center">Editar Produto - <%=produtoDaVez[0].titulo%>
             </h2>
@@ -46,11 +44,6 @@
                         </br><input type="radio" value="1" id="promo_sim" name="promo"> Sim
                         <input type="radio" value="0" checked id="promo_nao" name="promo"> Não
                     </div>
-                    <!-- <div>
-                        <label>Imagem:</label>
-                        <input class="form-control" name="imagem" id="" value="<%=produtoDaVez[0].imagem%>">
-                        <img src="/imagens/<%=produtoDaVez[0].imagem%>" />
-                    </div> -->
                     <div>
                         <label>Trailer:<span style="color:red ;">*</label>
                         <input class="form-control" name="trailer" id="" value="<%=produtoDaVez[0].trailer%>"
@@ -68,9 +61,7 @@
             </form>
             <%- include("../modal.ejs")%>
         </section>
-           
-        <!-- =============== Fim do Conteúdo ================== -->
-        <script>
+    <script>
             $().ready(function () {
 
                 $('.bt-prod').click(function () {
@@ -94,6 +85,6 @@
                     location.href = '/adm'
                 })
             })
-        </script>
-        <script src="../../administrador/js/editarProduto.js"></script>
-        <%- include("../footer.ejs")%>
+    </script>
+<script src="../../administrador/js/editarProduto.js"></script>
+<%- include("../footer.ejs")%>

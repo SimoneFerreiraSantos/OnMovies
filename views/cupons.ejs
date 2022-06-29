@@ -1,0 +1,35 @@
+<%- include("header.ejs")%>
+<%- include("nav.ejs")%>
+<section class="container">
+    <div class="row">
+        <h2 class="col-sm-6 mb-3">Cupons disponíveis</h2>
+        <hr style="background-color:#f58139;width: 1500px;">
+    </div>
+    <%cupons.forEach((item,n)=>{%>
+    <div class="row">
+        <div class="col-sm-6" data-codigo="<%=item.codigo%>">
+            <img src="../imagens/cupom.png" width="50px">
+            <img src="../imagens/stars.gif" width="100px" style=" position: relative;left:-55px;">
+            <span class="cupom pr-3 text-white pl-0"><%=item.desconto.replace("0.","")+ '% de desconto' %></span>
+            <input type="text" class="cupom" onKeyPress="return false" readonly value="<%=item.codigo%>"><br>
+            <small class="copiado" data-codigo="<%=item.codigo%>" style="color:#f58139; display: none;">copiado!</small>
+        </div>
+        <div class="col-sm-4 mt-4">
+            <button type="button" data-codigo="<%=item.codigo%>"class="button copiar">Copiar</button><br>
+        </div>
+        <hr style="background-color:#f58139;width: 1500px;">
+    </div>
+    <% }) %>
+</section>
+<script>
+     $().ready(function(){  
+     $(".copiar").click(function(){
+            let cupom = $(this).parent().prev().children('input')
+            let copiado = $(this).parent().prev().children('small')
+            cupom.select();
+            document.execCommand('copy');
+            copiado.show();
+        })
+    })
+</script>
+<%- include("footer.ejs")%>

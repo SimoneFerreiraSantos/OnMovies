@@ -37,6 +37,12 @@ async function selectFilmes(){
     return rows
 }
 
+async function selectFilmesASC(){
+    const conectado = await conecta()
+    const [rows] = await conectado.query("SELECT * FROM projeto_video.filmes ORDER BY filmes_id")
+    return rows
+}
+
 async function selectSingle(id){
     const conectado = await conecta()
     const values = [id]
@@ -58,7 +64,13 @@ async function selectUsers(email,senha){
 
 async function selectChamados(){
     const conectado = await conecta()
-    const [rows] = await conectado.query("SELECT * FROM projeto_video.contato WHERE chamado=1 ORDER BY contato_id")
+    const [rows] = await conectado.query("SELECT * FROM projeto_video.contato WHERE atendido='0' ORDER BY contato_id")
+    return rows
+}
+
+async function selectChamadosAtendidos(){
+    const conectado = await conecta()
+    const [rows] = await conectado.query("SELECT * FROM projeto_video.contato WHERE atendido='1' ORDER BY contato_id")
     return rows
 }
 
@@ -79,7 +91,7 @@ async function updatePromocoes(promo,valor, id){
 async function updateChamados(id){
     const conectado = await conecta()
     const values = [id]
-    return await conectado.query("UPDATE projeto_video.contato SET chamado='0' WHERE contato_id=?", values)
+    return await conectado.query("UPDATE projeto_video.contato SET atendido='1' WHERE contato_id=?", values)
    
 }
 async function updateProduto(titulo, categoria, ano, sinopse,imagem, promo, trailer, valor, id){
@@ -102,20 +114,21 @@ async function insertUsuarios(usuario){
 }
 async function insertContato(contato){
     const conectado = await conecta()
-    const values = [contato.nome,contato.email,contato.telefone,contato.assunto,contato.comentario,contato.chamado]
-    return await conectado.query("INSERT INTO contato (nome,email,telefone,assunto,comentario,chamado) VALUES(?,?,?,?,?,?)", values)
+    const values = [contato.nome,contato.email,contato.telefone,contato.assunto,contato.comentario,contato.chamado, contato.atendido]
+    return await conectado.query("INSERT INTO contato (nome,email,telefone,assunto,comentario,chamado,atendido) VALUES(?,?,?,?,?,?,?)", values)
    
 }
 
 async function insertCarrinho(carrinho){
     const conectado = await conecta()
-    const values = [carrinho.filme,carrinho.valor,carrinho.qtdTelas,carrinho.imagem,carrinho.valor]
-    const [rows]= await conectado.query("INSERT INTO carrinho (filme,valor,qtdTelas,imagem,subtotal) VALUES(?,?,?,?,?)", values)
+    const values = [carrinho.usuario,carrinho.filme,carrinho.valor,carrinho.qtdTelas,carrinho.imagem,carrinho.valor]
+    const [rows]= await conectado.query("INSERT INTO carrinho (usuario,filme,valor,qtdTelas,imagem,subtotal) VALUES(?,?,?,?,?,?)", values)
     return rows
 }
-async function selectCarrinho(){
+async function selectCarrinho(id){
     const conectado = await conecta()
-    const [rows]= await conectado.query("SELECT * FROM carrinho")
+    const value = id
+    const [rows]= await conectado.query("SELECT * FROM carrinho WHERE usuario=?",value)
     return rows
    
 }
@@ -129,10 +142,8 @@ async function deleteCarrinho(id){
 async function updateCarrinho(qtdTelas,subtotal, total, id){
     const conectado = await conecta()
     const values = [qtdTelas,subtotal,id]
-    const totalCarrinho = [total]
     const [rows]= await conectado.query("UPDATE carrinho SET qtdTelas=?, subtotal=? WHERE carrinho_id=?", values)
-    const [rowTotal]= await conectado.query("UPDATE carrinho SET total=?", totalCarrinho)
-    return rows, rowTotal
+    return rows
 }
 
 async function deleteAllCarrinho(){
@@ -144,7 +155,9 @@ async function deleteAllCarrinho(){
 
 module.exports = {
     selectFilmes,
+    selectFilmesASC,
     selectChamados,
+    selectChamadosAtendidos,
     selectSingle,
     selectPromocoes,
     selectCarrinho,

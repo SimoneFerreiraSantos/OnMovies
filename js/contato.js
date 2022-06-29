@@ -29,10 +29,12 @@ document.querySelector("#btContato").onclick = function () {
     } else if (formC.comentario.value == "") {
         $(".mensagem").text('Preencha o comentário!');
         $("#modal-mensagem").show();
-    } else if (formC.chamado.checked == true) {
-        formC.submit()
+    } else if (formC.chamado.value == 1) {
         $(".mensagem").text('Seu chamado foi aberto e em breve entraremos em contato!');
         $("#modal-mensagem").show();
+        $(".close").click(function (){
+            formC.submit()
+        })
     } else {
         formC.submit()
     }

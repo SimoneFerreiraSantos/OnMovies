@@ -189,7 +189,7 @@
 
     app.post("/deleteAllCarrinho", async (req, res) => {
         const info = req.body
-        await db.deleteAllCarrinho()
+        await db.deleteAllCarrinho(req.session.userInfo[2])
         res.send(info)
     })
 

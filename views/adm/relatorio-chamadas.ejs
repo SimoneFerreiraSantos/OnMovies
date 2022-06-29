@@ -18,7 +18,6 @@
                     <hr style="background-color:#e8673f;">
                     <div id="clientesAtendidos">
                         <% cont = 0
-                        contAtendidos = 0
                         chamados.forEach((item)=>{
                             cont += 1
                             %>
@@ -54,7 +53,12 @@
                 </div>
                 <div class="col-sm-3 pt-2" style="border: 2px solid #e8673f; border-radius: 10px ;">
                     <p class="pt-3" style="color: #f58139; font-size: 25px;">Chamadas atendidas</p>
-                    <p id="totalAtendidos">Total:<%=contAtendidos%></p>
+                    <% contAtendidos = 0
+                    chamadosAtendidos.forEach((item)=>{ 
+                            contAtendidos += 1
+                            %>
+                        <%})%>
+                    <p id="totalAtendidos">Total: <%=contAtendidos%></p>
                     <hr style="background-color:#e8673f;">
                     <p style="color: #f58139; font-size: 25px;">Chamadas pendentes</p>
                     <%if(cont != 0){%>

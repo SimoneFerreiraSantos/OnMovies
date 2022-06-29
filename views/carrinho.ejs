@@ -1,101 +1,93 @@
 <%- include("header.ejs")%>
 <%- include("nav.ejs")%>
-
-        </header>
-        <section class="container">
-            <div id="carrinhoProdutos">
-                <h2 class="mt-4 mb-4">Meu carrinho</h2>
-                <div class="row">
-                    <div class="col-sm-9">
-                        <div class="row text-white border-bottom">
-                            <div class="col-sm-3  mt-4 mb-4">Produtos</div>
-                            <div class="col-sm-2  mt-4 mb-4">Preço</div>
-                            <div class="col-sm-2  mt-4 mb-4">Telas</div>
-                            <div class="col-sm-2  mt-4 mb-4">Subtotal</div>
-                            <div class="col-sm-2  mt-4 mb-4">Remover</div>
-                
-                        </div>
-                        <!--Tabela Produtos-->
-                        <div id="tabela" class="text-white">
-                            <% total = 0
-                            carrinho.forEach((item)=>{
-                                total += parseFloat(item.subtotal)
-                                %>
-                                <div class="row border-bottom produto" data-id="<%=item.carrinho_id%>">
-                                    <div class="col-sm-3 mt-4 mb-4">
-                                            <img src="/imagens/<%=item.imagem%>" class="img-thumbnail"/>
-                                    </div>
-
-                                    <div class="col-sm-2 mt-4 mb-4 preco">
-                                        <p data-valor="<%=item.valor%>" >
-                                            <%=item.valor.replace('.', ',')%>
-                                        </p>
-                                    </div>
-
-                                    <div class="col-sm-2 mt-4 mb-4">
-                                        <input type="number" class="telas text-center" min="1" max="5" onKeyPress="return false" value="<%=item.qtdTelas%>">
-                                    </div>
-                                    <div class="col-sm-2 mt-4 mb-4">
-                                        <p class="valorProduto" name="subvalor" data-subvalor="<%=item.subtotal%>">
-                                            <%=item.subtotal.replace('.', ',')%>
-                                        </p>
-                                    </div>
-                                    <div class="col-sm-3 mt-4 mb-4">
-                                        <button class="button bt-excluir" data-id="<%=item.carrinho_id%> " data-toggle="modal" data-target="#modal-confirm">Remover</button>
-                                    </div>
-                                </div>
-                                <% }) %>
-                        </div>
-                        <div class="text-right text-white total" data-total="<%=total%>">Total: R$<%=total.toFixed(2).replace('.', ',')%></div>
+</header>
+    <section class="container">
+        <div id="carrinhoProdutos">
+            <h2 class="mt-4 mb-4">Meu carrinho</h2>
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="row text-white border-bottom">
+                        <div class="col-sm-3  mt-4 mb-4">Produtos</div>
+                        <div class="col-sm-2  mt-4 mb-4">Preço</div>
+                        <div class="col-sm-2  mt-4 mb-4">Telas</div>
+                        <div class="col-sm-2  mt-4 mb-4">Subtotal</div>
+                        <div class="col-sm-2  mt-4 mb-4">Remover</div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="col-sm-12 mt-4 mb-4 text-white">Resumo do Pedido</div>
-                        <div class="w-100" style="border: 1px solid #f58139;; border-radius: 10px;">
-                            <div class="text-white">
-                                
-                                <div id="total" data-total="<%=total%>" name="total" class="col-sm-12 mt-4 total">Total: R$<%=total.toFixed(2).replace('.', ',')%></div>
-                                <div class="col-sm-12 resumo">
-                                    <span id="cupom" style="display: none; color:#f58139;" ></span><button
-                                        class="button ml-2 mb-3 pt-0 pb-0" id="apagarCupom"
-                                        style="display: none; width: 30px;" >-</button>
-                                    <input type="text" name="cupom" id="aplicarCupom"
-                                        style="border: 1px solid #f58139; border-radius: 3px; width:150px; height: 45px;">
-                                    <button class="button pt-2" id="btAplicar" data-toggle="modal" data-target="#modal-mensagem">Aplicar</button>
-                                </div>
-                                <div class="col-sm-12 mt-4">
-                                    <button class="button" id="btContato" type="button">Continuar</button>
-                                </div>
-                                <div class="col-sm-12 mt-4 mb-2"><a href="/produtos">Adicionar mais produtos</a></div>
-                                 <div id="esvaziarCarrinho" data-total="<%=total%>" class="col-sm-12 mb-4" data-toggle="modal" data-target=""><a href="#">Esvaziar carrinho</a>
-                            
-                                </div>
+                        <!--Tabela Produtos-->
+                    <div id="tabela" class="text-white">
+                        <% total = 0
+                        carrinho.forEach((item)=>{
+                        total += parseFloat(item.subtotal)
+                        %>
+                        <div class="row border-bottom produto" data-id="<%=item.carrinho_id%>">
+                            <div class="col-sm-3 mt-4 mb-4">
+                                <img src="/imagens/<%=item.imagem%>" class="img-thumbnail w-50"/>
+                            </div>
+                            <div class="col-sm-2 mt-4 mb-4 preco">
+                                <p data-valor="<%=item.valor%>" >
+                                    <%=item.valor.replace('.', ',')%>
+                                </p>
+                            </div>
+                            <div class="col-sm-2 mt-4 mb-4">
+                                <input type="number" class="telas text-center" min="1" max="5" onKeyPress="return false" value="<%=item.qtdTelas%>">
+                            </div>
+                            <div class="col-sm-2 mt-4 mb-4">
+                                <p class="valorProduto" name="subvalor" data-subvalor="<%=item.subtotal%>">
+                                    <%=item.subtotal.replace('.', ',')%>
+                                </p>
+                            </div>
+                            <div class="col-sm-3 mt-4 mb-4">
+                                <button class="button bt-excluir" data-id="<%=item.carrinho_id%> " data-toggle="modal" data-target="#modal-confirm">Remover</button>
                             </div>
                         </div>
+                    <% }) %>
+            </div>
+            <div class="text-right text-white total" data-total="<%=total%>">Total: R$<%=total.toFixed(2).replace('.', ',')%></div>
+            </div>
+                <div class="col-sm-3">
+                    <div class="col-sm-12 mt-4 mb-4 text-white">Resumo do Pedido</div>
+                    <div class="w-100" style="border: 1px solid #f58139;; border-radius: 10px;">
+                    <div class="text-white">   
+                    <div id="total" data-total="<%=total%>" name="total" class="col-sm-12 mt-4 total">Total: R$<%=total.toFixed(2).replace('.', ',')%></div>
+                    <div class="col-sm-12 resumo">
+                        <span id="cupom" style="display: none; color:#f58139;" ></span>
+                        <button class="button ml-2 mb-3 pt-0 pb-0" id="apagarCupom"
+                            style="display: none; width: 30px;" >-</button>
+                        <input type="text" name="cupom" id="aplicarCupom"
+                                style="border: 1px solid #f58139; border-radius: 3px; width:150px; height: 45px;">
+                        <button class="button pt-2" id="btAplicar" data-toggle="modal" data-target="#modal-mensagem">Aplicar</button>
+                    </div>
+                    <div class="col-sm-12 mt-4">
+                        <button class="button" id="btContato" type="button">Continuar</button>
+                    </div>
+                    <div class="col-sm-12 mt-4 mb-2"><a href="/produtos">Adicionar mais produtos</a></div>
+                    <div id="esvaziarCarrinho" data-total="<%=total%>" class="col-sm-12 mb-4" data-toggle="modal" data-target=""><a href="#">Esvaziar carrinho</a>
                     </div>
                 </div>
             </div>
-        </section>
-        <%- include("modal.ejs")%>
-        <%- include("modalConfirm.ejs")%>
-        <%- include("modalConfirmAll.ejs")%>
-        <%- include("imagensRodape.ejs")%>
+        </div>
+    </div>
+</div>
+</section>
+    <%- include("modal.ejs")%>
+    <%- include("modalConfirm.ejs")%>
+    <%- include("modalConfirmAll.ejs")%>
+    <%- include("imagensRodape.ejs")%>
         <!-- <script src="../js/carrinho.js"></script> -->
-        <script>
-        $().ready(function(){
-            
+<script>
+    $().ready(function(){   
         $(".bt-excluir").click(function(){ 
             $(".mensagem").text('Deseja excluir o produto?');
             $("#modal-confirm").show();
             let dataId=$(this).attr("data-id")
             $('.confirmarBotao').click(function(){
-            $.post("/delete-carrinho",{
+            $.post("/deleteCarrinho",{
                 id:dataId
             }, function(data,status){
                 location.href="/carrinho"
             },"json") 
         })
     })
-        
         $("#esvaziarCarrinho").click(function(){
             let total = $(this).attr("data-total")
             if (total == 0 ){
@@ -107,7 +99,7 @@
             $("#esvaziarCarrinho").attr('data-target',"#modal-confirmAll")
             $(".mensagem").text('Deseja excluir todos os produtos?');
             $('.confirmarBotaoAll').click(function(){
-            $.post("/delete-all-carrinho",
+            $.post("/deleteAllCarrinho",
                 function (data,status){
                     location.href="/carrinho"
                 })
@@ -130,7 +122,7 @@
                 $('.total').attr("data-valor", acumulaTotal)
                 $('.total').html("Total: R$" + acumulaTotal.toFixed(2).replace('.',','))
             })
-            $.post("/atualiza-carrinho", {
+            $.post("/atualizaCarrinho", {
                 qtdTelas: telas,
                 subtotal: porcentagem.toFixed(2),
                 total: acumulaTotal.toFixed(2),
@@ -140,17 +132,17 @@
             $('#apagarCupom').hide()
         })
         $('#btAplicar').click(function insereCupom(){
-            let campoCupom = parseInt($('.resumo input[name=cupom]').val())
+            let campoCupom = $('.resumo input[name=cupom]').val()
             let totalAtual =  $('.total').attr("data-valor")
             let totalInicial =  $('.total').attr("data-total")
             let desconto = 0
             let totalComDesconto = 0
 
             switch (campoCupom){
-                case parseInt('<%=cuponsArray[0].codigo%>'):
+                case('<%=cuponsArray[0].codigo%>'):
                 calcularDesconto(parseFloat('<%=cuponsArray[0].desconto%>'))
                 break
-                case parseInt('<%=cuponsArray[1].codigo%>'):
+                case('<%=cuponsArray[1].codigo%>'):
                 calcularDesconto(parseFloat('<%=cuponsArray[1].desconto%>'))
                 break
                 default:
@@ -178,10 +170,8 @@
                 }else {
                     $(".mensagem").text('Já existe um cupom no carrinho!');
                     $("#modal-mensagem").show();
-                }
-                
+                } 
             }
-            
             $('#apagarCupom').click(function (){
             $('#cupom').attr("style", "display: none; color:#f58139")
             $('#apagarCupom').hide()

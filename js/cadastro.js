@@ -33,6 +33,16 @@ document.querySelector("#btCadastro").onclick = function () {
         $(".mensagem").text('A senha e a confirmação de senha devem ser iguais!');
         $("#modal-mensagem").show();
     } else {
-        formC.submit()
+        $("#btCadastro").attr('data-target', "#modal-cupom" )
+        $(".mensagem").text('Seja muito bem-vindo(a) ao OnMovies! Temos um presente para você, um cupom de 10% de desconto!');
+        $("#modal-cupom").show();
+        $(".copiar").click(function(){
+            $(".cupom").select();
+            document.execCommand('copy');
+            $(".copiado").show();
+        })
+        $(".close").click(function(){
+            formC.submit();
+        })
     }
 }

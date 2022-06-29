@@ -1,10 +1,16 @@
 <%- include("header.ejs")%>
 <%- include("nav.ejs")%>
-
-        </header>
-        <!--Setor de conteúdo-->
-        <section class="row container mt-5 mb-5">
-        <% n = 0
+ 
+</header>
+    <section class="row mt-3">
+        <div id="produtos" class=" carousel slide mx-auto" data-interval="0">
+            <ul class="carousel-indicators mt-5">
+                <li data-target="#produtos" data-slide-to="0" class="active"></li>
+                <li data-target="#produtos" data-slide-to="1"></li>
+                <li data-target="#produtos" data-slide-to="2"></li>
+            </ul>
+        <div class="carousel-inner ml-5 mr-5">
+            <% n = 0
                 while(n < 3){
                     array=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
                     nrandom=parseInt(Math.random() * array.length)
@@ -12,47 +18,53 @@
                     <% if(filmes.indexOf(nrandom)==-1){ 
                         filmes.push(nrandom)
                         n++%>
-                        <div class="col-sm-4 mt-3">
-                            <iframe class="w-100" width="560" height="315" src="<%=filmes[nrandom].trailer%>" title="YouTube video player" frameborder="0"
+                        <div class="col-sm-4 mt-3 mb-5 ml-5 mr-5 carousel-item <% if (n == 1){ %> active <% }%>">
+                            <iframe width="960" height="415" src="<%=filmes[nrandom].trailer%>" style="border:2px solid #e8673f;border-radius: 10px;" title="YouTube video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
+                                allowfullscreen>
+                            </iframe>
                         </div>
-                   
                     <%}%>
                     <%}%>
-        </section>
-                <div class="row">
-
-                    <%filmes.forEach((item,n)=>{ %>
-                        <%if(n < 4){%>
-                            <div class="col-sm-6 mt-1">
-                                <h2 class="mt-4 mb-2">
-                                    <%=item.titulo%>
-                                </h2>
-                                <div class="row">
-                                    <div class="col-sm-4">
-                                        <a href="/singleDeProduto?id=<%=item.filmes_id%>"> <img class="img-thumbnail w-100"
-                                                src="imagens/<%=item.imagem%>"></a>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <p>
-                                            <%=item.sinopse.substring(0,215)%>...
-                                        </p>
-                                        <p style="color: #f58139">
-                                            Preço: R$ <%=item.valor.replace(".",",")%>
-                                        <p>
-                                        <button data-id="<%=item.filmes_id%>" data-filme="<%=item.imagem%>" data-valor="<%=item.valor%>" class="button bt-carrinho">Comprar</button>
-                                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#produtos" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                  </a>
+                  <a class="carousel-control-next" href="#produtos" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                  </a>
+            </div>
+    </section>
+            <div class="row">
+                <%filmes.forEach((item,n)=>{ %>
+                    <%if(n < 4){%>
+                        <div class="col-sm-6 mt-1">
+                            <h2 class="mt-4 mb-2">
+                                <%=item.titulo%>
+                            </h2>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <a href="/singleDeProduto?id=<%=item.filmes_id%>"> <img class="img-thumbnail w-100"
+                                        src="imagens/<%=item.imagem%>">
+                                    </a>
+                                </div>
+                                <div class="col-sm-8">
+                                    <p>
+                                        <%=item.sinopse.substring(0,215)%>...
+                                    </p>
+                                    <p style="color: #f58139; text-shadow: #3b0052 2px 2px;">
+                                        Preço: R$ <%=item.valor.replace(".",",")%>
+                                    <p>
+                                    <a href=""data-id="<%=item.filmes_id%>" data-filme="<%=item.imagem%>" data-valor="<%=item.valor%>" class="bt-carrinho ml-4 text-white">
+                                        <img src="/imagens/play.png" class="button-play"><span class="span-play comprar">COMPRAR</span></a>
                                 </div>
                             </div>
-
-                                <% } %>
-                                    <% }) %>
-                            </div>
-                </div>
-            </div>
+                        </div>
+                        <% } %>
+                        <% }) %>
         </section>
         <%- include("imagensRodape.ejs")%>
+    </div>
 <!-- <script src="../js/produtos.js"></script> -->
 <script  type="text/javascript">
     $().ready(function(){
@@ -69,16 +81,6 @@
                 location.href="/carrinho"
             },"json")
         })
-        $('.center').slick({
-            slidesToShow: 5,
-            slidesToScroll: 1,
-            arrows: true,
-            centerMode: true,
-            variableWidth: true,
-            infinite: true,
-});
-        
-
     })
 </script>
 <%- include("footer.ejs")%>

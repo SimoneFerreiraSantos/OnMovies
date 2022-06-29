@@ -1,32 +1,27 @@
 <%- include("header.ejs")%>
-    
-            <%- include("nav.ejs")%>
-        </header>
-        <section class="container">
-
-            <div id="divImagens" class="mt-4 mb-4">
-                <div class="row text-center">
+<%- include("nav.ejs")%>
+    </header>
+    <section class="container">
+        <div id="divImagens" class="mt-4 mb-4">
+            <div class="row text-center">
                 <%filmes.forEach((item,n)=>{ %>
                     <%if(n < 9){%>
-                                <div class="col-sm-4 mb-4">
-                                <a href="/singleDeProduto?id=<%=item.filmes_id%>"> <img class="img-thumbnail w-70 imagens"
-                                        src="imagens/<%=item.imagem%>" data-id="<%=item.filmes_id%>" data-img="<%=item.imagem%>"></a>
-
-
-                            </div>
-                            <% } %>
-                            <% }) %>
+                        <div class="col-sm-4 mb-4">
+                            <a href="/singleDeProduto?id=<%=item.filmes_id%>"> 
+                                <img class="img-thumbnail w-70 imagens" src="imagens/<%=item.imagem%>"
+                                data-id="<%=item.filmes_id%>" data-img="<%=item.imagem%>">
+                            </a>
                         </div>
-                                <!-- <div class="row text-center">
-                        <div class="col-sm-4">
-                        <a href=" /singleDeProduto "><img name="vozesEscuridao" src="imagens/terror.jpg" class="img-thumbnail"/></a>
-                    </div>
-                    </div> -->
+                    <% } %>
+                <% }) %>
             </div>
-        </section>
-        <section class="container">
-            <div id="rodapeImg" class="row text-center">
-            </div>
-        </section>
-        <script src="/js/index.js"></script>
-        <%- include("footer.ejs")%>
+        </div>
+    </section>
+    <section class="container">
+        <img src="../imagens/play.png" width="70px" style=" position: relative; top:-5px">
+        <span class="text-white" style=" position: relative; left:-45px" >VISTOS RECENTEMENTE</span>
+        <hr style="background-color:#f58139;">
+        <div id="rodapeImg" class="row text-center"></div>
+    </section>
+    <script src="/js/index.js"></script>
+<%- include("footer.ejs")%>

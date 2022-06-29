@@ -11,8 +11,6 @@ document.querySelector("#btContato").onclick = function () {
         $(".mensagem").text('Preencha a senha com 8 dígitos!');
         $("#modal-mensagem").show();
     } else {
-        $(".mensagem").text('');
-        $("#modal-mensagem").hide();
         formL.submit()
     }
 }

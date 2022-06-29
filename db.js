@@ -146,9 +146,10 @@ async function updateCarrinho(qtdTelas,subtotal, total, id){
     return rows
 }
 
-async function deleteAllCarrinho(){
+async function deleteAllCarrinho(id){
     const conectado = await conecta()
-    const [rows]= await conectado.query("DELETE FROM carrinho")
+    const value = [id]
+    const [rows]= await conectado.query("DELETE FROM carrinho WHERE usuario=?", value)
     return rows
 }
 //selectFilmes()

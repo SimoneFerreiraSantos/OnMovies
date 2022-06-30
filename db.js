@@ -5,11 +5,10 @@ async function conecta(){
     const mysql = require("mysql2/promise")
     const conn = await mysql.createConnection({
         host: "localhost",
-        user: "l42",
-        password: "Usuario@1992",
+        user: "ln002",
+        password: "Lb21@$#!",
         database:"projeto_video"
     })
-    console.log("mySQL conectado!")
     global.connection = conn
     return connection
 }
@@ -94,12 +93,13 @@ async function updateChamados(id){
     return await conectado.query("UPDATE projeto_video.contato SET atendido='1' WHERE contato_id=?", values)
    
 }
+
 async function updateProduto(titulo, categoria, ano, sinopse,imagem, promo, trailer, valor, id){
     const conectado = await conecta()
     const values = [titulo, categoria, ano, sinopse,imagem, promo, trailer, valor, id]
     return await conectado.query("UPDATE filmes SET titulo=?, categoria=?, ano=?, sinopse=?, imagem=?, promo=?, trailer=?, valor=? WHERE filmes_id=?", values)
-   
 }
+
 async function insertFilmes(filme){
     const conectado = await conecta()
     const values = [filme.titulo, filme.categoria,filme.ano,filme.sinopse,filme.imagem, filme.promo, filme.trailer, filme.valor]
